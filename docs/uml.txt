@@ -1,0 +1,113 @@
+@startuml
+class Person {
+    String name;
+    Date birthDate;
+    int age;
+    String nationality;
+}
+
+class Player extends Person{
+    Foot foot;
+    float height;
+}
+Player "1"--"1" Attributes
+Player "*"--"1..*" Position
+
+class Attributes {
+    int passing;
+    int shooting;
+    int dribbling;
+    int tackling;
+    int pace;
+    int stamina;
+    int vision;
+    int positioning;
+    int decisionMaking;
+    int strength;
+}
+
+class Position {
+    String name;
+}
+
+class Manager extends Person{
+    
+}
+Manager "1"--"1" Club
+
+class Club {
+    String name;
+
+}
+Club "*" -- "1" League
+Club "*"--"1..*" Competition : participates in
+Club "1"--"1" Stadium
+Club "1"--"*" Player
+
+class Country {
+    String name;
+}
+Country "1"--"*" NationalCup
+Country "2..*"--"*" InternationalCup
+
+class Competition {
+    String id;
+    String name;
+}
+
+class League extends Competition {
+    int rank;
+}
+
+class Cup extends Competition{
+
+}
+
+class NationalCup extends Cup{
+
+}
+
+class InternationalCup extends Cup {
+
+}
+
+class Stadium {
+    String name;
+    int capacity;
+}
+
+class Contract {
+    Double wage;
+    Date startDate;
+    Date endDate;
+    Double releaseClause;
+}
+Contract "*"--"1" Club
+Contract "0..2"--"1" Player
+
+class YouthAcademy {
+
+}
+YouthAcademy "1"--"1" Club
+YouthAcademy "0..1"--"*" Player
+
+class Transfer {
+    Double amount;
+    Date date;
+}
+Transfer "0..*"--"2" Club
+Transfer "0..*"--"1" Player
+
+class Match {
+    Date date;
+    int home;
+    int away;
+}
+Match "*"--"2" Club
+Match "*"--"1" Stadium
+Match "*"--"1" Competition
+
+
+
+Country "1" -- "*" League
+@enduml

@@ -1,0 +1,35 @@
+person(*id*, name, birth_date, age, nationality)
+manager(*id*, club_id) 	FK: id references person
+			    club_id references club
+player(*id*, foot, weight, height, attr_id, club_id, ya_id) 	FK: id references person
+								    attr_id references attributes
+								    club_id references club
+							   	    ya_id references youth_academy
+position(*id*, name)
+player_position(*player_id, pos_id*)	FK: player_id references player
+					    pos_id references position
+attributes(*id*, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength)
+transfer(*id*, amount, date, player_id, from_club_id, to_club_id) FK: player_id references player
+								      from_club_id references club
+								      to_club_id references club
+contract(*id*, wage, start_date, end_date, release_clause, player_id, club_id) FK: player_id references player
+									   FK: club_id references club
+club(*id*, name, league_id)  FK: league_id references league
+youth_academy(id, club_id)   FK: club_id references club
+stadium(*id*, name, capacity, club_id) FK: club_id references club
+
+competition(*id*, name)
+league(*id*, rank, country_id) FK: id references competition
+				   country_id references country
+cup(*id*) FK: id references competition
+national_cup(*id*, country_id)  FK: country_id references country
+international_cup(*id*)
+international_cup_country()
+
+
+country(*id*, name)
+
+match(*id*, date, home, away, home_id, away_id, stadium_id, competition_id) FK: home_id references club
+										away_id references club
+										stadium_id references stadium
+										competition_id references competition

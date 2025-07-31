@@ -1,10 +1,9 @@
 package org.chiquileague.app;
 
-import org.chiquileague.dao.CountryDAO;
-import org.chiquileague.dao.Database;
-import org.chiquileague.dao.LeagueDAO;
+import org.chiquileague.dao.*;
 import org.chiquileague.model.Country;
 import org.chiquileague.model.League;
+import org.chiquileague.model.Player;
 import org.chiquileague.model.Team;
 
 import java.io.IOException;
@@ -62,7 +61,7 @@ public class MVP {
         while (countryOption == 0) {
             countryOption = scanner.nextInt();
             if (countryOption < 1 || countryOption > back) {
-                option = 0;
+                countryOption = 0;
                 System.out.println("Ingrese una opción válida");
             }
         }
@@ -81,7 +80,7 @@ public class MVP {
         while (leagueOption == 0) {
             leagueOption = scanner.nextInt();
             if (leagueOption < 1 || leagueOption > back) {
-                option = 0;
+                leagueOption = 0;
                 System.out.println("Ingrese una opción válida");
             }
         }
@@ -102,15 +101,18 @@ public class MVP {
         while (teamOption == 0) {
             teamOption = scanner.nextInt();
             if (teamOption < 1 || teamOption > back) {
-                option = 0;
+                teamOption = 0;
                 System.out.println("Ingrese una opción válida");
             }
         }
         if (teamOption == back) return;
         Team selectedTeam = teams.get(teamOption-1);
 
-        System.out.println("EQUIPO ELEGIDO: " + selectedTeam.getName() + " (" + selectedTeam.getId() + ")"); //borrar
-
+        System.out.println("EQUIPO ELEGIDO: " + selectedTeam.getName() + " (" + selectedTeam.getId() + ")"); //testing
+        List<Player> players = new TeamDAO(selectedTeam.getId()).getPlayers();
+        for (Player player : players) {
+            System.out.println(player.getName());
+        }                                                                                                   //testing
     }
 
     private static void loadGame(){

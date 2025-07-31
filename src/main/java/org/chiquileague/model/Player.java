@@ -28,6 +28,11 @@ public class Player {
     private int contractID;
     private int youthAcademyID;
 
+    public Player(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Player(int id, String name, Date birth_date, int age, String nationality, String foot, float height, int passing, int shooting, int dribbling, int tackling, int pace, int stamina, int vision, int positioning, int decision_making, int strength, String[] position, int clubID, int contractID, int youthAcademyID) {
         this.id = id;
         this.name = name;

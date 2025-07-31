@@ -120,7 +120,7 @@ INSERT INTO f_position (id, name) VALUES
     (1,"PO"),
     (2,"DFC"),
     (3,"DFI"),
-    (4,"DFC"),
+    (4,"DFD"),
     (5,"MCD"),
     (6,"MC"),
     (7,"MI"),

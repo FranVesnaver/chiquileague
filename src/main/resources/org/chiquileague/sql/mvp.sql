@@ -580,7 +580,7 @@ INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (72, 'Dere
 INSERT INTO player_position (player_id, position_id) VALUES (72, 9);
 INSERT INTO player_position (player_id, position_id) VALUES (72, 12);
 INSERT INTO player_position (player_id, position_id) VALUES (72, 13);
-/*
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Club: Racing Club
 INSERT INTO club (id, name, league_id) VALUES (3, 'Racing Club', 1);

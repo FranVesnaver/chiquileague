@@ -13,8 +13,8 @@ import java.util.List;
 public class LeagueDAO {
     private Integer id;     //from competition
     private String name;    //from competition
-    private Integer country_id;
-    private Integer league_rank;
+    private Integer countryID;
+    private Integer leagueRank;
 
     /**
      * Fetch a league from the database searching by its id
@@ -32,8 +32,8 @@ public class LeagueDAO {
 
             while (result.next()) {
                 name = result.getString("name");
-                country_id = result.getInt("country_id");
-                league_rank = result.getInt("league_rank");
+                countryID = result.getInt("country_id");
+                leagueRank = result.getInt("league_rank");
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
@@ -56,8 +56,8 @@ public class LeagueDAO {
 
             while (result.next()) {
                 id = result.getInt("id");
-                country_id = result.getInt("country_id");
-                league_rank = result.getInt("league_rank");
+                countryID = result.getInt("country_id");
+                leagueRank = result.getInt("league_rank");
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.out.println("Error: " + e.getMessage());

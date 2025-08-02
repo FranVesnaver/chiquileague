@@ -49,7 +49,6 @@ public class MVP {
 
     private static void newGame() throws SQLException, IOException {
         Database.connect();
-        System.out.println("NUEVA PARTIDA");
         int countryOption = 0;
         int leagueOption = 0;
         int teamOption = 0;
@@ -57,22 +56,17 @@ public class MVP {
         int back;
         int i;
 
-        List<Country> countries = Database.fetchCountries();
-        back = countries.size()+1;
+        System.out.println("NUEVA PARTIDA");
 
         // SELECTING A COUNTRY
+        List<Country> countries = Database.fetchCountries();
+        back = countries.size()+1;
         System.out.println("Seleccioná un país: ");
         for (Country country : countries) {
             System.out.println(country.getId() + ") " + country.getName());
         }
         System.out.println(back + ") Volver");
-        while (countryOption == 0) {
-            countryOption = scanner.nextInt();
-            if (countryOption < 1 || countryOption > back) {
-                countryOption = 0;
-                System.out.println("Ingrese una opción válida");
-            }
-        }
+        countryOption = validateOption(countryOption, back);
         if (countryOption == back) return;
         CountryDAO countryDAO = new CountryDAO(countryOption);
 
@@ -85,13 +79,7 @@ public class MVP {
             System.out.println(i++ + ") " + league.getName());
         }
         System.out.println(back + ") Volver");
-        while (leagueOption == 0) {
-            leagueOption = scanner.nextInt();
-            if (leagueOption < 1 || leagueOption > back) {
-                leagueOption = 0;
-                System.out.println("Ingrese una opción válida");
-            }
-        }
+        leagueOption = validateOption(leagueOption, back);
         if (leagueOption == back) return;
         League selectedLeague = leagues.get(leagueOption-1);
         LeagueDAO leagueDAO = new LeagueDAO(selectedLeague.getId());
@@ -106,27 +94,16 @@ public class MVP {
             System.out.println(i++ + ") " + team.getName());
         }
         System.out.println(back + ") Volver");
-        while (teamOption == 0) {
-            teamOption = scanner.nextInt();
-            if (teamOption < 1 || teamOption > back) {
-                teamOption = 0;
-                System.out.println("Ingrese una opción válida");
-            }
-        }
+        teamOption = validateOption(teamOption, back);
         if (teamOption == back) return;
         Team selectedTeam = teams.get(teamOption-1);
+
 
         System.out.println("EQUIPO ELEGIDO: " + selectedTeam.getName() + " (" + selectedTeam.getId() + ") de " + selectedLeague.getName());
         System.out.println("Confirmar?");
         System.out.println("1 - Si");
         System.out.println("2 - No");
-        while (confirm == 0) {
-            confirm = scanner.nextInt();
-            if (confirm != 1 && confirm != 2) {
-                confirm = 0;
-                System.out.println("Ingrese una opción válida");
-            }
-        }
+        confirm = validateOption(confirm, 2);
         if (confirm == 2) return;
 
         initializeGame();
@@ -183,13 +160,7 @@ public class MVP {
             }
             System.out.println(back + ") Volver");
 
-            while (gameOption == 0) {
-                gameOption = scanner.nextInt();
-                if (gameOption < 0 || gameOption > back){
-                    gameOption = 0;
-                    System.out.println("Ingrese una opción válida");
-                }
-            }
+            gameOption = validateOption(gameOption, back);
             if (gameOption == back) return;
 
             Path selectedPath = saveFiles.get(gameOption-1);
@@ -199,5 +170,24 @@ public class MVP {
         } catch (IOException | SQLException e) {
             System.out.println("Error al cargar la partida: " + e.getMessage());
         }
+    }
+
+    /**
+     * Validates a user input when choosing an option in a menu.
+     * Prints a warning if the input is not valid and
+     * requests a new input to the user
+     * @param option variable that manages the option
+     * @param back the value of the back (or return) option
+     * @return the value of the option selected by the user
+     */
+    private static int validateOption(int option, int back){
+        while (option == 0) {
+            option = scanner.nextInt();
+            if (option <= 0 || option > back) {
+                option = 0;
+                System.out.println("Ingrese una opción válida");
+            }
+        }
+        return option;
     }
 }

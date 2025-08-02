@@ -14,10 +14,10 @@ import java.util.List;
 
 // singleton pattern
 public class Database {
-    private final static String DB_RESOURCE_PATH = "/org/chiquileague/db/chiqui.db";
+    private static String DB_RESOURCE_PATH = "/org/chiquileague/db/chiqui.db";
     private static Connection connection;
 
-    public static void connect() throws SQLException, IOException, ClassNotFoundException {
+    public static void connect() throws SQLException, IOException {
         if (connection != null && !connection.isClosed()) return;
 
         Path tempDir = Files.createTempDirectory("chiquileague");
@@ -44,6 +44,20 @@ public class Database {
         try {
            if (connection != null && !connection.isClosed()) connection.close();
         } catch (SQLException ignored) {}
+    }
+
+    public static void connectTo(Path dbPath) throws SQLException {
+        if (connection != null && !connection.isClosed()) connection.close();
+        String url = "jdbc:sqlite:" + dbPath.toAbsolutePath();
+        connection = DriverManager.getConnection(url);
+    }
+
+    public static String getDbResourcePath() {
+        return DB_RESOURCE_PATH;
+    }
+
+    public static void setDbResourcePath(String dbResourcePath) {
+        DB_RESOURCE_PATH = dbResourcePath;
     }
 
     public static List<Country> fetchCountries() {

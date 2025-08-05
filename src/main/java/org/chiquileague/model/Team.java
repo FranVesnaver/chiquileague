@@ -3,12 +3,12 @@ package org.chiquileague.model;
 public class Team {
     private Integer id;
     private String name;
-    private Integer league_id;
+    private Integer leagueID;
 
-    public Team(Integer id, String name, Integer league_id) {
+    public Team(Integer id, String name, Integer leagueID) {
         this.id = id;
         this.name = name;
-        this.league_id = league_id;
+        this.leagueID = leagueID;
     }
 
     public Integer getId() {
@@ -19,7 +19,7 @@ public class Team {
         return name;
     }
 
-    public Integer getLeague_id() {
-        return league_id;
+    public Integer getLeagueID() {
+        return leagueID;
     }
 }

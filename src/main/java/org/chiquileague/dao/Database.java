@@ -31,6 +31,11 @@ public class Database {
 
         String url = "jdbc:sqlite:" + dbPath.toAbsolutePath();
         connection = DriverManager.getConnection(url);
+
+        // activate foreign key constraints on sqlite3
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute("PRAGMA foreign_keys = ON;");
+        }
     }
 
     public static Connection getConnection() throws SQLException, IOException, ClassNotFoundException {
@@ -50,6 +55,11 @@ public class Database {
         if (connection != null && !connection.isClosed()) connection.close();
         String url = "jdbc:sqlite:" + dbPath.toAbsolutePath();
         connection = DriverManager.getConnection(url);
+
+        // activate foreign key constraints on sqlite3
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute("PRAGMA foreign_keys = ON;");
+        }
     }
 
     public static String getDbResourcePath() {
@@ -59,6 +69,7 @@ public class Database {
     public static void setDbResourcePath(String dbResourcePath) {
         DB_RESOURCE_PATH = dbResourcePath;
     }
+
 
     public static List<Country> fetchCountries() {
         String query = "SELECT * FROM country;";
@@ -76,5 +87,19 @@ public class Database {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void createGame(String name, Integer clubID) {
+        String query = "INSERT INTO game (name, club_id, time) VALUES (?, ?, ?)";
+
+        try (PreparedStatement statement = getConnection().prepareStatement(query)) {
+            statement.setString(1, name);
+            statement.setInt(2, clubID);
+            statement.setString(3, "2025-01-01");
+            statement.executeUpdate();
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

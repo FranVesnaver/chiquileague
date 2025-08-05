@@ -1,6 +1,7 @@
 package org.chiquileague.dao;
 
 import org.chiquileague.model.Player;
+import org.chiquileague.model.Team;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -78,5 +79,9 @@ public class TeamDAO {
             System.out.println("Error: " + e.getMessage());
         }
         return null;
+    }
+
+    public Team getModel(){
+        return new Team(id, name, leagueID);
     }
 }

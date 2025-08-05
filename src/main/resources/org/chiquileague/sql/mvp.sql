@@ -63,6 +63,12 @@ INSERT INTO international_cup_country (id, country_id) VALUES
     (10, 4) -- Champions, Inglaterra
 ;
 
+-- saves
+-- INSERT INTO game (name, club_id, time) VALUES
+-- 	('river1', 1, '2025-01-01'),
+--     ('velez1', 4, '2025-01-01')
+-- ;
+
 -- Club: CA River Plate
 INSERT INTO club (id, name, league_id) VALUES (1, 'CA River Plate', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (1, 'Mâs Monumental', 85018, 1);

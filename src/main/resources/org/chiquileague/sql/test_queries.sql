@@ -64,3 +64,7 @@ SELECT ps.name AS pos FROM person pr NATURAL JOIN player pl
 JOIN player_position pp ON (pp.player_id = pl.id)
 JOIN f_position ps ON (pp.position_id = ps.id)
 WHERE (pr.name = 'Marcos Acuña');
+
+-- saves
+SELECT * FROM game WHERE (id = 2);
+SELECT * FROM game WHERE (name = 'river1');

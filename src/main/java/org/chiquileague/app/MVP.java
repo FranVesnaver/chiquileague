@@ -1,10 +1,7 @@
 package org.chiquileague.app;
 
 import org.chiquileague.dao.*;
-import org.chiquileague.model.Country;
-import org.chiquileague.model.League;
-import org.chiquileague.model.Player;
-import org.chiquileague.model.Team;
+import org.chiquileague.model.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,6 +18,8 @@ public class MVP {
 
     private static int option = 0;
     private static final int exitOption = 3;
+
+    private static GameInfo gameLoaded;
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -49,10 +48,10 @@ public class MVP {
 
     private static void newGame() throws SQLException, IOException {
         Database.connect();
-        int countryOption = 0;
-        int leagueOption = 0;
-        int teamOption = 0;
-        int confirm = 0;
+        int countryOption;
+        int leagueOption;
+        int teamOption;
+        int confirm;
         int back;
         int i;
 
@@ -66,8 +65,9 @@ public class MVP {
             System.out.println(country.getId() + ") " + country.getName());
         }
         System.out.println(back + ") Volver");
-        countryOption = validateOption(countryOption, back);
+        countryOption = validateOption(back);
         if (countryOption == back) return;
+        Country selectedcountry = countries.get(countryOption-1);
         CountryDAO countryDAO = new CountryDAO(countryOption);
 
         // SELECTING A LEAGUE FROM THE SELECTED COUNTRY
@@ -79,7 +79,7 @@ public class MVP {
             System.out.println(i++ + ") " + league.getName());
         }
         System.out.println(back + ") Volver");
-        leagueOption = validateOption(leagueOption, back);
+        leagueOption = validateOption(back);
         if (leagueOption == back) return;
         League selectedLeague = leagues.get(leagueOption-1);
         LeagueDAO leagueDAO = new LeagueDAO(selectedLeague.getId());
@@ -94,7 +94,7 @@ public class MVP {
             System.out.println(i++ + ") " + team.getName());
         }
         System.out.println(back + ") Volver");
-        teamOption = validateOption(teamOption, back);
+        teamOption = validateOption(back);
         if (teamOption == back) return;
         Team selectedTeam = teams.get(teamOption-1);
 
@@ -103,13 +103,13 @@ public class MVP {
         System.out.println("Confirmar?");
         System.out.println("1 - Si");
         System.out.println("2 - No");
-        confirm = validateOption(confirm, 2);
+        confirm = validateOption(2);
         if (confirm == 2) return;
 
-        initializeGame();
+        initializeGame(selectedTeam);
     }
 
-    private static void initializeGame() throws IOException {
+    private static void initializeGame(Team selectedTeam) throws IOException {
         System.out.println("Nombre para la nueva partida (si ya hay una con ese nombre se sobreescibirá): ");
         String newGame = scanner.next();
 
@@ -122,9 +122,11 @@ public class MVP {
                 if (inputStream == null) throw new FileNotFoundException("Error al cargar el archivo base de la base de datos");
                 Files.copy(inputStream, newGamePath, StandardCopyOption.REPLACE_EXISTING);
                 Database.connectTo(newGamePath);
+                Database.createGame(newGame, selectedTeam.getId());
                 System.out.println("Partida creada");
 
             } catch (SQLException e) {
+                Files.delete(newGamePath);
                 throw new RuntimeException(e);
             }
 
@@ -160,27 +162,52 @@ public class MVP {
             }
             System.out.println(back + ") Volver");
 
-            gameOption = validateOption(gameOption, back);
+            gameOption = validateOption(back);
             if (gameOption == back) return;
 
             Path selectedPath = saveFiles.get(gameOption-1);
+            String saveFileName = selectedPath.getFileName().toString().replace(".db","");
             Database.connectTo(selectedPath);
 
-            System.out.println("Cargando partida... " + selectedPath.getFileName().toString().replace(".db",""));
+
+            System.out.println("Cargando partida... " + saveFileName);
+
+            GameDAO gameDAO = new GameDAO(saveFileName);
+            gameLoaded = gameDAO.getModel();
+            gameMenu();
         } catch (IOException | SQLException e) {
             System.out.println("Error al cargar la partida: " + e.getMessage());
         }
+    }
+
+    private static void gameMenu(){
+        int exitGame = 5;
+        int gameOption = 0;
+
+        while (gameOption != exitGame) {
+            System.out.println("EQUIPO: " + gameLoaded.getSelectedTeam().getName());
+            System.out.println("FECHA: " + gameLoaded.getTime());
+
+            System.out.println("1) Ver plantel");
+            System.out.println("2) Formación");
+            System.out.println("3) Calendario");
+            System.out.println("4) Pasar a la siguiente semana");
+            System.out.println("5) Salir de la partida");
+
+            gameOption = scanner.nextInt();
+        }
+        gameLoaded = null;
     }
 
     /**
      * Validates a user input when choosing an option in a menu.
      * Prints a warning if the input is not valid and
      * requests a new input to the user
-     * @param option variable that manages the option
      * @param back the value of the back (or return) option
      * @return the value of the option selected by the user
      */
-    private static int validateOption(int option, int back){
+    private static int validateOption(int back){
+        int option = 0;
         while (option == 0) {
             option = scanner.nextInt();
             if (option <= 0 || option > back) {

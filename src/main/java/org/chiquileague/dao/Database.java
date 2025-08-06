@@ -1,6 +1,7 @@
 package org.chiquileague.dao;
 
 import org.chiquileague.model.Country;
+import org.chiquileague.model.GameInfo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -100,6 +101,18 @@ public class Database {
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public static void saveGame(GameInfo gameInfo) {
+        String query = "UPDATE game SET time = ? WHERE (id = ?);";
+
+        try (PreparedStatement statement = getConnection().prepareStatement(query)) {
+            statement.setString(1, gameInfo.getTime().toString());
+            statement.setString(2, gameInfo.getId().toString());
+            statement.executeUpdate();
+
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }

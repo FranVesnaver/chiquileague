@@ -9,7 +9,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -203,6 +205,14 @@ public class MVP {
                 default: System.out.println("Ingrese una opción válida"); break;
             }
         }
+        System.out.println("¿Querés guardar el progreso?");
+        System.out.println("1) Si");
+        System.out.println("2) No");
+        int save = validateOption(2);
+        if (save == 1)
+            Database.saveGame(gameLoaded);
+
+        System.out.println();
         gameLoaded = null;
     }
 
@@ -219,15 +229,17 @@ public class MVP {
     }
 
     private static void formation(){
-        System.out.println("Formation");
+        System.out.println("Formation\n");
     }
 
     private static void calendar(){
-        System.out.println("Calendar");
+        System.out.println("Calendar\n");
     }
 
     private static void nextDay(){
-        System.out.println("Next day");
+        System.out.println("Next day\n");
+        LocalDate gameTime = gameLoaded.getTime().toLocalDate();
+        gameLoaded.setTime(Date.valueOf(gameTime.plusDays(1)));
     }
 
     /**

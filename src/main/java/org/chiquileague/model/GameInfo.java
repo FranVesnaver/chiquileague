@@ -2,7 +2,7 @@ package org.chiquileague.model;
 
 import org.chiquileague.dao.TeamDAO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class GameInfo {
     private Integer id;

@@ -1,5 +1,6 @@
 package org.chiquileague.dao;
 
+import org.chiquileague.model.Player;
 import org.chiquileague.model.Position;
 
 import java.io.IOException;
@@ -28,39 +29,12 @@ public class PlayerDAO {
      * @param id ID of the player requested
      */
     public PlayerDAO(Integer id) {
-        this.id = id;
         String query1 = "SELECT * FROM player NATURAL JOIN person WHERE (id = ?);";
         String query2 = "SELECT name AS pos FROM player pl " +
                 "JOIN player_position pp ON (pp.player_id = pl.id) " +
                 "JOIN f_position ps ON (pp.position_id = ps.id) " +
                 "WHERE (pl.id = ?);";
-
-        try (PreparedStatement statement1 = Database.getConnection().prepareStatement(query1);
-             PreparedStatement statement2 = Database.getConnection().prepareStatement(query2)) {
-            statement1.setString(1, id.toString());
-            ResultSet result1 = statement1.executeQuery();
-            statement2.setString(1, id.toString());
-            ResultSet result2 = statement2.executeQuery();
-
-            while (result1.next()) {
-                name = result1.getString("name");
-                birthDate = result1.getDate("birth_date");
-                age = result1.getInt("age");
-                nationality = result1.getString("nationality");
-
-                foot = result1.getString("foot");
-                height = result1.getFloat("height");
-                attrID = result1.getInt("attr_id");
-                yaID = result1.getInt("ya_id");
-            }
-
-            positions = new ArrayList<>();
-            while (result2.next()){
-                positions.add(Position.valueOf(result2.getString("pos")));
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        fetch(query1, query2, id.toString());
     }
 
     /**
@@ -68,23 +42,30 @@ public class PlayerDAO {
      * @param name Name of the player requested
      */
     public PlayerDAO(String name) {
-        this.name = name;
         String query1 = "SELECT * FROM player NATURAL JOIN person WHERE (name = '?');";
         String query2 = "SELECT ps.name AS pos FROM person pr NATURAL JOIN player pl " +
                 "JOIN player_position pp ON (pp.player_id = pl.id) " +
                 "JOIN f_position ps ON (pp.position_id = ps.id) " +
                 "WHERE (pr.name = '?');";
+        fetch(query1, query2, name);
+    }
 
+    public Player getModel(){
+        return new Player(id, name, birthDate, age, nationality, foot, height, attrID, yaID, positions);
+    }
+
+    private void fetch(String query1, String query2, String x) {
         try (PreparedStatement statement1 = Database.getConnection().prepareStatement(query1);
              PreparedStatement statement2 = Database.getConnection().prepareStatement(query2)) {
-            statement1.setString(1, name);
+            statement1.setString(1, x);
             ResultSet result1 = statement1.executeQuery();
-            statement2.setString(1, name);
+            statement2.setString(1, x);
             ResultSet result2 = statement2.executeQuery();
 
             while (result1.next()) {
                 id = result1.getInt("id");
-                birthDate = result1.getDate("birth_date");
+                name = result1.getString("name");
+                birthDate = java.sql.Date.valueOf(result1.getString("birth_date"));
                 age = result1.getInt("age");
                 nationality = result1.getString("nationality");
 

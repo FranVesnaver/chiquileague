@@ -28,12 +28,11 @@ public class MVP {
         while (option != exitOption) {
             printMenu();
             option = scanner.nextInt();
-            if (option < 1 || option > 3) {
-                System.out.println("Ingrese una opción válida");
-            } else if (option == 1) {
-                newGame();
-            } else if (option == 2) {
-                loadGame();
+            switch (option) {
+                case 1: newGame(); break;
+                case 2: loadGame(); break;
+                case 3: break;
+                default: System.out.println("Ingrese una opción válida"); break;
             }
         }
     }
@@ -86,7 +85,7 @@ public class MVP {
 
 
         // SELECTING A TEAM FROM THE SELECTED LEAGUE
-        System.out.println("Seleccioná una equipo: ");
+        System.out.println("Seleccioná un equipo: ");
         List<Team> teams = leagueDAO.getTeams();
         back = teams.size()+1;
         i = 1;

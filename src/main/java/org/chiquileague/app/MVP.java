@@ -190,12 +190,44 @@ public class MVP {
             System.out.println("1) Ver plantel");
             System.out.println("2) Formación");
             System.out.println("3) Calendario");
-            System.out.println("4) Pasar a la siguiente semana");
+            System.out.println("4) Siguiente dia");
             System.out.println("5) Salir de la partida");
 
             gameOption = scanner.nextInt();
+            switch (gameOption) {
+                case 1: squad(); break;
+                case 2: formation(); break;
+                case 3: calendar(); break;
+                case 4: nextDay(); break;
+                case 5: break;
+                default: System.out.println("Ingrese una opción válida"); break;
+            }
         }
         gameLoaded = null;
+    }
+
+    private static void squad(){
+        List<Player> squad = new TeamDAO(gameLoaded.getClubID()).getPlayers();
+        for (Player player : squad) {
+            System.out.print(player.getName() + " | ");
+            for (Position position : player.getPositions()){
+                System.out.print(position + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    private static void formation(){
+        System.out.println("Formation");
+    }
+
+    private static void calendar(){
+        System.out.println("Calendar");
+    }
+
+    private static void nextDay(){
+        System.out.println("Next day");
     }
 
     /**

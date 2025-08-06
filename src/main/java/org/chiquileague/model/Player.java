@@ -1,11 +1,12 @@
 package org.chiquileague.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Player {
     private int id;
     private String name;
-    private Date birth_date;
+    private Date birthDate;
     private int age;
     private String nationality;
 
@@ -19,11 +20,12 @@ public class Player {
     private int stamina;
     private int vision;
     private int positioning;
-    private int decision_making;
+    private int decisionMaking;
     private int strength;
 
-    private String[] position;
+    private List<Position> positions;
 
+    private int attrID;
     private int clubID;
     private int contractID;
     private int youthAcademyID;
@@ -33,28 +35,17 @@ public class Player {
         this.name = name;
     }
 
-    public Player(int id, String name, Date birth_date, int age, String nationality, String foot, float height, int passing, int shooting, int dribbling, int tackling, int pace, int stamina, int vision, int positioning, int decision_making, int strength, String[] position, int clubID, int contractID, int youthAcademyID) {
+    public Player(int id, String name, Date birthDate, int age, String nationality, String foot, float height, int attrID, int youthAcademyID, List<Position> positions) {
         this.id = id;
         this.name = name;
-        this.birth_date = birth_date;
+        this.birthDate = birthDate;
         this.age = age;
         this.nationality = nationality;
         this.foot = foot;
         this.height = height;
-        this.passing = passing;
-        this.shooting = shooting;
-        this.dribbling = dribbling;
-        this.tackling = tackling;
-        this.pace = pace;
-        this.stamina = stamina;
-        this.vision = vision;
-        this.positioning = positioning;
-        this.decision_making = decision_making;
-        this.strength = strength;
-        this.position = position;
-        this.clubID = clubID;
-        this.contractID = contractID;
+        this.attrID = attrID;
         this.youthAcademyID = youthAcademyID;
+        this.positions = positions;
     }
 
     public int getId() {
@@ -73,12 +64,12 @@ public class Player {
         this.name = name;
     }
 
-    public Date getBirth_date() {
-        return birth_date;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirth_date(Date birth_date) {
-        this.birth_date = birth_date;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public int getAge() {
@@ -177,12 +168,12 @@ public class Player {
         this.positioning = positioning;
     }
 
-    public int getDecision_making() {
-        return decision_making;
+    public int getDecisionMaking() {
+        return decisionMaking;
     }
 
-    public void setDecision_making(int decision_making) {
-        this.decision_making = decision_making;
+    public void setDecisionMaking(int decisionMaking) {
+        this.decisionMaking = decisionMaking;
     }
 
     public int getStrength() {
@@ -193,12 +184,20 @@ public class Player {
         this.strength = strength;
     }
 
-    public String[] getPosition() {
-        return position;
+    public List<Position> getPositions() {
+        return positions;
     }
 
-    public void setPosition(String[] position) {
-        this.position = position;
+    public void setPositions(List<Position> positions) {
+        this.positions = positions;
+    }
+
+    public int getAttrID() {
+        return attrID;
+    }
+
+    public void setAttrID(int attrID) {
+        this.attrID = attrID;
     }
 
     public int getClubID() {

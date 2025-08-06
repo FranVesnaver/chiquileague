@@ -45,8 +45,7 @@ public class TeamDAO {
 
             players = new ArrayList<>();
             while (result.next()) {
-                players.add(new Player(result.getInt("id"),
-                                       result.getString("name")));
+                players.add(new PlayerDAO(result.getInt("id")).getModel());
             }
             return players;
         } catch (SQLException | IOException | ClassNotFoundException e) {

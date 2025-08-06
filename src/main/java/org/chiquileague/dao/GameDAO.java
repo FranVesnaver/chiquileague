@@ -15,43 +15,30 @@ public class GameDAO {
     private Date time;
 
     public GameDAO(Integer id) {
-        this.id = id;
-
-        String query = "SELECT * FROM game WHERE (id = ?);";
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, id.toString());
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                this.name = result.getString("name");
-                this.clubID = result.getInt("club_id");
-                this.time = result.getDate("time");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        fetch("SELECT * FROM game WHERE (id = ?);", id.toString());
     }
 
     public GameDAO(String name) {
-        this.name = name;
+        fetch("SELECT * FROM game WHERE (name = ?);", name);
+    }
 
-        String query = "SELECT * FROM game WHERE (name = ?);";
+    public GameInfo getModel(){
+        return new GameInfo(id, name, clubID, time);
+    }
 
+    private void fetch(String query, String x){
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, name);
+            statement.setString(1, x);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
                 this.id = result.getInt("id");
+                this.name = result.getString("name");
                 this.clubID = result.getInt("club_id");
                 this.time = Date.valueOf(result.getString("time"));
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }
-
-    public GameInfo getModel(){
-        return new GameInfo(id, name, clubID, time);
     }
 }

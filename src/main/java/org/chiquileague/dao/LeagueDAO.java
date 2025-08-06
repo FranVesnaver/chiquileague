@@ -21,23 +21,10 @@ public class LeagueDAO {
      * @param id ID of the league requested
      */
     public LeagueDAO(Integer id) {
-        this.id = id;
         String query = "SELECT id, name, country_id, league_rank FROM competition " +
                        "NATURAL JOIN league " +
                        "WHERE (id = ?);";
-
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, id.toString());
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                name = result.getString("name");
-                countryID = result.getInt("country_id");
-                leagueRank = result.getInt("league_rank");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        fetch(query, id.toString());
     }
 
     /**
@@ -45,23 +32,10 @@ public class LeagueDAO {
      * @param name Name of the league requested
      */
     public LeagueDAO(String name) {
-        this.name = name;
         String query = "SELECT id, name, country_id, league_rank FROM competition " +
                 "NATURAL JOIN league " +
                 "WHERE (id = ?);";
-
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, name);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                id = result.getInt("id");
-                countryID = result.getInt("country_id");
-                leagueRank = result.getInt("league_rank");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        fetch(query, name);
     }
 
     public List<Team> getTeams(){
@@ -89,5 +63,21 @@ public class LeagueDAO {
             System.out.println("Error: " + e.getMessage());
         }
         return null;
+    }
+
+    private void fetch(String query, String x){
+        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
+            statement.setString(1, x);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                id = result.getInt("id");
+                name = result.getString("name");
+                countryID = result.getInt("country_id");
+                leagueRank = result.getInt("league_rank");
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }

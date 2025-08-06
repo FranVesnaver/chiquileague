@@ -22,20 +22,7 @@ public class TeamDAO {
      * @param id ID of the team requested
      */
     public TeamDAO(Integer id) {
-        this.id = id;
-        String query = "SELECT * FROM club WHERE (id = ?);";
-
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, id.toString());
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                name = result.getString("name");
-                leagueID = result.getInt("league_id");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        fetch("SELECT * FROM club WHERE (id = ?);", id.toString());
     }
 
     /**
@@ -43,20 +30,7 @@ public class TeamDAO {
      * @param name Name of the team requested
      */
     public TeamDAO(String name) {
-        this.name = name;
-        String query = "SELECT * FROM club WHERE (name = ?);";
-
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, name);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                id = result.getInt("id");
-                leagueID = result.getInt("league_id");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        fetch("SELECT * FROM club WHERE (name = ?);", name);
     }
 
     public List<Player> getPlayers() {
@@ -83,5 +57,20 @@ public class TeamDAO {
 
     public Team getModel(){
         return new Team(id, name, leagueID);
+    }
+
+    private void fetch(String query, String x){
+        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
+            statement.setString(1, x);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                id = result.getInt("id");
+                name = result.getString("name");
+                leagueID = result.getInt("league_id");
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }

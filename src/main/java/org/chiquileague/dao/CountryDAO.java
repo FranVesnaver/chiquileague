@@ -1,5 +1,6 @@
 package org.chiquileague.dao;
 
+import org.chiquileague.model.Country;
 import org.chiquileague.model.League;
 
 import java.io.IOException;
@@ -10,56 +11,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountryDAO {
-    private Integer id;
-    private String name;
-
     /**
      * Fetch a country from the database searching by its id
      * @param id ID of the country requested
      */
-    public CountryDAO(Integer id){
-        this.id = id;
+    public static Country fetch(Integer id){
         String query = "SELECT * FROM country WHERE (id = ?);";
-
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, id.toString());
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                name = result.getString("name");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e ) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        return fetch(query, id.toString());
     }
 
     /**
      * Fetch a country from the database searching by its name
      * @param name Name of the country requested
      */
-    public CountryDAO(String name){
-        this.name = name;
-        String query = "SELECT * FROM country WHERE (id = ?);";
-
-        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, name);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                id = result.getInt("id");
-            }
-        } catch (SQLException | IOException | ClassNotFoundException e ) {
-            System.out.println("Error: " + e.getMessage());
-        }
+    public static Country fetch(String name){
+        String query = "SELECT * FROM country WHERE (name = ?);";
+        return fetch(query, name);
     }
 
-    public List<League> getLeagues() {
+    public static List<League> getLeagues(Country country) {
         String query = "SELECT id, name, league_rank FROM competition " +
                        "NATURAL JOIN league " +
                        "WHERE (league.country_id = ?);";
 
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, id.toString());
+            statement.setString(1, country.getId().toString());
             ResultSet result = statement.executeQuery();
 
             List<League> leagues = new ArrayList<>();
@@ -67,7 +43,7 @@ public class CountryDAO {
             while (result.next()) {
                 leagues.add(new League(result.getInt("id"),
                                        result.getString("name"),
-                                       id,   //country_id
+                                       country.getId(),   //country_id
                                        result.getInt("league_rank")
                             )
                 );
@@ -76,6 +52,22 @@ public class CountryDAO {
             return leagues;
 
         } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return null;
+    }
+
+    private static Country fetch(String query, String x) {
+        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
+            statement.setString(1, x);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                return new Country(result.getInt("id"),
+                                   result.getString("name")
+                );
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e ) {
             System.out.println("Error: " + e.getMessage());
         }
         return null;

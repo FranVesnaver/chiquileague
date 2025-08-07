@@ -28,7 +28,10 @@ public class MVP {
 
     public static void main (String[] args) throws IOException, SQLException {
         while (option != exitOption) {
-            printMenu();
+            System.out.println("CHIQUI LEAGUE");
+            System.out.println("1 - Nueva partida");
+            System.out.println("2 - Cargar partida");
+            System.out.println("3 - Salir");
             option = scanner.nextInt();
             switch (option) {
                 case 1: newGame(); break;
@@ -37,14 +40,6 @@ public class MVP {
                 default: System.out.println("Ingrese una opción válida"); break;
             }
         }
-    }
-
-    private static void printMenu() {
-        System.out.println("CHIQUI LEAGUE");
-        System.out.println("1 - Nueva partida");
-        System.out.println("2 - Cargar partida");
-        System.out.println("3 - Salir");
-
     }
 
     private static void newGame() throws SQLException, IOException {
@@ -68,12 +63,11 @@ public class MVP {
         System.out.println(back + ") Volver");
         countryOption = validateOption(back);
         if (countryOption == back) return;
-        Country selectedcountry = countries.get(countryOption-1);
-        CountryDAO countryDAO = new CountryDAO(countryOption);
+        Country selectedCountry = countries.get(countryOption-1);
 
         // SELECTING A LEAGUE FROM THE SELECTED COUNTRY
         System.out.println("Seleccioná una liga: ");
-        List<League> leagues = countryDAO.getLeagues();
+        List<League> leagues = CountryDAO.getLeagues(selectedCountry);
         back = leagues.size()+1;
         i = 1;
         for (League league : leagues) {
@@ -83,12 +77,11 @@ public class MVP {
         leagueOption = validateOption(back);
         if (leagueOption == back) return;
         League selectedLeague = leagues.get(leagueOption-1);
-        LeagueDAO leagueDAO = new LeagueDAO(selectedLeague.getId());
 
 
         // SELECTING A TEAM FROM THE SELECTED LEAGUE
         System.out.println("Seleccioná un equipo: ");
-        List<Team> teams = leagueDAO.getTeams();
+        List<Team> teams = LeagueDAO.getTeams(selectedLeague);
         back = teams.size()+1;
         i = 1;
         for (Team team : teams) {
@@ -108,6 +101,7 @@ public class MVP {
         if (confirm == 2) return;
 
         initializeGame(selectedTeam);
+
     }
 
     private static void initializeGame(Team selectedTeam) throws IOException {
@@ -217,7 +211,7 @@ public class MVP {
     }
 
     private static void squad(){
-        List<Player> squad = new TeamDAO(gameLoaded.getClubID()).getPlayers();
+        List<Player> squad = TeamDAO.getPlayers(TeamDAO.fetch(gameLoaded.getClubID()));
         for (Player player : squad) {
             System.out.print(player.getName() + " | ");
             for (Position position : player.getPositions()){

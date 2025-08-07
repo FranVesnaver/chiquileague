@@ -11,41 +11,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeamDAO {
-    private Integer id;
-    private String name;
-    private Integer leagueID;
-
-    private List<Player> players;
-
     /**
      * Fetch a team from the database searching by its id
      * @param id ID of the team requested
      */
-    public TeamDAO(Integer id) {
-        fetch("SELECT * FROM club WHERE (id = ?);", id.toString());
+    public static Team fetch(Integer id) {
+        return fetch("SELECT * FROM club WHERE (id = ?);", id.toString());
     }
 
     /**
      * Fetch a team from the database searching by its name
      * @param name Name of the team requested
      */
-    public TeamDAO(String name) {
-        fetch("SELECT * FROM club WHERE (name = ?);", name);
+    public static Team fetch(String name) {
+        return fetch("SELECT * FROM club WHERE (name = ?);", name);
     }
 
-    public List<Player> getPlayers() {
+    public static List<Player> getPlayers(Team team) {
         String query = "SELECT ps.id, ps.name, cl.name AS club FROM person ps " +
                 "NATURAL JOIN player pl " +
                 "JOIN club cl ON (pl.club_id = cl.id) " +
                 "WHERE (cl.id = ?);";
 
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, id.toString());
+            statement.setString(1, team.getId().toString());
             ResultSet result = statement.executeQuery();
 
-            players = new ArrayList<>();
+            List<Player> players = new ArrayList<>();
             while (result.next()) {
-                players.add(new PlayerDAO(result.getInt("id")).getModel());
+                players.add(PlayerDAO.fetch(result.getInt("id")));
             }
             return players;
         } catch (SQLException | IOException | ClassNotFoundException e) {
@@ -54,22 +48,20 @@ public class TeamDAO {
         return null;
     }
 
-    public Team getModel(){
-        return new Team(id, name, leagueID);
-    }
-
-    private void fetch(String query, String x){
+    private static Team fetch(String query, String x){
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
             statement.setString(1, x);
             ResultSet result = statement.executeQuery();
 
-            while (result.next()) {
-                id = result.getInt("id");
-                name = result.getString("name");
-                leagueID = result.getInt("league_id");
+            if (result.next()) {
+                return new Team(result.getInt("id"),
+                                result.getString("name"),
+                                result.getInt("league_id")
+                );
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return null;
     }
 }

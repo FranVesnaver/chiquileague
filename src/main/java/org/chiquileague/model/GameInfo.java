@@ -19,7 +19,7 @@ public class GameInfo {
         this.name = name;
         this.clubID = clubID;
         this.time = time;
-        selectedTeam = new TeamDAO(clubID).getModel();
+        selectedTeam = TeamDAO.fetch(clubID);
     }
 
     public Integer getId() {

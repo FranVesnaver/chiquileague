@@ -18,15 +18,23 @@ public class MatchDAO {
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
+                // to handle null values
+                int homeGoals = result.getInt("home_goals");
+                Integer homeGoalsResult = result.wasNull() ? null : homeGoals;
+                int awayGoals = result.getInt("away_goals");
+                Integer awayGoalsResult = result.wasNull() ? null : awayGoals;
+                int matchday = result.getInt("matchday");
+                Integer matchdayResult = result.wasNull() ? null : matchday;
+
                 return new Match(result.getInt("id"),
                         Date.valueOf(result.getString("date")),
-                        result.getObject("home_goals", Integer.class),
-                        result.getObject("away_goals", Integer.class),
+                        homeGoalsResult,
+                        awayGoalsResult,
                         result.getInt("home_club_id"),
                         result.getInt("away_club_id"),
                         result.getInt("stadium_id"),
                         result.getInt("competition_id"),
-                        result.getObject("matchday", Integer.class));
+                        matchdayResult);
             }
 
         } catch (SQLException | IOException | ClassNotFoundException e) {
@@ -42,15 +50,23 @@ public class MatchDAO {
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
+                // to handle null values
+                int homeGoals = result.getInt("home_goals");
+                Integer homeGoalsResult = result.wasNull() ? null : homeGoals;
+                int awayGoals = result.getInt("away_goals");
+                Integer awayGoalsResult = result.wasNull() ? null : awayGoals;
+                int matchday = result.getInt("matchday");
+                Integer matchdayResult = result.wasNull() ? null : matchday;
+
                 return new Match(result.getInt("id"),
                         Date.valueOf(result.getString("date")),
-                        result.getObject("home_goals", Integer.class),
-                        result.getObject("away_goals", Integer.class),
+                        homeGoalsResult,
+                        awayGoalsResult,
                         result.getInt("home_club_id"),
                         result.getInt("away_club_id"),
                         result.getInt("stadium_id"),
                         result.getInt("competition_id"),
-                        result.getObject("matchday", Integer.class));
+                        matchdayResult);
             }
 
         } catch (SQLException | IOException | ClassNotFoundException e) {
@@ -122,7 +138,7 @@ public class MatchDAO {
             return matches;
 
         } catch (SQLException | IOException | ClassNotFoundException e) {
-            System.out.println("Error: ACAAAAAAAAAA " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
         return null;
     }

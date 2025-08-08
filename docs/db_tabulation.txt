@@ -13,18 +13,21 @@ transfer(*id*, amount, date, player_id, from_club_id, to_club_id) FK: player_id 
 								      from_club_id references club
 								      to_club_id references club
 contract(*id*, wage, start_date, end_date, release_clause, player_id, club_id) FK: player_id references player
-									   FK: club_id references club
+									       FK: club_id references club
 club(*id*, name, league_id)  FK: league_id references league
 youth_academy(id, club_id)   FK: club_id references club
 stadium(*id*, name, capacity, club_id) FK: club_id references club
 
 competition(*id*, name)
+participates(*competition_id, club_id*) FK: competition_id references competition
+					FK: club_id references competition
 league(*id*, rank, country_id) FK: id references competition
 				   country_id references country
-cup(*id*) FK: id references competition
-national_cup(*id*, country_id)  FK: country_id references country
-international_cup(*id*)
-international_cup_country()
+national_cup(*id*, country_id)  FK: id references competition
+				FK: country_id references country
+international_cup(*id*)	FK: id references competition
+international_cup_country(*id, country_id*)	FK: id references international_cup
+						FK: country_id references country
 
 
 country(*id*, name)

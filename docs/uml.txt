@@ -59,15 +59,11 @@ class League extends Competition {
     int rank;
 }
 
-class Cup extends Competition{
+class NationalCup extends Competition{
 
 }
 
-class NationalCup extends Cup{
-
-}
-
-class InternationalCup extends Cup {
+class InternationalCup extends Competition{
 
 }
 

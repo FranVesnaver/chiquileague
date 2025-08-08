@@ -16,7 +16,7 @@ public class LeagueDAO {
      * @param id ID of the league requested
      */
     public static League fetch(Integer id) {
-        String query = "SELECT id, name, country_id, league_rank FROM competition " +
+        String query = "SELECT id, name, competition_format, country_id, league_rank FROM competition " +
                        "NATURAL JOIN league " +
                        "WHERE (id = ?);";
         return fetch(query, id.toString());
@@ -27,9 +27,9 @@ public class LeagueDAO {
      * @param name Name of the league requested
      */
     public static League fetch(String name) {
-        String query = "SELECT id, name, country_id, league_rank FROM competition " +
+        String query = "SELECT id, name, competition_format, country_id, league_rank FROM competition " +
                 "NATURAL JOIN league " +
-                "WHERE (id = ?);";
+                "WHERE (name = ?);";
         return fetch(query, name);
     }
 
@@ -68,6 +68,7 @@ public class LeagueDAO {
             if (result.next()) {
                 return new League(result.getInt("id"),
                                   result.getString("name"),
+                                  result.getString("competition_format"),
                                   result.getInt("country_id"),
                                   result.getInt("league_rank")
                 );

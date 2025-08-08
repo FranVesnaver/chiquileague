@@ -30,7 +30,7 @@ public class CountryDAO {
     }
 
     public static List<League> getLeagues(Country country) {
-        String query = "SELECT id, name, league_rank FROM competition " +
+        String query = "SELECT id, name, competition_format, country_id, league_rank FROM competition " +
                        "NATURAL JOIN league " +
                        "WHERE (league.country_id = ?);";
 
@@ -43,7 +43,8 @@ public class CountryDAO {
             while (result.next()) {
                 leagues.add(new League(result.getInt("id"),
                                        result.getString("name"),
-                                       country.getId(),   //country_id
+                                       result.getString("competition_format"),
+                                       result.getInt("country_id"),
                                        result.getInt("league_rank")
                             )
                 );

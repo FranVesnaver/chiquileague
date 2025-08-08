@@ -1,6 +1,8 @@
 package org.chiquileague.app;
 
 import org.chiquileague.dao.*;
+import org.chiquileague.fixture.DoubleRoundRobinGenerator;
+import org.chiquileague.fixture.FixtureGenerator;
 import org.chiquileague.model.*;
 
 import java.io.FileNotFoundException;
@@ -101,7 +103,8 @@ public class MVP {
         if (confirm == 2) return;
 
         initializeGame(selectedTeam);
-
+        FixtureGenerator fixture = new DoubleRoundRobinGenerator();
+        fixture.generate(selectedLeague.getId(), gameLoaded.getTime().toLocalDate());
     }
 
     private static void initializeGame(Team selectedTeam) throws IOException {
@@ -117,7 +120,7 @@ public class MVP {
                 if (inputStream == null) throw new FileNotFoundException("Error al cargar el archivo base de la base de datos");
                 Files.copy(inputStream, newGamePath, StandardCopyOption.REPLACE_EXISTING);
                 Database.connectTo(newGamePath);
-                Database.createGame(newGame, selectedTeam.getId());
+                gameLoaded = Database.createGame(newGame, selectedTeam.getId());
                 System.out.println("Partida creada");
 
             } catch (SQLException e) {
@@ -167,8 +170,7 @@ public class MVP {
 
             System.out.println("Cargando partida... " + saveFileName);
 
-            GameDAO gameDAO = new GameDAO(saveFileName);
-            gameLoaded = gameDAO.getModel();
+            gameLoaded = GameDAO.fetch(saveFileName);
             gameMenu();
         } catch (IOException | SQLException e) {
             System.out.println("Error al cargar la partida: " + e.getMessage());
@@ -176,7 +178,7 @@ public class MVP {
     }
 
     private static void gameMenu(){
-        int exitGame = 5;
+        int exitGame = 6;
         int gameOption = 0;
 
         while (gameOption != exitGame) {
@@ -186,16 +188,18 @@ public class MVP {
             System.out.println("1) Ver plantel");
             System.out.println("2) Formación");
             System.out.println("3) Calendario");
-            System.out.println("4) Siguiente dia");
-            System.out.println("5) Salir de la partida");
+            System.out.println("4) Información");
+            System.out.println("5) Siguiente dia");
+            System.out.println("6) Salir de la partida");
 
             gameOption = scanner.nextInt();
             switch (gameOption) {
                 case 1: squad(); break;
                 case 2: formation(); break;
                 case 3: calendar(); break;
-                case 4: nextDay(); break;
-                case 5: break;
+                case 4: information(); break;
+                case 5: nextDay(); break;
+                case 6: break;
                 default: System.out.println("Ingrese una opción válida"); break;
             }
         }
@@ -211,6 +215,9 @@ public class MVP {
     }
 
     private static void squad(){
+        System.out.println();
+        System.out.println("PLANTEL");
+
         List<Player> squad = TeamDAO.getPlayers(TeamDAO.fetch(gameLoaded.getClubID()));
         for (Player player : squad) {
             System.out.print(player.getName() + " | ");
@@ -219,18 +226,32 @@ public class MVP {
             }
             System.out.println();
         }
-        System.out.println();
+        System.out.println("-----------------------------\n");
     }
 
     private static void formation(){
-        System.out.println("Formation\n");
+        System.out.println();
+        System.out.println("Formation");
+        System.out.println("-----------------------------\n");
     }
 
     private static void calendar(){
-        System.out.println("Calendar\n");
+        System.out.println();
+        System.out.println("CALENDARIO");
+        List<Match> matches = Season.getFixtureByTeam(gameLoaded.getSelectedTeam());
+        for (Match match : matches)
+            System.out.println(match.getDate() + " -- " + TeamDAO.fetch(match.getHomeClubID()).getName() + " v " + TeamDAO.fetch(match.getAwayClubID()).getName());
+        System.out.println("-----------------------------\n");
+    }
+
+    private static void information() {
+        System.out.println();
+        System.out.println("Information");
+        System.out.println("-----------------------------\n");
     }
 
     private static void nextDay(){
+        System.out.println();
         System.out.println("Next day\n");
         LocalDate gameTime = gameLoaded.getTime().toLocalDate();
         gameLoaded.setTime(Date.valueOf(gameTime.plusDays(1)));

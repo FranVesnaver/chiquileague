@@ -90,7 +90,7 @@ public class Database {
         }
     }
 
-    public static void createGame(String name, Integer clubID) {
+    public static GameInfo createGame(String name, Integer clubID) {
         String query = "INSERT INTO game (name, club_id, time) VALUES (?, ?, ?)";
 
         try (PreparedStatement statement = getConnection().prepareStatement(query)) {
@@ -98,6 +98,9 @@ public class Database {
             statement.setInt(2, clubID);
             statement.setString(3, "2025-01-01");
             statement.executeUpdate();
+
+            return new GameInfo(1, name, clubID, Date.valueOf("2025-01-01"));
+            //HARDCODED: teóricamente siempre el índice de la partida es 1 porque cada archivo db tiene solo una fila en la tabla game
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

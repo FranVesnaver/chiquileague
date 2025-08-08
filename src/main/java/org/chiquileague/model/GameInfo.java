@@ -7,11 +7,8 @@ import java.sql.Date;
 public class GameInfo {
     private Integer id;
     private String name;
-
     private Integer clubID;
-
     private Date time;
-
     private Team selectedTeam;
 
     public GameInfo(Integer id, String name, Integer clubID, Date time) {

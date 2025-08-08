@@ -7,21 +7,21 @@ INSERT INTO country (id, name) VALUES
     (4,"Inglaterra")
 ;
 
-INSERT INTO competition (id, name) VALUES 
-    (1,"Primera División (Argentina)"),
-    (2,"Primera Nacional (Argentina)"),
-    (3,"Campeonato Brasileiro Serie A"),
-    (4,"Campeonato Brasileiro Serie B"),
-    (5,"La Liga"),
-    (6,"Segunda División (España)"),
-    (7,"Premier League"),
-    (8,"Championship (Inglaterra)"),
-    (9,"Copa Libertadores"),
-    (10,"Champions League"),
-    (11,"Copa Argentina"),
-    (12,"Copa do Brasil"),
-    (13,"Copa Del Rey"),
-    (14,"The FA Cup")
+INSERT INTO competition (id, name, competition_format) VALUES 
+    (1,"Primera División (Argentina)","DOUBLE_ROUND_ROBIN"),
+    (2,"Primera Nacional (Argentina)","DOUBLE_ROUND_ROBIN"),
+    (3,"Campeonato Brasileiro Serie A","DOUBLE_ROUND_ROBIN"),
+    (4,"Campeonato Brasileiro Serie B","DOUBLE_ROUND_ROBIN"),
+    (5,"La Liga","DOUBLE_ROUND_ROBIN"),
+    (6,"Segunda División (España)","DOUBLE_ROUND_ROBIN_PLAYOFFS"),
+    (7,"Premier League","DOUBLE_ROUND_ROBIN"),
+    (8,"Championship (Inglaterra)","DOUBLE_ROUND_ROBIN_PLAYOFFS"),
+    (9,"Copa Libertadores","GROUP_KNOCKOUT"),
+    (10,"Champions League","GROUP_KNOCKOUT"),
+    (11,"Copa Argentina","KNOCKOUT"),
+    (12,"Copa do Brasil","KNOCKOUT"),
+    (13,"Copa Del Rey","KNOCKOUT"),
+    (14,"The FA Cup","KNOCKOUT")
 ;
 
 INSERT INTO league (id, country_id, league_rank) VALUES
@@ -33,15 +33,6 @@ INSERT INTO league (id, country_id, league_rank) VALUES
     (6, 3, 2),  -- Segunda División, España
     (7, 4, 1),  -- Premier, Inglaterrra
     (8, 4, 2)   -- Championship, Inglaterra
-;
-
-INSERT INTO cup (id) VALUES
-	(9),  -- Libertadores
-    (10), -- Champions
-    (11), -- Copa Argentina, Argentina
-    (12), -- Copa Do Brasil, Brasil
-    (13), -- Copa Del Rey, España
-    (14)  -- The FA Cup, Inglaterra
 ;
 
 INSERT INTO national_cup (id, country_id) VALUES
@@ -64,10 +55,29 @@ INSERT INTO international_cup_country (id, country_id) VALUES
 ;
 
 -- saves
--- INSERT INTO game (name, club_id, time) VALUES
--- 	('river1', 1, '2025-01-01'),
---     ('velez1', 4, '2025-01-01')
--- ;
+/*INSERT INTO game (name, club_id, time) VALUES
+('river1', 1, '2025-01-01'),
+('velez1', 4, '2025-01-01')
+;
+*/
+
+-- partidos 
+/*INSERT INTO f_match (id,date, home_goals, away_goals, home_club_id, away_club_id, stadium_id, competition_id, matchday) VALUES
+(1,'2025-02-01',1,2,2,1,2,1,1),
+(2,'2025-02-01',1,1,3,4,3,1,1),
+(3,'2025-02-02',2,0,5,6,5,1,1),
+
+(4,'2025-02-08',2,3,2,4,2,1,2),
+(5,'2025-02-08',2,2,1,5,1,1,2),
+(6,'2025-02-09',0,0,6,3,6,1,2),
+     
+(7,'2025-02-08',0,1,3,1,3,1,3),
+     
+(8,'2025-02-08',2,1,1,6,1,1,4),
+     
+(9,'2025-02-08',0,1,4,1,4,1,5)
+;
+*/
 
 -- Club: CA River Plate
 INSERT INTO club (id, name, league_id) VALUES (1, 'CA River Plate', 1);

@@ -5,21 +5,21 @@ INSERT INTO country (id, name) VALUES
     (4,"Inglaterra")
 ;
 
-INSERT INTO competition (id, name) VALUES 
-    (1,"Primera División (Argentina)"),
-    (2,"Primera Nacional (Argentina)"),
-    (3,"Campeonato Brasileiro Serie A"),
-    (4,"Campeonato Brasileiro Serie B"),
-    (5,"La Liga"),
-    (6,"Segunda División (España)"),
-    (7,"Premier League"),
-    (8,"Championship (Inglaterra)"),
-    (9,"Copa Libertadores"),
-    (10,"Champions League"),
-    (11,"Copa Argentina"),
-    (12,"Copa do Brasil"),
-    (13,"Copa Del Rey"),
-    (14,"The FA Cup")
+INSERT INTO competition (id, name, competition_format) VALUES 
+    (1,"Primera División (Argentina)","CHIQUI_LEAGUE"),
+    (2,"Primera Nacional (Argentina)","B_ARGENTINA"),
+    (3,"Campeonato Brasileiro Serie A","DOUBLE_ROUND_ROBIN"),
+    (4,"Campeonato Brasileiro Serie B","DOUBLE_ROUND_ROBIN"),
+    (5,"La Liga","DOUBLE_ROUND_ROBIN"),
+    (6,"Segunda División (España)","DOUBLE_ROUND_ROBIN_PLAYOFF"),
+    (7,"Premier League","DOUBLE_ROUND_ROBIN"),
+    (8,"Championship (Inglaterra)","DOUBLE_ROUND_ROBIN_PLAYOFF"),
+    (9,"Copa Libertadores","GROUP_KNOCKOUT"),
+    (10,"Champions League","GROUP_KNOCKOUT"),
+    (11,"Copa Argentina","KNOCKOUT"),
+    (12,"Copa do Brasil","KNOCKOUT"),
+    (13,"Copa Del Rey","KNOCKOUT"),
+    (14,"The FA Cup","KNOCKOUT")
 ;
 
 INSERT INTO league (id, country_id, league_rank) VALUES

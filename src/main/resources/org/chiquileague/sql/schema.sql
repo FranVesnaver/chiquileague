@@ -11,27 +11,22 @@ CREATE TABLE country (
 CREATE TABLE competition (
     id INTEGER NOT NULL,
     name VARCHAR(255) NOT NULL UNIQUE,
+    competition_format VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
-);
-
-CREATE TABLE cup (
-    id INTEGER NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES competition(id)
 );
 
 CREATE TABLE national_cup (
     id INTEGER NOT NULL,
     country_id INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES cup(id),
+    FOREIGN KEY (id) REFERENCES competition(id),
     FOREIGN KEY (country_id) REFERENCES country(id)
 );
 
 CREATE TABLE international_cup (
     id INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES cup(id)
+    FOREIGN KEY (id) REFERENCES competition(id)
 );
 
 CREATE TABLE international_cup_country (
@@ -57,6 +52,14 @@ CREATE TABLE club (
     league_id INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (league_id) REFERENCES league(id)
+);
+
+CREATE TABLE participates(
+	competition_id INTEGER,
+    club_id INTEGER,
+    PRIMARY KEY (competition_id, club_id),
+    FOREIGN KEY (competition_id) REFERENCES competition(id),
+    FOREIGN KEY (club_id) REFERENCES club(id)
 );
 
 CREATE TABLE attributes (
@@ -152,12 +155,13 @@ CREATE TABLE stadium (
 CREATE TABLE f_match (
     id INTEGER,
     date DATE NOT NULL,
-    home_goals INTEGER NOT NULL,
-    away_goals INTEGER NOT NULL,
+    home_goals INTEGER,
+    away_goals INTEGER,
     home_club_id INTEGER NOT NULL,
     away_club_id INTEGER NOT NULL,
     stadium_id INTEGER NOT NULL,
     competition_id INTEGER NOT NULL,
+    matchday INTEGER,
 	PRIMARY KEY (id),
     FOREIGN KEY (home_club_id) REFERENCES club(id),
     FOREIGN KEY (away_club_id) REFERENCES club(id),

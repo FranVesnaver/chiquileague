@@ -83,7 +83,7 @@ public class MVP {
 
         // SELECTING A TEAM FROM THE SELECTED LEAGUE
         System.out.println("Seleccioná un equipo: ");
-        List<Team> teams = LeagueDAO.getTeams(selectedLeague);
+        List<Team> teams = CompetitionDAO.getTeamsByLeague(selectedLeague);
         back = teams.size()+1;
         i = 1;
         for (Team team : teams) {

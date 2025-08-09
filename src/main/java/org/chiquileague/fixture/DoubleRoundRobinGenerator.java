@@ -1,6 +1,6 @@
 package org.chiquileague.fixture;
 
-import org.chiquileague.dao.LeagueDAO;
+import org.chiquileague.dao.CompetitionDAO;
 import org.chiquileague.dao.MatchDAO;
 import org.chiquileague.dao.StadiumDAO;
 import org.chiquileague.model.Match;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DoubleRoundRobinGenerator implements FixtureGenerator{
     public void generate(int competitionID, LocalDate startDate) {
-        List<Team> teams = LeagueDAO.getTeams(LeagueDAO.fetch(competitionID));
+        List<Team> teams = CompetitionDAO.getTeamsByLeague(CompetitionDAO.fetchLeague(competitionID));
         if (teams.size() % 2 != 0)
             teams.add(null);
 

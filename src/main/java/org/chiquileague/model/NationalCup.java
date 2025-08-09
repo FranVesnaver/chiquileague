@@ -2,14 +2,12 @@ package org.chiquileague.model;
 
 import org.chiquileague.dao.CountryDAO;
 
-public class League extends Competition{
+public class NationalCup extends Competition {
     private Integer countryID;
-    private Integer leagueRank;
 
-    public League(Integer id, String name, String competitionFormat, Integer countryID, Integer leagueRank) {
+    public NationalCup(Integer id, String name, String competitionFormat, Integer countryID) {
         super(id, name, competitionFormat);
         this.countryID = countryID;
-        this.leagueRank = leagueRank;
     }
 
     public Integer getCountryID() {
@@ -26,13 +24,5 @@ public class League extends Competition{
 
     public void setCountry(Country country) {
         this.countryID = country.getId();
-    }
-
-    public Integer getLeagueRank() {
-        return leagueRank;
-    }
-
-    public void setLeagueRank(Integer leagueRank) {
-        this.leagueRank = leagueRank;
     }
 }

@@ -54,31 +54,6 @@ INSERT INTO international_cup_country (id, country_id) VALUES
     (10, 4) -- Champions, Inglaterra
 ;
 
--- saves
-/*INSERT INTO game (name, club_id, time) VALUES
-('river1', 1, '2025-01-01'),
-('velez1', 4, '2025-01-01')
-;
-*/
-
--- partidos 
-/*INSERT INTO f_match (id,date, home_goals, away_goals, home_club_id, away_club_id, stadium_id, competition_id, matchday) VALUES
-(1,'2025-02-01',1,2,2,1,2,1,1),
-(2,'2025-02-01',1,1,3,4,3,1,1),
-(3,'2025-02-02',2,0,5,6,5,1,1),
-
-(4,'2025-02-08',2,3,2,4,2,1,2),
-(5,'2025-02-08',2,2,1,5,1,1,2),
-(6,'2025-02-09',0,0,6,3,6,1,2),
-     
-(7,'2025-02-08',0,1,3,1,3,1,3),
-     
-(8,'2025-02-08',2,1,1,6,1,1,4),
-     
-(9,'2025-02-08',0,1,4,1,4,1,5)
-;
-*/
-
 -- Club: CA River Plate
 INSERT INTO club (id, name, league_id) VALUES (1, 'CA River Plate', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (1, 'Mâs Monumental', 85018, 1);

@@ -57,6 +57,14 @@ CREATE TABLE club (
 CREATE TABLE participates(
 	competition_id INTEGER,
     club_id INTEGER,
+    points INTEGER DEFAULT 0,
+    matches_played INTEGER GENERATED ALWAYS AS (wins + draws + losses) STORED,
+    wins INTEGER DEFAULT 0,
+    draws INTEGER DEFAULT 0,
+    losses INTEGER DEFAULT 0,
+    goals_for INTEGER DEFAULT 0,
+    goals_against INTEGER DEFAULT 0,
+    goal_difference INTEGER GENERATED ALWAYS AS (goals_for - goals_against) STORED,
     PRIMARY KEY (competition_id, club_id),
     FOREIGN KEY (competition_id) REFERENCES competition(id),
     FOREIGN KEY (club_id) REFERENCES club(id)

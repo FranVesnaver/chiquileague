@@ -251,10 +251,18 @@ public class MVP {
     }
 
     private static void nextDay(){
-        System.out.println();
-        System.out.println("Next day\n");
+        // match simulation
+
+
         LocalDate gameTime = gameLoaded.getTime().toLocalDate();
         gameLoaded.setTime(Date.valueOf(gameTime.plusDays(1)));
+        System.out.println("NEW DAY");
+        // new day matches
+        System.out.println("Partidos de hoy " + gameLoaded.getTime());
+        List<Match> matches = MatchDAO.fetchMatchesOfTheDay(gameLoaded.getTime());
+        for (Match match : matches) {
+            System.out.println("| " + match.getHomeClub().getName() + " v " + match.getAwayClub().getName());
+        }
     }
 
     /**

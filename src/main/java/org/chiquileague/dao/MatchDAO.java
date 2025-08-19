@@ -101,6 +101,10 @@ public class MatchDAO {
                  statement.setNull(8, Types.INTEGER);
 
              statement.executeUpdate();
+
+             if (match.getHomeGoals() != null && match.getAwayGoals() != null)
+                 updateStats(match); //if the match was played, insert stats
+
          } catch (SQLException | IOException | ClassNotFoundException e) {
              System.out.println("Error: " + e.getMessage());
          }
@@ -177,5 +181,105 @@ public class MatchDAO {
             System.out.println("Error: " + e.getMessage());
         }
         return null;
+    }
+
+    public static List<Match> fetchMatchesOfTheDay(Date date) {
+        String query = "SELECT * FROM f_match WHERE (date = ?);";
+
+        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
+            statement.setString(1, date.toString());
+            ResultSet result = statement.executeQuery();
+
+            List<Match> matches = new ArrayList<>();
+
+            while (result.next()) {
+                // to handle null values
+                int homeGoals = result.getInt("home_goals");
+                Integer homeGoalsResult = result.wasNull() ? null : homeGoals;
+                int awayGoals = result.getInt("away_goals");
+                Integer awayGoalsResult = result.wasNull() ? null : awayGoals;
+                int matchday = result.getInt("matchday");
+                Integer matchdayResult = result.wasNull() ? null : matchday;
+
+                matches.add(new Match(
+                        result.getInt("id"),
+                        Date.valueOf(result.getString("date")),
+                        homeGoalsResult,
+                        awayGoalsResult,
+                        result.getInt("home_club_id"),
+                        result.getInt("away_club_id"),
+                        result.getInt("stadium_id"),
+                        result.getInt("competition_id"),
+                        matchdayResult
+                ));
+            }
+
+            return matches;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return null;
+    }
+
+    private static void updateStats(Match match){
+        if (match.getHomeGoals() == null || match.getAwayGoals() == null) throw new IllegalArgumentException("The match has not been played yet");
+
+        int homePoints = 0;
+        int homeWins = 0;
+        int homeDraws = 0;
+        int homeLosses = 0;
+        int awayPoints = 0;
+        int awayWins = 0;
+        int awayDraws = 0;
+        int awayLosses = 0;
+
+        if (match.getHomeGoals() > match.getAwayGoals()) {
+            homePoints = 3;
+            homeWins = 1;
+            awayLosses = 1;
+        } else if (match.getHomeGoals() < match.getAwayGoals()) {
+            awayPoints = 3;
+            awayWins = 1;
+            homeLosses = 1;
+        } else {
+            homePoints = 1;
+            awayPoints = 1;
+            homeDraws = 1;
+            awayDraws = 1;
+        }
+
+        String query = "UPDATE participates SET " +
+                "points = (points+?), " +
+                "wins = (wins+?), " +
+                "draws = (draws+?), " +
+                "losses = (losses+?), " +
+                "goals_for = (goals_for+?), " +
+                "goals_against = (goals_against+?) " +
+                "WHERE (competition_id = ? AND club_id = ?);";
+        try (PreparedStatement homeStatement = Database.getConnection().prepareStatement(query);
+             PreparedStatement awayStatement = Database.getConnection().prepareStatement(query)) {
+            homeStatement.setString(1, Integer.toString(homePoints));
+            homeStatement.setString(2, Integer.toString(homeWins));
+            homeStatement.setString(3, Integer.toString(homeDraws));
+            homeStatement.setString(4, Integer.toString(homeLosses));
+            homeStatement.setString(5, match.getHomeGoals().toString());
+            homeStatement.setString(6, match.getAwayGoals().toString());
+            homeStatement.setString(7, match.getCompetitionID().toString());
+            homeStatement.setString(8, match.getHomeClubID().toString());
+
+            awayStatement.setString(1, Integer.toString(awayPoints));
+            awayStatement.setString(2, Integer.toString(awayWins));
+            awayStatement.setString(3, Integer.toString(awayDraws));
+            awayStatement.setString(4, Integer.toString(awayLosses));
+            awayStatement.setString(5, match.getAwayGoals().toString());
+            awayStatement.setString(6, match.getHomeGoals().toString());
+            awayStatement.setString(7, match.getCompetitionID().toString());
+            awayStatement.setString(8, match.getAwayClubID().toString());
+
+            homeStatement.executeUpdate();
+            awayStatement.executeUpdate();
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }

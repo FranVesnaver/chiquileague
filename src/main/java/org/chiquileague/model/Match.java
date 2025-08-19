@@ -1,5 +1,9 @@
 package org.chiquileague.model;
 
+import org.chiquileague.dao.CompetitionDAO;
+import org.chiquileague.dao.StadiumDAO;
+import org.chiquileague.dao.TeamDAO;
+
 import java.sql.Date;
 
 public class Match {
@@ -34,6 +38,14 @@ public class Match {
         this.stadiumID = stadiumID;
         this.competitionID = competitionID;
         this.matchday = matchday;
+    }
+
+    public Team getHomeClub(){
+        return TeamDAO.fetch(homeClubID);
+    }
+
+    public Team getAwayClub(){
+        return TeamDAO.fetch(awayClubID);
     }
 
     public Integer getId() {
@@ -90,6 +102,10 @@ public class Match {
 
     public void setStadiumID(Integer stadiumID) {
         this.stadiumID = stadiumID;
+    }
+
+    public Stadium getStadium(){
+        return StadiumDAO.fetch(stadiumID);
     }
 
     public Integer getCompetitionID() {

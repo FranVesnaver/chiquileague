@@ -24,4 +24,15 @@ public class Country {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this ==  obj) return true; //referential equality
+        if (!(obj instanceof Country)) return false;
+
+        Country countryObj = (Country) obj;
+        if (!this.id.equals(countryObj.getId())) return false;
+        if (!this.name.equals(countryObj.getName())) return false;
+        return true;
+    }
 }

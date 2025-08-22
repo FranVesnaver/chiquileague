@@ -3,12 +3,12 @@ package org.chiquileague.model;
 public class Competition {
     private Integer id;
     private String name;
-    private String CompetitionFormat;
+    private String competitionFormat;
 
     public Competition(Integer id, String name, String competitionFormat) {
         this.id = id;
         this.name = name;
-        CompetitionFormat = competitionFormat;
+        this.competitionFormat = competitionFormat;
     }
 
     public Integer getId() {
@@ -28,10 +28,10 @@ public class Competition {
     }
 
     public String getCompetitionFormat() {
-        return CompetitionFormat;
+        return competitionFormat;
     }
 
     public void setCompetitionFormat(String competitionFormat) {
-        CompetitionFormat = competitionFormat;
+        this.competitionFormat = competitionFormat;
     }
 }

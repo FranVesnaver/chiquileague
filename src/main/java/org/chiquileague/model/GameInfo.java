@@ -3,6 +3,7 @@ package org.chiquileague.model;
 import org.chiquileague.dao.TeamDAO;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class GameInfo {
     private Integer id;
@@ -57,5 +58,23 @@ public class GameInfo {
 
     public void setSelectedTeam(Team selectedTeam){
         this.selectedTeam = selectedTeam;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof GameInfo)) return false;
+
+        GameInfo that = (GameInfo) obj;
+        return  Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(clubID, that.clubID) &&
+                Objects.equals(time, that.time) &&
+                Objects.equals(selectedTeam, that.selectedTeam);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, clubID, time, selectedTeam);
     }
 }

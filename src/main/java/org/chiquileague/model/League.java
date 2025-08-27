@@ -2,6 +2,8 @@ package org.chiquileague.model;
 
 import org.chiquileague.dao.CountryDAO;
 
+import java.util.Objects;
+
 public class League extends Competition{
     private Integer countryID;
     private Integer leagueRank;
@@ -38,15 +40,16 @@ public class League extends Competition{
 
     @Override
     public boolean equals(Object obj) {
-        if (this ==  obj) return true; //referential equality
+        if (!super.equals(obj)) return false;
         if (!(obj instanceof League)) return false;
 
-        League leagueObj = (League) obj;
-        if (!super.getId().equals(leagueObj.getId())) return false;
-        if (!super.getName().equals(leagueObj.getName())) return false;
-        if (!super.getCompetitionFormat().equals(leagueObj.getCompetitionFormat())) return false;
-        if (!this.countryID.equals(leagueObj.getCountryID())) return false;
-        if (!this.leagueRank.equals(leagueObj.getLeagueRank())) return false;
-        return true;
+        League that = (League) obj;
+        return Objects.equals(this.countryID, that.countryID) &&
+                Objects.equals(this.leagueRank, that.leagueRank);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), countryID, leagueRank);
     }
 }

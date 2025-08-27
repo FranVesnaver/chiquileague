@@ -1,5 +1,7 @@
 package org.chiquileague.model;
 
+import java.util.Objects;
+
 public class Team {
     private Integer id;
     private String name;
@@ -21,5 +23,16 @@ public class Team {
 
     public Integer getLeagueID() {
         return leagueID;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this ==  obj) return true; //referential equality
+        if (!(obj instanceof Team)) return false;
+
+        Team that = (Team) obj;
+        return  Objects.equals(this.id, that.id) &&
+                Objects.equals(this.name, that.name) &&
+                Objects.equals(this.leagueID, that.leagueID);
     }
 }

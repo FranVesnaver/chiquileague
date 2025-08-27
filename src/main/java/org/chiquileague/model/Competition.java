@@ -1,5 +1,7 @@
 package org.chiquileague.model;
 
+import java.util.Objects;
+
 public class Competition {
     private Integer id;
     private String name;
@@ -33,5 +35,22 @@ public class Competition {
 
     public void setCompetitionFormat(String competitionFormat) {
         this.competitionFormat = competitionFormat;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;   // referential equality
+        if (!(obj instanceof Competition)) return false;
+
+        Competition that = (Competition) obj;
+
+        return  Objects.equals(this.id, that.id) &&
+                Objects.equals(this.name, that.name) &&
+                Objects.equals(this.competitionFormat, that.competitionFormat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, competitionFormat);
     }
 }

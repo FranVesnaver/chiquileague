@@ -1,5 +1,6 @@
 package org.chiquileague.dao;
 
+import org.chiquileague.model.Competition;
 import org.chiquileague.model.League;
 import org.chiquileague.model.Match;
 import org.chiquileague.model.Team;
@@ -147,10 +148,10 @@ public class MatchDAO {
         return null;
     }
 
-    public static List<Match> fetchMatchesByCompetition(League league) {
+    public static List<Match> fetchMatchesByCompetition(Competition competition) {
         String query = "SELECT * FROM f_match WHERE (competition_id = ?);";
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
-            statement.setString(1, league.getId().toString());
+            statement.setString(1, competition.getId().toString());
             ResultSet result = statement.executeQuery();
 
             List<Match> matches = new ArrayList<>();

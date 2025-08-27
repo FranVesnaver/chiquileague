@@ -43,6 +43,8 @@ INSERT INTO club (id, name, league_id) VALUES (1, 'CA River Plate', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (1, 'Mâs Monumental', 85018, 1);
 INSERT INTO youth_academy (id, club_id) VALUES (1, 1);
 INSERT INTO participates (competition_id, club_id) VALUES (1, 1);
+INSERT INTO participates (competition_id, club_id) VALUES (5, 1);
+INSERT INTO participates (competition_id, club_id) VALUES (7, 1);
 
 -- Franco Armani
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2, 'Franco Armani', '1986-10-16', 38, 'Argentina');
@@ -81,6 +83,8 @@ INSERT INTO club (id, name, league_id) VALUES (2, 'CA Boca Juniors', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (2, 'Alberto J. Armando', 54000, 2);
 INSERT INTO youth_academy (id, club_id) VALUES (2, 2);
 INSERT INTO participates (competition_id, club_id) VALUES (1, 2);
+INSERT INTO participates (competition_id, club_id) VALUES (5, 2);
+INSERT INTO participates (competition_id, club_id) VALUES (7, 2);
 
 -- Agustín Marchesín
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (36, 'Agustín Marchesín', '1988-03-16', 37, 'Argentina');
@@ -117,6 +121,7 @@ INSERT INTO club (id, name, league_id) VALUES (31, 'CA San Martín (Tucumán)', 
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (31, 'La Ciudadela', 28500, 31);
 INSERT INTO youth_academy (id, club_id) VALUES (31, 31);
 INSERT INTO participates (competition_id, club_id) VALUES (2, 31);
+INSERT INTO participates (competition_id, club_id) VALUES (5, 31);
 
 -- Darío Sand
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (878, 'Darío Sand', '1988-02-04', 37, 'Argentina');
@@ -148,6 +153,7 @@ INSERT INTO club (id, name, league_id) VALUES (32, 'CA Gimnasia y Esgrima (Mendo
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (32, 'Víctor Antonio Legrotaglie', 14000, 32);
 INSERT INTO youth_academy (id, club_id) VALUES (32, 32);
 INSERT INTO participates (competition_id, club_id) VALUES (2, 32);
+INSERT INTO participates (competition_id, club_id) VALUES (5, 32);
 
 -- Lautaro Petruchi
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (909, 'Lautaro Petruchi', '1998-09-01', 26, 'Argentina');
@@ -179,6 +185,8 @@ INSERT INTO club (id, name, league_id) VALUES (67, 'SE Palmeiras', 3);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (67, 'Allianz Parque', 43713, 67);
 INSERT INTO youth_academy (id, club_id) VALUES (67, 67);
 INSERT INTO participates (competition_id, club_id) VALUES (3, 67);
+INSERT INTO participates (competition_id, club_id) VALUES (6, 67);
+INSERT INTO participates (competition_id, club_id) VALUES (7, 67);
 
 -- Weverton
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1927, 'Weverton', '1987-12-13', 37, 'Brasil');
@@ -210,6 +218,8 @@ INSERT INTO club (id, name, league_id) VALUES (68, 'CR Flamengo', 3);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (68, 'Estádio Jornalista Mário Filho', 78838, 68);
 INSERT INTO youth_academy (id, club_id) VALUES (68, 68);
 INSERT INTO participates (competition_id, club_id) VALUES (3, 68);
+INSERT INTO participates (competition_id, club_id) VALUES (6, 68);
+INSERT INTO participates (competition_id, club_id) VALUES (7, 68);
 
 -- Agustín Rossi
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1961, 'Agustín Rossi', '1995-08-21', 29, 'Argentina');
@@ -241,6 +251,7 @@ INSERT INTO club (id, name, league_id) VALUES (87, 'Club Athletico Paranaense', 
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (87, 'Ligga Arena', 42372, 87);
 INSERT INTO youth_academy (id, club_id) VALUES (87, 87);
 INSERT INTO participates (competition_id, club_id) VALUES (4, 87);
+INSERT INTO participates (competition_id, club_id) VALUES (6, 87);
 
 -- Mycael
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2586, 'Mycael', '2004-03-12', 21, 'Brasil');
@@ -272,6 +283,7 @@ INSERT INTO club (id, name, league_id) VALUES (88, 'Coritiba Foot Ball Club', 4)
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (88, 'Estádio Major Antônio Couto Pereira', 40502, 88);
 INSERT INTO youth_academy (id, club_id) VALUES (88, 88);
 INSERT INTO participates (competition_id, club_id) VALUES (4, 88);
+INSERT INTO participates (competition_id, club_id) VALUES (6, 88);
 
 -- Pedro Morisco
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2618, 'Pedro Morisco', '2004-01-10', 21, 'Brasil');
@@ -297,3 +309,53 @@ INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamin
 INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2640, 'Izquierdo', 1.77, 2640, 88, NULL);
 INSERT INTO player_position (player_id, position_id) VALUES (2640, 12);
 
+
+-- Matches
+INSERT INTO f_match (id,date, home_goals, away_goals, home_club_id, away_club_id, stadium_id, competition_id, matchday) VALUES
+	(1,'2025-02-01',1,2,2,1,2,1,1),
+	(2,'2025-02-01',0,3,31,32,31,2,1),
+	(3,'2025-02-02',1,1,67,68,67,3,1),
+	(4,'2025-02-02',1,0,87,88,87,4,1),
+	(5,'2025-02-12',1,0,1,31,1,5,null),
+	(6,'2025-02-12',1,2,32,2,32,5,null),
+	(7,'2025-02-12',2,2,67,87,67,6,null),
+	(8,'2025-02-12',1,1,88,68,88,6,null),
+	(9,'2025-02-20',1,1,67,2,67,7,null),
+	(10,'2025-02-20',2,1,1,68,1,7,null)
+;
+
+UPDATE participates SET points = points+0, losses = losses+1, goals_for = goals_for+1, goals_against = goals_against+2 WHERE (competition_id = 1 AND club_id = 2);
+UPDATE participates SET points = points+3, wins = wins+1, goals_for = goals_for+2, goals_against = goals_against+1 WHERE (competition_id = 1 AND club_id = 1);
+
+UPDATE participates SET points = points+0, losses = losses+1, goals_for = goals_for+0, goals_against = goals_against+3 WHERE (competition_id = 2 AND club_id = 31);
+UPDATE participates SET points = points+3, wins = wins+1, goals_for = goals_for+3, goals_against = goals_against+0 WHERE (competition_id = 2 AND club_id = 32);
+
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+1, goals_against = goals_against+1 WHERE (competition_id = 3 AND club_id = 67);
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+1, goals_against = goals_against+1 WHERE (competition_id = 3 AND club_id = 68);
+
+UPDATE participates SET points = points+3, wins = wins+1, goals_for = goals_for+1, goals_against = goals_against+0 WHERE (competition_id = 4 AND club_id = 87);
+UPDATE participates SET points = points+0, losses = losses+1, goals_for = goals_for+0, goals_against = goals_against+1 WHERE (competition_id = 4 AND club_id = 88);
+
+UPDATE participates SET points = points+3, wins = wins+1, goals_for = goals_for+1, goals_against = goals_against+0 WHERE (competition_id = 5 AND club_id = 1);
+UPDATE participates SET points = points+0, losses = losses+1, goals_for = goals_for+0, goals_against = goals_against+1 WHERE (competition_id = 5 AND club_id = 31);
+
+UPDATE participates SET points = points+0, losses = losses+1, goals_for = goals_for+1, goals_against = goals_against+2 WHERE (competition_id = 5 AND club_id = 32);
+UPDATE participates SET points = points+3, wins = wins+1, goals_for = goals_for+2, goals_against = goals_against+1 WHERE (competition_id = 5 AND club_id = 2);
+
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+2, goals_against = goals_against+2 WHERE (competition_id = 6 AND club_id = 67);
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+2, goals_against = goals_against+2 WHERE (competition_id = 6 AND club_id = 87);
+
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+1, goals_against = goals_against+1 WHERE (competition_id = 6 AND club_id = 88);
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+1, goals_against = goals_against+1 WHERE (competition_id = 6 AND club_id = 68);
+
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+1, goals_against = goals_against+1 WHERE (competition_id = 7 AND club_id = 67);
+UPDATE participates SET points = points+1, draws = draws+1, goals_for = goals_for+1, goals_against = goals_against+1 WHERE (competition_id = 7 AND club_id = 2);
+
+UPDATE participates SET points = points+3, wins = wins+1, goals_for = goals_for+2, goals_against = goals_against+1 WHERE (competition_id = 7 AND club_id = 1);
+UPDATE participates SET points = points+0, losses = losses+1, goals_for = goals_for+1, goals_against = goals_against+2 WHERE (competition_id = 7 AND club_id = 68);
+
+
+-- Saves
+INSERT INTO game (name, club_id, time) VALUES
+	('river1', 1, '2025-05-05')
+;

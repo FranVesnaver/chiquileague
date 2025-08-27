@@ -146,7 +146,7 @@ public class CompetitionDAO {
         try (PreparedStatement statement1 = Database.getConnection().prepareStatement(query1);
              PreparedStatement statement2 = Database.getConnection().prepareStatement(query2)) {
             statement1.setString(1, x);
-            statement2.setString(2, x);
+            statement2.setString(1, x);
             ResultSet result1 = statement1.executeQuery();
             ResultSet result2 = statement2.executeQuery();
 

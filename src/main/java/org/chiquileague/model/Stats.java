@@ -1,5 +1,7 @@
 package org.chiquileague.model;
 
+import java.util.Objects;
+
 public class Stats {
     private Integer competitionID;
     private Integer clubID;
@@ -103,5 +105,28 @@ public class Stats {
 
     public void setGoalDifference(Integer goalDifference) {
         this.goalDifference = goalDifference;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Stats)) return false;
+
+        Stats that = (Stats) obj;
+        return  Objects.equals(competitionID, that.competitionID) &&
+                Objects.equals(clubID, that.clubID) &&
+                Objects.equals(points, that.points) &&
+                Objects.equals(matchesPlayed, that.matchesPlayed) &&
+                Objects.equals(wins, that.wins) &&
+                Objects.equals(draws, that.draws) &&
+                Objects.equals(losses, that.losses) &&
+                Objects.equals(goalsFor, that.goalsFor) &&
+                Objects.equals(goalsAgainst, that.goalsAgainst) &&
+                Objects.equals(goalDifference, that.goalDifference);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(competitionID, clubID, points, matchesPlayed, wins, draws, losses, goalsFor, goalsAgainst, goalDifference);
     }
 }

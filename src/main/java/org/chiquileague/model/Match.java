@@ -5,6 +5,7 @@ import org.chiquileague.dao.StadiumDAO;
 import org.chiquileague.dao.TeamDAO;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class Match {
     private Integer id;
@@ -122,5 +123,27 @@ public class Match {
 
     public void setMatchday(Integer matchday) {
         this.matchday = matchday;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Match)) return false;
+
+        Match that = (Match) obj;
+        return  Objects.equals(id, that.id) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(homeGoals, that.homeGoals) &&
+                Objects.equals(awayGoals, that.awayGoals) &&
+                Objects.equals(homeClubID, that.homeClubID) &&
+                Objects.equals(awayClubID, that.awayClubID) &&
+                Objects.equals(stadiumID, that.stadiumID) &&
+                Objects.equals(competitionID, that.competitionID) &&
+                Objects.equals(matchday, that.matchday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, homeGoals, awayGoals, homeClubID, awayClubID, stadiumID, competitionID, matchday);
     }
 }

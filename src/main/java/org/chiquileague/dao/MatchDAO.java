@@ -1,7 +1,6 @@
 package org.chiquileague.dao;
 
 import org.chiquileague.model.Competition;
-import org.chiquileague.model.League;
 import org.chiquileague.model.Match;
 import org.chiquileague.model.Team;
 

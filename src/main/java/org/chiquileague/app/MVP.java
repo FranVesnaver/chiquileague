@@ -136,7 +136,7 @@ public class MVP {
 
     private static void loadGame(){
         int back;
-        int gameOption = 0;
+        int gameOption;
         int i = 1;
         Path savesDir = Path.of("saves");
         try {

@@ -1,5 +1,7 @@
 package org.chiquileague.model;
 
+import java.util.Objects;
+
 public class Country {
     Integer id;
     String name;
@@ -27,12 +29,15 @@ public class Country {
 
     @Override
     public boolean equals(Object obj) {
-        if (this ==  obj) return true; //referential equality
+        if (this == obj) return true;
         if (!(obj instanceof Country)) return false;
 
-        Country countryObj = (Country) obj;
-        if (!this.id.equals(countryObj.getId())) return false;
-        if (!this.name.equals(countryObj.getName())) return false;
-        return true;
+        Country that = (Country) obj;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

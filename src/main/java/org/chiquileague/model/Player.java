@@ -2,6 +2,7 @@ package org.chiquileague.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
     private int id;
@@ -28,14 +29,14 @@ public class Player {
     private int attrID;
     private int clubID;
     private int contractID;
-    private int youthAcademyID;
+    private Integer youthAcademyID;
 
     public Player(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Player(int id, String name, Date birthDate, int age, String nationality, String foot, float height, int attrID, int youthAcademyID, List<Position> positions) {
+    public Player(int id, String name, Date birthDate, int age, String nationality, String foot, float height, int attrID, Integer youthAcademyID, List<Position> positions) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -216,11 +217,29 @@ public class Player {
         this.contractID = contractID;
     }
 
-    public int getYouthAcademyID() {
+    public Integer getYouthAcademyID() {
         return youthAcademyID;
     }
 
-    public void setYouthAcademyID(int youthAcademyID) {
+    public void setYouthAcademyID(Integer youthAcademyID) {
         this.youthAcademyID = youthAcademyID;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Player)) return false;
+
+        Player that = (Player) obj;
+        return  id == that.id &&
+                attrID == that.attrID &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(birthDate, that.birthDate) &&
+                Objects.equals(nationality, that.nationality);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, birthDate, nationality, attrID);
     }
 }

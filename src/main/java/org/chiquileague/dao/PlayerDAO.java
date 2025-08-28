@@ -29,11 +29,11 @@ public class PlayerDAO {
      * @param name Name of the player requested
      */
     public static Player fetch(String name) {
-        String query1 = "SELECT * FROM player NATURAL JOIN person WHERE (name = '?');";
+        String query1 = "SELECT * FROM player NATURAL JOIN person WHERE (name = ?);";
         String query2 = "SELECT ps.name AS pos FROM person pr NATURAL JOIN player pl " +
                 "JOIN player_position pp ON (pp.player_id = pl.id) " +
                 "JOIN f_position ps ON (pp.position_id = ps.id) " +
-                "WHERE (pr.name = '?');";
+                "WHERE (pr.name = ?);";
         return fetch(query1, query2, name);
     }
 

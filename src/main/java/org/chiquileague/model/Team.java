@@ -35,4 +35,9 @@ public class Team {
                 Objects.equals(this.name, that.name) &&
                 Objects.equals(this.leagueID, that.leagueID);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, leagueID);
+    }
 }

@@ -1,5 +1,7 @@
 package org.chiquileague.model;
 
+import java.util.Objects;
+
 public class Stadium {
     private Integer id;
     private String name;
@@ -43,5 +45,20 @@ public class Stadium {
 
     public void setClubID(Integer clubID) {
         this.clubID = clubID;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Stadium)) return false;
+        Stadium stadium = (Stadium) obj;
+        return  Objects.equals(id, stadium.id) &&
+                Objects.equals(name, stadium.name) &&
+                Objects.equals(clubID, stadium.clubID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, clubID);
     }
 }

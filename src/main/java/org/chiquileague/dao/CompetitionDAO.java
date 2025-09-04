@@ -1,14 +1,12 @@
 package org.chiquileague.dao;
 
-import org.chiquileague.model.InternationalCup;
-import org.chiquileague.model.League;
-import org.chiquileague.model.NationalCup;
-import org.chiquileague.model.Team;
+import org.chiquileague.model.*;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +74,54 @@ public class CompetitionDAO {
                 ");";
         String query2 = "SELECT id, country_id FROM international_cup_country NATURAL JOIN competition WHERE (name = ?);";
         return fetchInternationalCup(query1, query2, name);
+    }
+
+    public static List<Competition> fetchAll() {
+        String query = "SELECT cmp.id, name, competition_format, lg.country_id AS league_country, league_rank, nc.country_id AS cup_country FROM competition cmp " +
+                "LEFT OUTER JOIN league lg ON (cmp.id = lg.id) " +
+                "LEFT OUTER JOIN national_cup nc ON (cmp.id = nc.id) " +
+                "LEFT OUTER JOIN international_cup ON (cmp.id = international_cup.id);";
+
+        try (Statement statement = Database.getConnection().createStatement()) {
+            ResultSet result = statement.executeQuery(query);
+
+            List<Competition> competitions = new ArrayList<>();
+
+            while (result.next()) {
+                Competition competition;
+                result.getString("league_rank");
+                if (!result.wasNull()) {
+                    // add a league
+                    competition = new League(
+                            result.getInt("id"),
+                            result.getString("name"),
+                            result.getString("competition_format"),
+                            result.getInt("league_country"),
+                            result.getInt("league_rank")
+                    );
+                } else {
+                    result.getString("cup_country");
+                    if (!result.wasNull()) {
+                        // add a nat cup
+                        competition = new NationalCup(
+                                result.getInt("id"),
+                                result.getString("name"),
+                                result.getString("competition_format"),
+                                result.getInt("cup_country")
+                        );
+                    } else {
+                        // add int cup
+                        competition = fetchInternationalCup(result.getInt("id"));
+                    }
+                }
+                competitions.add(competition);
+            }
+
+            return competitions;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return null;
     }
 
     public static List<Team> getTeamsByLeague(League league){

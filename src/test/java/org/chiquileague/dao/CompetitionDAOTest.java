@@ -1,9 +1,6 @@
 package org.chiquileague.dao;
 
-import org.chiquileague.model.InternationalCup;
-import org.chiquileague.model.League;
-import org.chiquileague.model.NationalCup;
-import org.chiquileague.model.Team;
+import org.chiquileague.model.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -87,6 +84,23 @@ class CompetitionDAOTest {
         InternationalCup result = CompetitionDAO.fetchInternationalCup(input);
 
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void fetchAllTest() {
+        List<Competition> expected = List.of(
+                new League(1, "Primera División (Argentina)", "DOUBLE_ROUND_ROBIN", 1, 1),
+                new League(2, "Primera Nacional (Argentina)","DOUBLE_ROUND_ROBIN", 1, 2),
+                new League(3,"Campeonato Brasileiro Serie A","DOUBLE_ROUND_ROBIN", 2, 1),
+                new League(4,"Campeonato Brasileiro Serie B","DOUBLE_ROUND_ROBIN", 2, 2),
+                new NationalCup(5, "Copa Argentina", "KNOCKOUT", 1),
+                new NationalCup(6, "Copa do Brasil","KNOCKOUT", 2),
+                new InternationalCup(7,"Copa Libertadores","GROUP_KNOCKOUT", List.of(1,2))
+        );
+
+        List<Competition> result = CompetitionDAO.fetchAll();
+
+        assertIterableEquals(expected, result);
     }
 
     @Test

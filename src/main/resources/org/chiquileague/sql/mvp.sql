@@ -58,6 +58,7 @@ INSERT INTO international_cup_country (id, country_id) VALUES
 INSERT INTO club (id, name, league_id) VALUES (1, 'CA River Plate', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (1, 'Mâs Monumental', 85018, 1);
 INSERT INTO youth_academy (id, club_id) VALUES (1, 1);
+INSERT INTO participates (competition_id, club_id) VALUES (1, 1);
 
 -- Conan Ledesma
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1, 'Conan Ledesma', '1993-02-13', 32, 'Argentina');
@@ -306,6 +307,7 @@ INSERT INTO player_position (player_id, position_id) VALUES (34, 9);
 INSERT INTO club (id, name, league_id) VALUES (2, 'CA Boca Juniors', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (2, 'Alberto J. Armando', 54000, 2);
 INSERT INTO youth_academy (id, club_id) VALUES (2, 2);
+INSERT INTO participates (competition_id, club_id) VALUES (1, 2);
 
 -- Leandro Brey
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (35, 'Leandro Brey', '2002-09-21', 22, 'Argentina');
@@ -577,6 +579,7 @@ INSERT INTO player_position (player_id, position_id) VALUES (72, 13);
 INSERT INTO club (id, name, league_id) VALUES (3, 'Racing Club', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (3, 'Presidente Perón', 55000, 3);
 INSERT INTO youth_academy (id, club_id) VALUES (3, 3);
+INSERT INTO participates (competition_id, club_id) VALUES (1, 3);
 
 -- Facundo Cambeses
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (73, 'Facundo Cambeses', '1997-04-09', 28, 'Argentina');
@@ -782,6 +785,7 @@ INSERT INTO player_position (player_id, position_id) VALUES (105, 9);
 INSERT INTO club (id, name, league_id) VALUES (4, 'CA Vélez Sarsfield', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (4, 'José Amalfitani', 49747, 4);
 INSERT INTO youth_academy (id, club_id) VALUES (4, 4);
+INSERT INTO participates (competition_id, club_id) VALUES (1, 4);
 
 -- Tomás Marchiori
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (106, 'Tomás Marchiori', '1995-06-20', 30, 'Argentina');
@@ -992,6 +996,7 @@ INSERT INTO player_position (player_id, position_id) VALUES (139, 9);
 INSERT INTO club (id, name, league_id) VALUES (5, 'Club Estudiantes de La Plata', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (5, 'Jorge Luis Hirschi', 32530, 5);
 INSERT INTO youth_academy (id, club_id) VALUES (5, 5);
+INSERT INTO participates (competition_id, club_id) VALUES (1, 5);
 
 -- Matías Mansilla
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (140, 'Matías Mansilla', '1996-01-15', 29, 'Argentina');
@@ -1172,6 +1177,7 @@ INSERT INTO player_position (player_id, position_id) VALUES (168, 9);
 INSERT INTO club (id, name, league_id) VALUES (6, 'CA Independiente', 1);
 INSERT INTO stadium (id, name, capacity, club_id) VALUES (6, 'Libertadores de América-Ricardo Enrique Bochini', 48069, 6);
 INSERT INTO youth_academy (id, club_id) VALUES (6, 6);
+INSERT INTO participates (competition_id, club_id) VALUES (1, 6);
 
 -- Rodrigo Rey
 INSERT INTO person (id, name, birth_date, age, nationality) VALUES (169, 'Rodrigo Rey', '1991-03-08', 34, 'Argentina');
@@ -1334,3 +1340,1194 @@ INSERT INTO person (id, name, birth_date, age, nationality) VALUES (195, 'Ignaci
 INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (195, 59, 85, 88, 53, 83, 46, 76, 82, 50, 57);
 INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (195, 'Derecho', 1.76, 195, 6, NULL);
 INSERT INTO player_position (player_id, position_id) VALUES (195, 9);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Club: CA San Martín (Tucumán)
+INSERT INTO club (id, name, league_id) VALUES (31, 'CA San Martín (Tucumán)', 2);
+INSERT INTO stadium (id, name, capacity, club_id) VALUES (31, 'La Ciudadela', 28500, 31);
+INSERT INTO youth_academy (id, club_id) VALUES (31, 31);
+INSERT INTO participates (competition_id, club_id) VALUES (2, 31);
+
+-- Darío Sand
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (878, 'Darío Sand', '1988-02-04', 37, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (878, 40, 53, 63, 40, 62, 61, 84, 52, 81, 70);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (878, 'Derecho', 1.8, 878, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (878, 1);
+
+-- Nicolás Carrizo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (879, 'Nicolás Carrizo', '1991-07-04', 34, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (879, 61, 82, 43, 48, 75, 69, 65, 86, 68, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (879, 'Derecho', 1.83, 879, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (879, 1);
+
+-- Juan Jaime
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (880, 'Juan Jaime', '1998-01-02', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (880, 68, 90, 41, 90, 43, 74, 52, 90, 50, 73);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (880, 'Derecho', 1.78, 880, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (880, 1);
+
+-- Hernán Zuliani
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (881, 'Hernán Zuliani', '2003-12-01', 21, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (881, 67, 57, 83, 61, 77, 42, 78, 77, 76, 40);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (881, 'Izquierdo', 1.8, 881, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (881, 2);
+
+-- Guillermo Rodríguez
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (882, 'Guillermo Rodríguez', '2002-07-04', 23, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (882, 67, 79, 69, 48, 42, 68, 77, 82, 66, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (882, 'Derecho', 1.75, 882, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (882, 2);
+
+-- Mauro Osores
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (883, 'Mauro Osores', '1997-02-20', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (883, 56, 86, 74, 67, 82, 72, 62, 45, 41, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (883, 'Derecho', 1.9, 883, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (883, 2);
+
+-- Juan Orellana
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (884, 'Juan Orellana', '1997-05-01', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (884, 90, 80, 54, 66, 43, 63, 63, 69, 82, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (884, 'Derecho', 1.93, 884, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (884, 2);
+
+-- Tiago Peñalba
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (885, 'Tiago Peñalba', '2004-04-23', 21, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (885, 85, 83, 43, 57, 82, 57, 65, 42, 46, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (885, 'Izquierdo', 1.86, 885, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (885, 2);
+
+-- Claudio Araujo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (886, 'Claudio Araujo', '2001-02-07', 24, 'Paraguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (886, 55, 85, 77, 85, 78, 55, 42, 46, 82, 72);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (886, 'Izquierdo', 1.83, 886, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (886, 2);
+
+-- Franco Quiroz
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (887, 'Franco Quiroz', '1998-03-11', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (887, 73, 60, 87, 57, 73, 88, 41, 53, 40, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (887, 'Izquierdo', 1.76, 887, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (887, 3);
+
+-- Federico Murillo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (888, 'Federico Murillo', '1997-01-04', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (888, 65, 69, 50, 75, 74, 79, 45, 80, 57, 88);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (888, 'Derecho', 1.78, 888, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (888, 4);
+
+-- Axel Bordón
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (889, 'Axel Bordón', '1996-03-28', 29, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (889, 69, 69, 82, 65, 71, 59, 77, 48, 48, 46);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (889, 'Derecho', 1.73, 889, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (889, 4);
+
+-- Gustavo Abregú
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (890, 'Gustavo Abregú', '1997-07-04', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (890, 43, 52, 66, 55, 71, 43, 55, 73, 49, 47);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (890, 'Derecho', 1.7, 890, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (890, 5);
+
+-- Matías García
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (891, 'Matías García', '1995-11-11', 29, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (891, 69, 59, 70, 56, 64, 61, 86, 48, 43, 49);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (891, 'Izquierdo', 1.79, 891, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (891, 5);
+
+-- Agustín Prokop
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (892, 'Agustín Prokop', '2001-06-04', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (892, 87, 83, 73, 41, 69, 77, 85, 72, 81, 40);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (892, 'Izquierdo', 1.73, 892, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (892, 5);
+
+-- Nicolás Castro
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (894, 'Nicolás Castro', '1990-05-11', 35, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (894, 74, 76, 55, 78, 41, 44, 45, 72, 81, 51);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (894, 'Derecho', 1.81, 894, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (894, 6);
+
+-- Ulises Vera
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (895, 'Ulises Vera', '2003-10-21', 21, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (895, 68, 63, 80, 80, 86, 76, 58, 50, 41, 61);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (895, 'Derecho', 1.75, 895, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (895, 6);
+
+-- Jesús Soraire
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (896, 'Jesús Soraire', '1988-12-03', 36, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (896, 67, 81, 87, 86, 56, 68, 58, 88, 84, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (896, 'Derecho', 1.75, 896, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (896, 6);
+
+-- Leonardo Monje
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (897, 'Leonardo Monje', '2002-03-26', 23, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (897, 43, 59, 74, 43, 72, 67, 47, 47, 63, 42);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (897, 'Derecho', 1.75, 897, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (897, 8);
+
+-- Mauro González
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (898, 'Mauro González', '1996-08-31', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (898, 80, 88, 48, 58, 47, 79, 41, 86, 80, 60);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (898, 'Izquierdo', 1.78, 898, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (898, 10);
+
+-- Gabriel Hachen
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (899, 'Gabriel Hachen', '1990-10-16', 34, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (899, 75, 49, 46, 54, 74, 76, 64, 59, 49, 59);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (899, 'Izquierdo', 1.67, 899, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (899, 10);
+
+-- Juan Cuevas
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (900, 'Juan Cuevas', '1988-06-04', 37, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (900, 57, 50, 65, 51, 79, 83, 53, 80, 87, 60);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (900, 'Izquierdo', 1.62, 900, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (900, 10);
+
+-- Juan Cruz Esquivel
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (901, 'Juan Cruz Esquivel', '2000-08-22', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (901, 66, 69, 83, 90, 66, 76, 43, 80, 74, 59);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (901, 'Ambidiestro', 1.73, 901, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (901, 12);
+
+-- Franco García
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (902, 'Franco García', '1997-06-04', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (902, 56, 47, 80, 46, 53, 54, 53, 57, 89, 86);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (902, 'Derecho', 1.75, 902, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (902, 13);
+
+-- Nahuel Cainelli
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (903, 'Nahuel Cainelli', '1994-08-18', 30, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (903, 79, 80, 66, 82, 62, 58, 79, 63, 74, 62);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (903, 'Derecho', 1.78, 903, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (903, 13);
+
+-- Gonzalo Rodríguez
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (904, 'Gonzalo Rodríguez', '1990-09-18', 34, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (904, 70, 47, 66, 46, 69, 55, 52, 86, 76, 81);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (904, 'Derecho', 1.78, 904, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (904, 13);
+
+-- Martín Pino
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (905, 'Martín Pino', '1998-03-16', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (905, 41, 57, 89, 77, 75, 45, 85, 71, 54, 55);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (905, 'Derecho', 1.85, 905, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (905, 9);
+
+-- Aaron Spetale
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (906, 'Aaron Spetale', '2000-05-28', 25, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (906, 77, 64, 72, 64, 57, 40, 42, 77, 49, 48);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (906, 'Derecho', 1.87, 906, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (906, 9);
+
+-- Nicolás Moreno
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (907, 'Nicolás Moreno', '2001-03-08', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (907, 41, 85, 88, 79, 81, 70, 86, 77, 84, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (907, 'Derecho', 1.86, 907, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (907, 9);
+
+-- Lautaro Taboada
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (908, 'Lautaro Taboada', '2004-01-22', 21, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (908, 55, 41, 69, 85, 82, 49, 85, 67, 61, 83);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (908, 'Derecho', 1.81, 908, 31, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (908, 9);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Club: CA Gimnasia y Esgrima (Mendoza)
+INSERT INTO club (id, name, league_id) VALUES (32, 'CA Gimnasia y Esgrima (Mendoza)', 2);
+INSERT INTO stadium (id, name, capacity, club_id) VALUES (32, 'Víctor Antonio Legrotaglie', 14000, 32);
+INSERT INTO youth_academy (id, club_id) VALUES (32, 32);
+INSERT INTO participates (competition_id, club_id) VALUES (2, 32);
+
+-- Lautaro Petruchi
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (909, 'Lautaro Petruchi', '1998-09-01', 26, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (909, 86, 79, 86, 72, 54, 89, 77, 86, 55, 44);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (909, 'Derecho', 1.84, 909, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (909, 1);
+
+-- Felipe San Juan
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (910, 'Felipe San Juan', '2001-06-23', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (910, 90, 78, 52, 89, 43, 72, 75, 58, 84, 83);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (910, 'Derecho', 1.88, 910, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (910, 1);
+
+-- César Rigamonti
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (911, 'César Rigamonti', '1987-04-07', 38, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (911, 63, 41, 69, 54, 62, 82, 47, 61, 85, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (911, 'Derecho', 1.86, 911, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (911, 1);
+
+-- Imanol González
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (912, 'Imanol González', '1998-01-06', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (912, 79, 71, 42, 61, 77, 83, 40, 81, 67, 72);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (912, 'Izquierdo', 1.84, 912, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (912, 2);
+
+-- Diego Mondino
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (913, 'Diego Mondino', '1994-11-14', 30, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (913, 77, 70, 55, 44, 71, 61, 59, 74, 89, 65);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (913, 'Derecho', 1.83, 913, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (913, 2);
+
+-- Lautaro Carrera
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (914, 'Lautaro Carrera', '2003-05-30', 22, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (914, 62, 78, 44, 62, 47, 42, 78, 81, 59, 73);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (914, 'Derecho', 1.88, 914, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (914, 2);
+
+-- Hugo Paniagua
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (915, 'Hugo Paniagua', '2002-01-15', 23, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (915, 57, 90, 71, 47, 52, 69, 76, 84, 51, 52);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (915, 'Izquierdo', 1.81, 915, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (915, 2);
+
+-- Axel Poza
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (916, 'Axel Poza', '2003-04-20', 22, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (916, 77, 90, 46, 76, 70, 72, 77, 48, 44, 47);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (916, 'Derecho', 1.91, 916, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (916, 2);
+
+-- Franco Saavedra
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (917, 'Franco Saavedra', '2003-09-02', 21, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (917, 83, 48, 41, 57, 76, 57, 53, 66, 69, 81);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (917, 'Izquierdo', 1.78, 917, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (917, 3);
+
+-- Matías Recalde
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (918, 'Matías Recalde', '1997-07-09', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (918, 58, 44, 85, 73, 75, 60, 72, 84, 45, 47);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (918, 'Izquierdo', 1.78, 918, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (918, 3);
+
+-- Facundo Nadalín
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (919, 'Facundo Nadalín', '1997-08-19', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (919, 88, 86, 43, 58, 82, 66, 42, 64, 55, 49);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (919, 'Derecho', 1.76, 919, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (919, 4);
+
+-- Ismael Cortéz
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (920, 'Ismael Cortéz', '2000-06-26', 25, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (920, 42, 69, 64, 89, 61, 44, 78, 55, 59, 73);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (920, 'Derecho', 1.83, 920, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (920, 4);
+
+-- Federico Torres
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (921, 'Federico Torres', '1999-04-16', 26, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (921, 59, 52, 76, 69, 67, 51, 78, 83, 66, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (921, 'Derecho', 1.78, 921, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (921, 4);
+
+-- Matías Muñoz
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (922, 'Matías Muñoz', '1996-03-22', 29, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (922, 57, 90, 71, 73, 52, 40, 78, 73, 63, 85);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (922, 'Derecho', 1.83, 922, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (922, 5);
+
+-- Fermín Antonini
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (923, 'Fermín Antonini', '1997-07-02', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (923, 88, 79, 55, 55, 61, 80, 66, 73, 62, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (923, 'Derecho', 1.74, 923, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (923, 5);
+
+-- Ignacio Antonio
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (924, 'Ignacio Antonio', '1995-01-04', 30, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (924, 68, 64, 69, 48, 82, 64, 68, 42, 45, 65);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (924, 'Derecho', 1.73, 924, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (924, 6);
+
+-- Nahuel Barboza
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (925, 'Nahuel Barboza', '1999-09-16', 25, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (925, 88, 68, 40, 59, 57, 90, 90, 54, 65, 44);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (925, 'Derecho', 1.76, 925, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (925, 6);
+
+-- Lucas Bustos
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (926, 'Lucas Bustos', '2005-03-30', 20, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (926, 50, 76, 63, 40, 46, 61, 89, 40, 56, 67);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (926, 'Derecho', 1.74, 926, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (926, 6);
+
+-- Enzo Gaggi
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (927, 'Enzo Gaggi', '1998-01-14', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (927, 82, 85, 72, 68, 40, 85, 62, 74, 57, 79);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (927, 'Derecho', 1.74, 927, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (927, 8);
+
+-- Jeremías Puch
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (928, 'Jeremías Puch', '1999-05-15', 26, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (928, 56, 67, 76, 79, 65, 59, 89, 74, 76, 55);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (928, 'Izquierdo', 1.71, 928, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (928, 10);
+
+-- Daniel Molina
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (929, 'Daniel Molina', '1999-09-10', 25, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (929, 89, 86, 70, 80, 60, 86, 45, 86, 45, 71);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (929, 'Derecho', 1.74, 929, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (929, 10);
+
+-- Facundo Lencioni
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (930, 'Facundo Lencioni', '2001-02-14', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (930, 80, 78, 48, 83, 60, 66, 66, 61, 58, 47);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (930, 'Izquierdo', 1.8, 930, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (930, 12);
+
+-- Brian Andrada
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (931, 'Brian Andrada', '1997-06-22', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (931, 88, 82, 84, 75, 53, 71, 78, 78, 57, 53);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (931, 'Derecho', 1.67, 931, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (931, 12);
+
+-- Gastón Espósito
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (932, 'Gastón Espósito', '1998-02-06', 27, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (932, 71, 90, 59, 53, 71, 78, 51, 51, 77, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (932, 'Derecho', 1.74, 932, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (932, 13);
+
+-- Luciano Cingolani
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (933, 'Luciano Cingolani', '2001-04-06', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (933, 45, 84, 70, 49, 48, 66, 76, 82, 71, 55);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (933, 'Derecho', 1.72, 933, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (933, 13);
+
+-- Nicolás Ferreyra
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (935, 'Nicolás Ferreyra', '1996-11-11', 28, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (935, 77, 66, 45, 79, 48, 47, 57, 63, 55, 49);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (935, 'Derecho', 1.89, 935, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (935, 9);
+
+-- Nicolás Servetto
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (936, 'Nicolás Servetto', '1996-03-27', 29, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (936, 45, 45, 79, 63, 74, 70, 52, 86, 43, 53);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (936, 'Derecho', 1.81, 936, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (936, 9);
+
+-- Mario Galeano
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (937, 'Mario Galeano', '2002-02-08', 23, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (937, 61, 43, 41, 48, 48, 89, 63, 69, 65, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (937, 'Derecho', 1.85, 937, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (937, 9);
+
+-- Julián Moya
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (938, 'Julián Moya', '2003-02-04', 22, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (938, 48, 50, 74, 59, 68, 90, 50, 40, 86, 46);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (938, 'Derecho', 1.75, 938, 32, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (938, 9);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Club: SE Palmeiras
+INSERT INTO club (id, name, league_id) VALUES (67, 'SE Palmeiras', 3);
+INSERT INTO stadium (id, name, capacity, club_id) VALUES (67, 'Allianz Parque', 43713, 67);
+INSERT INTO youth_academy (id, club_id) VALUES (67, 67);
+INSERT INTO participates (competition_id, club_id) VALUES (3, 67);
+
+-- Weverton
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1927, 'Weverton', '1987-12-13', 37, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1927, 66, 56, 72, 76, 68, 77, 54, 78, 69, 59);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1927, 'Derecho', 1.89, 1927, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1927, 1);
+
+-- Kaique Pereira
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1928, 'Kaique Pereira', '2003-04-16', 22, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1928, 71, 61, 44, 86, 65, 79, 72, 89, 84, 70);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1928, 'Derecho', 1.93, 1928, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1928, 1);
+
+-- Marcelo Lomba
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1929, 'Marcelo Lomba', '1986-12-18', 38, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1929, 51, 63, 70, 57, 69, 61, 60, 61, 68, 49);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1929, 'Derecho', 1.89, 1929, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1929, 1);
+
+-- Mateus
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1930, 'Mateus', '2002-05-02', 23, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1930, 89, 54, 86, 65, 86, 75, 88, 88, 63, 59);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1930, 'Derecho', 1.99, 1930, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1930, 1);
+
+-- Murilo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1931, 'Murilo', '1997-03-27', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1931, 52, 40, 78, 75, 72, 89, 40, 53, 60, 72);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1931, 'Derecho', 1.88, 1931, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1931, 2);
+
+-- Micael
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1932, 'Micael', '2000-08-12', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1932, 88, 60, 47, 50, 84, 66, 59, 83, 83, 57);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1932, 'Izquierdo', 1.83, 1932, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1932, 2);
+
+-- Gustavo Gómez
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1933, 'Gustavo Gómez', '1993-05-06', 32, 'Paraguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1933, 48, 58, 55, 56, 55, 75, 49, 90, 71, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1933, 'Derecho', 1.85, 1933, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1933, 2);
+
+-- Bruno Fuchs
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1934, 'Bruno Fuchs', '1999-04-01', 26, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1934, 89, 44, 86, 74, 60, 71, 57, 41, 82, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1934, 'Derecho', 1.9, 1934, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1934, 2);
+
+-- Naves
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1935, 'Naves', '2002-05-08', 23, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1935, 71, 67, 59, 83, 72, 65, 82, 43, 86, 79);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1935, 'Derecho', 1.84, 1935, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1935, 2);
+
+-- Luis Benedetti
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1936, 'Luis Benedetti', '2006-06-07', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1936, 89, 69, 52, 47, 55, 79, 51, 53, 68, 46);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1936, 'Izquierdo', 1.97, 1936, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1936, 2);
+
+-- Gabriel Vareta
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1937, 'Gabriel Vareta', '2005-05-16', 20, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1937, 88, 53, 46, 66, 81, 41, 53, 89, 67, 53);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1937, 'Izquierdo', 1.87, 1937, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1937, 2);
+
+-- Joaquín Piquerez
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1938, 'Joaquín Piquerez', '1998-08-24', 26, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1938, 56, 56, 59, 46, 69, 89, 63, 69, 69, 86);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1938, 'Izquierdo', 1.84, 1938, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1938, 3);
+
+-- Vanderlan
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1939, 'Vanderlan', '2002-09-07', 22, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1939, 60, 50, 79, 51, 82, 63, 84, 43, 86, 48);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1939, 'Izquierdo', 1.83, 1939, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1939, 3);
+
+-- Agustín Giay
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1940, 'Agustín Giay', '2004-01-16', 21, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1940, 68, 54, 55, 73, 60, 72, 86, 74, 76, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1940, 'Derecho', 1.8, 1940, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1940, 4);
+
+-- Mayke
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1941, 'Mayke', '1992-11-10', 32, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1941, 46, 70, 89, 59, 82, 54, 64, 61, 73, 54);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1941, 'Derecho', 1.78, 1941, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1941, 4);
+
+-- Marcos Rocha
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1942, 'Marcos Rocha', '1988-12-11', 36, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1942, 68, 61, 53, 82, 43, 60, 44, 69, 84, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1942, 'Derecho', 1.76, 1942, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1942, 4);
+
+-- Richard Ríos
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1943, 'Richard Ríos', '2000-06-02', 25, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1943, 71, 81, 64, 45, 44, 79, 86, 47, 68, 80);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1943, 'Derecho', 1.87, 1943, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1943, 5);
+
+-- Aníbal Moreno
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1944, 'Aníbal Moreno', '1999-05-13', 26, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1944, 41, 73, 74, 53, 50, 57, 64, 42, 75, 82);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1944, 'Derecho', 1.77, 1944, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1944, 5);
+
+-- Emiliano Martínez
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1945, 'Emiliano Martínez', '1999-08-17', 25, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1945, 55, 70, 79, 78, 77, 89, 55, 46, 78, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1945, 'Derecho', 1.85, 1945, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1945, 5);
+
+-- Lucas Evangelista
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1946, 'Lucas Evangelista', '1995-05-06', 30, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1946, 44, 49, 63, 78, 54, 70, 50, 60, 71, 71);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1946, 'Izquierdo', 1.81, 1946, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1946, 6);
+
+-- Figueiredo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1947, 'Figueiredo', '2006-03-03', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1947, 57, 47, 49, 54, 57, 42, 48, 85, 69, 73);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1947, 'Derecho', 1.77, 1947, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1947, 6);
+
+-- Raphael Veiga
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1948, 'Raphael Veiga', '1995-06-19', 30, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1948, 77, 85, 62, 82, 64, 59, 90, 65, 64, 47);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1948, 'Izquierdo', 1.76, 1948, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1948, 10);
+
+-- Mauricio
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1949, 'Mauricio', '2001-06-22', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1949, 48, 58, 81, 50, 88, 55, 68, 75, 74, 53);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1949, 'Izquierdo', 1.74, 1949, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1949, 10);
+
+-- Paulinho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1950, 'Paulinho', '2000-07-15', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1950, 86, 77, 82, 41, 73, 87, 66, 40, 69, 90);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1950, 'Derecho', 1.77, 1950, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1950, 12);
+
+-- Facundo Torres
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1951, 'Facundo Torres', '2000-04-13', 25, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1951, 74, 72, 60, 71, 50, 45, 57, 70, 48, 64);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1951, 'Izquierdo', 1.77, 1951, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1951, 12);
+
+-- Ramón Sosa
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1952, 'Ramón Sosa', '1999-08-31', 25, 'Paraguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1952, 50, 44, 68, 86, 90, 42, 49, 61, 58, 62);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1952, 'Derecho', 1.79, 1952, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1952, 12);
+
+-- Bruno Rodrigues
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1953, 'Bruno Rodrigues', '1997-03-07', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1953, 88, 90, 83, 48, 89, 76, 53, 72, 49, 80);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1953, 'Derecho', 1.77, 1953, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1953, 12);
+
+-- Estêvão
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1954, 'Estêvão', '2007-04-24', 18, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1954, 61, 70, 65, 74, 88, 81, 61, 85, 72, 46);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1954, 'Izquierdo', 1.76, 1954, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1954, 13);
+
+-- Felipe Anderson
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1955, 'Felipe Anderson', '1993-04-15', 32, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1955, 74, 78, 89, 89, 86, 87, 87, 40, 51, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1955, 'Derecho', 1.75, 1955, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1955, 13);
+
+-- Allan
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1956, 'Allan', '2004-04-19', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1956, 43, 75, 44, 73, 65, 48, 43, 70, 76, 66);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1956, 'Izquierdo', 1.74, 1956, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1956, 13);
+
+-- Vitor Roque
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1957, 'Vitor Roque', '2005-02-28', 20, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1957, 82, 43, 87, 71, 49, 71, 63, 61, 56, 78);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1957, 'Derecho', 1.74, 1957, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1957, 9);
+
+-- José Manuel López
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1958, 'José Manuel López', '2000-12-06', 24, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1958, 85, 40, 59, 49, 88, 49, 87, 44, 75, 61);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1958, 'Izquierdo', 1.9, 1958, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1958, 9);
+
+-- Luighi
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1959, 'Luighi', '2006-04-30', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1959, 78, 84, 60, 72, 48, 56, 68, 66, 50, 68);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1959, 'Derecho', 1.82, 1959, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1959, 9);
+
+-- Thalys
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1960, 'Thalys', '2005-02-22', 20, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1960, 46, 79, 61, 55, 40, 43, 57, 79, 76, 88);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1960, 'Izquierdo', 1.84, 1960, 67, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1960, 9);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Club: CR Flamengo
+INSERT INTO club (id, name, league_id) VALUES (68, 'CR Flamengo', 3);
+INSERT INTO stadium (id, name, capacity, club_id) VALUES (68, 'Estádio Jornalista Mário Filho', 78838, 68);
+INSERT INTO youth_academy (id, club_id) VALUES (68, 68);
+INSERT INTO participates (competition_id, club_id) VALUES (3, 68);
+
+-- Agustín Rossi
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1961, 'Agustín Rossi', '1995-08-21', 29, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1961, 49, 74, 86, 52, 87, 41, 67, 77, 48, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1961, 'Derecho', 1.93, 1961, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1961, 1);
+
+-- Matheus Cunha
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1962, 'Matheus Cunha', '2001-05-24', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1962, 73, 53, 89, 85, 68, 81, 79, 45, 73, 85);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1962, 'Derecho', 1.93, 1962, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1962, 1);
+
+-- Dyogo Alves
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1963, 'Dyogo Alves', '2004-01-09', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1963, 54, 50, 78, 69, 87, 75, 87, 65, 75, 57);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1963, 'Derecho', 1.88, 1963, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1963, 1);
+
+-- Léo Ortiz
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1964, 'Léo Ortiz', '1996-01-03', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1964, 54, 76, 79, 87, 87, 60, 73, 62, 79, 69);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1964, 'Derecho', 1.85, 1964, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1964, 2);
+
+-- Léo Pereira
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1965, 'Léo Pereira', '1996-01-31', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1965, 83, 52, 63, 90, 57, 53, 69, 46, 64, 71);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1965, 'Izquierdo', 1.89, 1965, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1965, 2);
+
+-- Danilo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1966, 'Danilo', '1991-07-15', 33, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1966, 46, 74, 53, 79, 56, 80, 75, 46, 81, 55);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1966, 'Derecho', 1.84, 1966, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1966, 2);
+
+-- Pablo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1967, 'Pablo', '1991-06-21', 34, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1967, 48, 53, 89, 73, 84, 59, 78, 85, 81, 66);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1967, 'Derecho', 1.88, 1967, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1967, 2);
+
+-- Cleiton
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1968, 'Cleiton', '2003-04-25', 22, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1968, 52, 63, 86, 71, 55, 60, 51, 41, 68, 71);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1968, 'Izquierdo', 1.94, 1968, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1968, 2);
+
+-- João Victor
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1969, 'João Victor', '2007-01-01', 18, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1969, 75, 82, 83, 85, 69, 51, 77, 59, 73, 85);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1969, 'Derecho', 1.87, 1969, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1969, 2);
+
+-- Ayrton Lucas
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1970, 'Ayrton Lucas', '1997-06-19', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1970, 55, 76, 53, 56, 49, 43, 48, 44, 74, 50);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1970, 'Izquierdo', 1.8, 1970, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1970, 3);
+
+-- Matías Viña
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1971, 'Matías Viña', '1997-11-09', 27, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1971, 86, 77, 48, 89, 52, 62, 40, 56, 86, 52);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1971, 'Izquierdo', 1.75, 1971, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1971, 3);
+
+-- Alex Sandro
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1972, 'Alex Sandro', '1991-01-26', 34, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1972, 67, 54, 44, 44, 43, 44, 60, 90, 80, 77);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1972, 'Izquierdo', 1.8, 1972, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1972, 3);
+
+-- Zé Welinton
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1973, 'Zé Welinton', '2004-01-08', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1973, 53, 78, 45, 65, 84, 40, 79, 77, 69, 79);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1973, 'Izquierdo', 1.69, 1973, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1973, 3);
+
+-- Wesley
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1974, 'Wesley', '2003-09-06', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1974, 68, 87, 87, 84, 75, 58, 71, 90, 55, 72);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1974, 'Derecho', 1.78, 1974, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1974, 4);
+
+-- Guillermo Varela
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1975, 'Guillermo Varela', '1993-03-24', 32, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1975, 50, 44, 57, 45, 87, 89, 67, 62, 87, 54);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1975, 'Derecho', 1.73, 1975, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1975, 4);
+
+-- Jorginho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1976, 'Jorginho', '1991-12-20', 33, 'Italia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1976, 59, 66, 79, 56, 71, 45, 55, 64, 76, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1976, 'Derecho', 1.8, 1976, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1976, 5);
+
+-- Erick Pulgar
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1977, 'Erick Pulgar', '1994-01-15', 31, 'Chile');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1977, 82, 80, 76, 74, 44, 66, 68, 83, 76, 63);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1977, 'Derecho', 1.87, 1977, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1977, 5);
+
+-- Evertton Araújo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1978, 'Evertton Araújo', '2003-02-28', 22, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1978, 82, 45, 65, 90, 66, 45, 85, 48, 86, 82);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1978, 'Derecho', 1.73, 1978, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1978, 5);
+
+-- Allan
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1979, 'Allan', '1997-03-03', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1979, 61, 52, 81, 63, 79, 57, 88, 90, 87, 69);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1979, 'Izquierdo', 1.72, 1979, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1979, 5);
+
+-- Nicolás de la Cruz
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1980, 'Nicolás de la Cruz', '1997-06-01', 28, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1980, 69, 45, 70, 45, 60, 53, 59, 46, 67, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1980, 'Derecho', 1.67, 1980, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1980, 6);
+
+-- Giorgian de Arrascaeta
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1981, 'Giorgian de Arrascaeta', '1994-06-01', 31, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1981, 47, 48, 40, 47, 86, 84, 87, 55, 66, 78);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1981, 'Derecho', 1.74, 1981, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1981, 10);
+
+-- Lorran
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1982, 'Lorran', '2006-07-04', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1982, 53, 41, 55, 42, 76, 90, 74, 82, 85, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1982, 'Izquierdo', 1.8, 1982, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1982, 10);
+
+-- Victor Hugo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1983, 'Victor Hugo', '2004-05-11', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1983, 76, 72, 63, 61, 82, 85, 90, 53, 69, 60);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1983, 'Izquierdo', 1.82, 1983, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1983, 10);
+
+-- Everton
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1984, 'Everton', '1996-03-22', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1984, 70, 52, 42, 78, 68, 87, 72, 43, 48, 60);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1984, 'Derecho', 1.74, 1984, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1984, 12);
+
+-- Michael
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1985, 'Michael', '1996-03-12', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1985, 66, 61, 51, 40, 84, 48, 64, 67, 48, 55);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1985, 'Derecho', 1.66, 1985, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1985, 12);
+
+-- Bruno Henrique
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1986, 'Bruno Henrique', '1990-12-30', 34, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1986, 46, 86, 66, 71, 67, 49, 83, 72, 46, 71);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1986, 'Derecho', 1.84, 1986, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1986, 12);
+
+-- Gonzalo Plata
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1987, 'Gonzalo Plata', '2000-11-01', 24, 'Ecuador');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1987, 87, 77, 44, 61, 87, 81, 68, 47, 70, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1987, 'Izquierdo', 1.78, 1987, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1987, 13);
+
+-- Luiz Araújo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1988, 'Luiz Araújo', '1996-06-02', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1988, 60, 59, 40, 68, 52, 52, 87, 72, 74, 88);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1988, 'Izquierdo', 1.75, 1988, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1988, 13);
+
+-- Matheus Gonçalves
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1989, 'Matheus Gonçalves', '2005-08-18', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1989, 83, 67, 74, 67, 70, 46, 81, 73, 47, 40);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1989, 'Izquierdo', 1.75, 1989, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1989, 13);
+
+-- Pedro
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1990, 'Pedro', '1997-06-20', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1990, 43, 61, 49, 40, 50, 43, 66, 52, 84, 44);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1990, 'Derecho', 1.85, 1990, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1990, 9);
+
+-- Juninho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1991, 'Juninho', '1996-11-21', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1991, 41, 43, 71, 73, 47, 79, 68, 66, 50, 44);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1991, 'Derecho', 1.79, 1991, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1991, 9);
+
+-- Wallace Yan
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (1992, 'Wallace Yan', '2005-02-08', 20, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (1992, 56, 47, 66, 55, 74, 83, 42, 62, 53, 90);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (1992, 'Derecho', 1.82, 1992, 68, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (1992, 9);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Club: Club Athletico Paranaense
+INSERT INTO club (id, name, league_id) VALUES (87, 'Club Athletico Paranaense', 4);
+INSERT INTO stadium (id, name, capacity, club_id) VALUES (87, 'Ligga Arena', 42372, 87);
+INSERT INTO youth_academy (id, club_id) VALUES (87, 87);
+INSERT INTO participates (competition_id, club_id) VALUES (4, 87);
+
+-- Mycael
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2586, 'Mycael', '2004-03-12', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2586, 40, 61, 74, 56, 60, 60, 61, 71, 68, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2586, 'Izquierdo', 1.91, 2586, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2586, 1);
+
+-- Santos
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2587, 'Santos', '1990-03-17', 35, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2587, 52, 59, 67, 67, 81, 61, 88, 56, 73, 47);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2587, 'Derecho', 1.88, 2587, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2587, 1);
+
+-- Matheus Soares
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2588, 'Matheus Soares', '2005-01-10', 20, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2588, 41, 63, 59, 81, 74, 66, 74, 81, 82, 45);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2588, 'Izquierdo', 1.9, 2588, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2588, 1);
+
+-- Léo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2589, 'Léo', '1996-03-06', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2589, 40, 81, 43, 55, 79, 60, 67, 43, 46, 68);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2589, 'Izquierdo', 1.83, 2589, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2589, 2);
+
+-- Tobias Figueiredo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2590, 'Tobias Figueiredo', '1994-02-02', 31, 'Portugal');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2590, 81, 49, 81, 70, 78, 73, 57, 86, 81, 80);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2590, 'Derecho', 1.88, 2590, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2590, 2);
+
+-- Lucas Belezi
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2591, 'Lucas Belezi', '2003-05-08', 22, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2591, 56, 52, 71, 73, 73, 62, 62, 71, 85, 73);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2591, 'Derecho', 1.86, 2591, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2591, 2);
+
+-- Juan Felipe Aguirre
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2592, 'Juan Felipe Aguirre', '1996-08-29', 28, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2592, 65, 60, 58, 56, 67, 49, 52, 55, 54, 90);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2592, 'Derecho', 1.86, 2592, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2592, 2);
+
+-- Habraão
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2593, 'Habraão', '2001-06-26', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2593, 68, 47, 73, 72, 55, 78, 85, 74, 81, 67);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2593, 'Derecho', 1.84, 2593, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2593, 2);
+
+-- Lucas Esquivel
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2594, 'Lucas Esquivel', '2001-10-14', 23, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2594, 86, 56, 80, 77, 48, 73, 43, 89, 57, 65);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2594, 'Izquierdo', 1.83, 2594, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2594, 3);
+
+-- Fernando
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2595, 'Fernando', '1999-09-14', 25, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2595, 89, 82, 50, 53, 41, 77, 65, 47, 67, 68);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2595, 'Izquierdo', 1.81, 2595, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2595, 3);
+
+-- Dudu
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2596, 'Dudu', '1997-05-30', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2596, 62, 83, 88, 51, 77, 53, 69, 60, 52, 79);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2596, 'Derecho', 1.75, 2596, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2596, 4);
+
+-- Hayen Palacios
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2597, 'Hayen Palacios', '1999-09-08', 25, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2597, 45, 57, 84, 77, 79, 76, 82, 89, 62, 50);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2597, 'Derecho', 1.86, 2597, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2597, 4);
+
+-- Madson
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2598, 'Madson', '1992-01-13', 33, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2598, 81, 74, 84, 53, 41, 75, 66, 66, 42, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2598, 'Derecho', 1.82, 2598, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2598, 4);
+
+-- Kauã Moraes
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2599, 'Kauã Moraes', '2006-09-29', 18, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2599, 42, 85, 79, 68, 63, 50, 81, 73, 90, 44);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2599, 'Derecho', 1.74, 2599, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2599, 4);
+
+-- Raul
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2600, 'Raul', '1996-07-11', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2600, 87, 61, 62, 86, 55, 80, 51, 41, 54, 84);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2600, 'Derecho', 1.8, 2600, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2600, 5);
+
+-- Patrick
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2601, 'Patrick', '1992-07-29', 32, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2601, 87, 49, 80, 78, 46, 56, 56, 53, 62, 66);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2601, 'Izquierdo', 1.76, 2601, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2601, 6);
+
+-- Felipinho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2602, 'Felipinho', '2001-10-18', 23, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2602, 89, 83, 41, 79, 65, 74, 56, 74, 82, 69);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2602, 'Izquierdo', 1.83, 2602, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2602, 6);
+
+-- João Cruz
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2603, 'João Cruz', '2006-05-12', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2603, 47, 79, 81, 45, 79, 85, 54, 87, 83, 72);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2603, 'Derecho', 1.72, 2603, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2603, 6);
+
+-- Bruno Zapelli
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2604, 'Bruno Zapelli', '2002-05-16', 23, 'Argentina');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2604, 78, 50, 86, 52, 81, 58, 53, 90, 60, 57);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2604, 'Derecho', 1.83, 2604, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2604, 10);
+
+-- Dudu
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2605, 'Dudu', '2006-01-01', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2605, 85, 74, 48, 72, 46, 43, 72, 86, 74, 46);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2605, 'Izquierdo', 1.77, 2605, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2605, 10);
+
+-- Giuliano
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2606, 'Giuliano', '1990-05-31', 35, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2606, 45, 59, 76, 76, 56, 66, 44, 51, 47, 52);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2606, 'Derecho', 1.72, 2606, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2606, 10);
+
+-- Luiz Fernando
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2607, 'Luiz Fernando', '1996-10-16', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2607, 69, 53, 73, 87, 68, 85, 80, 48, 54, 83);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2607, 'Derecho', 1.78, 2607, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2607, 12);
+
+-- Isaac
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2608, 'Isaac', '2004-04-24', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2608, 56, 42, 69, 45, 89, 51, 68, 75, 54, 48);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2608, 'Derecho', 1.7, 2608, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2608, 12);
+
+-- Julimar
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2609, 'Julimar', '2001-01-25', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2609, 82, 68, 40, 77, 51, 90, 54, 69, 75, 40);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2609, 'Derecho', 1.88, 2609, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2609, 12);
+
+-- Stiven Mendoza
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2610, 'Stiven Mendoza', '1992-06-27', 33, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2610, 73, 83, 80, 89, 66, 88, 43, 54, 78, 64);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2610, 'Izquierdo', 1.71, 2610, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2610, 12);
+
+-- Kevin Velasco
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2611, 'Kevin Velasco', '1997-04-30', 28, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2611, 43, 81, 73, 52, 75, 78, 73, 63, 57, 81);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2611, 'Izquierdo', 1.68, 2611, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2611, 13);
+
+-- Tevis
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2612, 'Tevis', '2006-01-28', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2612, 78, 43, 65, 76, 55, 83, 47, 87, 43, 58);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2612, 'Ambidiestro', 1.8, 2612, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2612, 13);
+
+-- Leozinho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2613, 'Leozinho', '1998-12-05', 26, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2613, 87, 50, 65, 51, 50, 62, 47, 87, 47, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2613, 'Izquierdo', 1.75, 2613, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2613, 13);
+
+-- Kevin Viveros
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2614, 'Kevin Viveros', '2000-04-26', 25, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2614, 74, 53, 83, 82, 62, 64, 75, 42, 82, 85);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2614, 'Derecho', 1.8, 2614, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2614, 9);
+
+-- Renan
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2615, 'Renan', '2000-02-21', 25, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2615, 41, 59, 65, 48, 77, 84, 71, 86, 84, 84);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2615, 'Derecho', 1.85, 2615, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2615, 9);
+
+-- Renan Viana
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2616, 'Renan Viana', '2003-01-31', 22, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2616, 57, 65, 68, 70, 74, 81, 45, 59, 63, 42);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2616, 'Derecho', 1.89, 2616, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2616, 9);
+
+-- Alan Kardec
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2617, 'Alan Kardec', '1989-01-12', 36, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2617, 56, 89, 67, 80, 75, 54, 47, 71, 51, 43);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2617, 'Derecho', 1.9, 2617, 87, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2617, 9);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Club: Coritiba Foot Ball Club
+INSERT INTO club (id, name, league_id) VALUES (88, 'Coritiba Foot Ball Club', 4);
+INSERT INTO stadium (id, name, capacity, club_id) VALUES (88, 'Estádio Major Antônio Couto Pereira', 40502, 88);
+INSERT INTO youth_academy (id, club_id) VALUES (88, 88);
+INSERT INTO participates (competition_id, club_id) VALUES (4, 88);
+
+
+-- Pedro Morisco
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2618, 'Pedro Morisco', '2004-01-10', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2618, 85, 57, 66, 43, 43, 68, 81, 81, 41, 64);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2618, 'Derecho', 1.91, 2618, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2618, 1);
+
+-- Pedro Rangel
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2619, 'Pedro Rangel', '2000-06-29', 25, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2619, 52, 83, 49, 80, 87, 54, 83, 80, 77, 45);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2619, 'Derecho', 1.92, 2619, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2619, 1);
+
+-- Benassi
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2620, 'Benassi', '2003-12-17', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2620, 67, 78, 59, 54, 44, 71, 49, 45, 84, 42);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2620, 'Derecho', 1.95, 2620, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2620, 1);
+
+-- Gabriel Leite
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2621, 'Gabriel Leite', '1987-12-28', 37, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2621, 51, 62, 55, 64, 59, 81, 65, 79, 60, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2621, 'Derecho', 1.87, 2621, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2621, 1);
+
+-- Bruno Viana
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2622, 'Bruno Viana', '1995-02-05', 30, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2622, 54, 59, 42, 68, 86, 43, 40, 78, 84, 74);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2622, 'Derecho', 1.86, 2622, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2622, 2);
+
+-- Tiago Cóser
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2623, 'Tiago Cóser', '2004-01-16', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2623, 44, 73, 90, 89, 78, 56, 78, 65, 49, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2623, 'Derecho', 1.91, 2623, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2623, 2);
+
+-- Guilherme Aquino
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2624, 'Guilherme Aquino', '2004-01-13', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2624, 42, 90, 90, 69, 79, 88, 60, 41, 84, 46);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2624, 'Derecho', 1.95, 2624, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2624, 2);
+
+-- Bruno Melo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2625, 'Bruno Melo', '1992-10-26', 32, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2625, 70, 48, 88, 85, 84, 75, 50, 90, 78, 49);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2625, 'Izquierdo', 1.83, 2625, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2625, 2);
+
+-- Matías Fracchia
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2626, 'Matías Fracchia', '1995-09-21', 29, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2626, 60, 87, 67, 77, 60, 85, 42, 82, 41, 87);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2626, 'Izquierdo', 1.88, 2626, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2626, 2);
+
+-- Maicon
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2627, 'Maicon', '1988-09-14', 36, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2627, 78, 76, 46, 69, 79, 89, 83, 53, 72, 57);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2627, 'Derecho', 1.91, 2627, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2627, 2);
+
+-- Rodrigo Moledo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2628, 'Rodrigo Moledo', '1987-10-27', 37, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2628, 51, 81, 81, 80, 88, 55, 67, 71, 85, 72);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2628, 'Derecho', 1.88, 2628, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2628, 2);
+
+-- João Almeida
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2629, 'João Almeida', '2006-01-16', 19, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2629, 66, 54, 44, 86, 42, 88, 84, 55, 71, 41);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2629, 'Izquierdo', 1.78, 2629, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2629, 3);
+
+-- Zeca
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2630, 'Zeca', '1994-05-16', 31, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2630, 82, 88, 69, 76, 55, 69, 71, 79, 64, 70);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2630, 'Ambidiestro', 1.69, 2630, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2630, 4);
+
+-- Alex Silva
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2631, 'Alex Silva', '1994-05-15', 31, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2631, 90, 81, 58, 73, 46, 70, 40, 79, 65, 85);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2631, 'Derecho', 1.84, 2631, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2631, 4);
+
+-- Filipe Machado
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2632, 'Filipe Machado', '1996-01-20', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2632, 60, 54, 86, 65, 88, 50, 72, 80, 47, 69);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2632, 'Derecho', 1.74, 2632, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2632, 5);
+
+-- Vini Paulista
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2633, 'Vini Paulista', '2001-03-22', 24, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2633, 78, 40, 81, 48, 42, 66, 62, 80, 87, 42);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2633, 'Derecho', 1.79, 2633, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2633, 5);
+
+-- Wallisson
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2634, 'Wallisson', '1997-09-23', 27, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2634, 46, 41, 89, 47, 88, 85, 54, 60, 84, 55);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2634, 'Derecho', 1.84, 2634, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2634, 5);
+
+-- Geovane Meurer
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2635, 'Geovane Meurer', '2002-05-25', 23, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2635, 85, 51, 68, 88, 83, 78, 72, 47, 87, 77);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2635, 'Izquierdo', 1.74, 2635, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2635, 5);
+
+-- Geovane
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2636, 'Geovane', '1989-02-20', 36, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2636, 55, 51, 41, 59, 74, 66, 51, 72, 45, 49);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2636, 'Derecho', 1.79, 2636, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2636, 5);
+
+-- Jacy
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2637, 'Jacy', '1997-07-11', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2637, 84, 57, 48, 51, 62, 79, 70, 55, 42, 57);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2637, 'Derecho', 1.92, 2637, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2637, 5);
+
+-- Sebastián Gómez
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2638, 'Sebastián Gómez', '1996-06-03', 29, 'Colombia');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2638, 74, 88, 50, 40, 51, 73, 54, 69, 64, 79);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2638, 'Izquierdo', 1.77, 2638, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2638, 6);
+
+-- Josué
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2639, 'Josué', '1990-09-17', 34, 'Portugal');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2639, 41, 50, 78, 65, 65, 56, 61, 72, 81, 73);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2639, 'Izquierdo', 1.74, 2639, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2639, 10);
+
+-- Carlos de Pena
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2640, 'Carlos de Pena', '1992-03-11', 33, 'Uruguay');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2640, 66, 80, 62, 51, 71, 78, 74, 60, 53, 58);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2640, 'Izquierdo', 1.77, 2640, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2640, 12);
+
+-- Clayson
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2641, 'Clayson', '1995-03-19', 30, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2641, 64, 77, 75, 79, 84, 56, 47, 77, 40, 76);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2641, 'Derecho', 1.66, 2641, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2641, 12);
+
+-- Everaldo
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2642, 'Everaldo', '1994-05-28', 31, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2642, 84, 66, 77, 49, 40, 86, 41, 54, 58, 56);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2642, 'Derecho', 1.72, 2642, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2642, 12);
+
+-- Caio Matheus
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2643, 'Caio Matheus', '2004-02-19', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2643, 41, 67, 47, 64, 57, 63, 53, 53, 81, 54);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2643, 'Derecho', 1.74, 2643, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2643, 12);
+
+-- Lucas Ronier
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2644, 'Lucas Ronier', '2004-11-26', 20, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2644, 84, 66, 78, 49, 82, 89, 81, 57, 72, 71);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2644, 'Izquierdo', 1.65, 2644, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2644, 13);
+
+-- Ruan Assis
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2645, 'Ruan Assis', '2004-04-20', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2645, 54, 52, 54, 87, 42, 41, 73, 42, 71, 78);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2645, 'Derecho', 1.83, 2645, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2645, 13);
+
+-- Gustavo Coutinho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2646, 'Gustavo Coutinho', '1999-01-19', 26, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2646, 54, 45, 53, 64, 63, 71, 54, 87, 45, 57);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2646, 'Derecho', 1.86, 2646, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2646, 9);
+
+-- Iury Castilho
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2647, 'Iury Castilho', '1995-09-06', 29, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2647, 58, 74, 66, 44, 73, 77, 77, 73, 64, 75);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2647, 'Derecho', 1.85, 2647, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2647, 9);
+
+-- Dellatorre
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2648, 'Dellatorre', '1992-05-01', 33, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2648, 48, 51, 89, 79, 57, 84, 63, 80, 42, 86);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2648, 'Derecho', 1.81, 2648, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2648, 9);
+
+-- Brandão
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2649, 'Brandão', '2004-06-25', 21, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2649, 63, 71, 50, 83, 69, 70, 47, 69, 77, 85);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2649, 'Derecho', 1.91, 2649, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2649, 9);
+
+-- Nicolas Careca
+INSERT INTO person (id, name, birth_date, age, nationality) VALUES (2650, 'Nicolas Careca', '1997-05-18', 28, 'Brasil');
+INSERT INTO attributes (id, passing, shooting, dribbling, tackling, pace, stamina, vision, positioning, decision_making, strength) VALUES (2650, 47, 47, 50, 43, 82, 45, 85, 89, 72, 53);
+INSERT INTO player (id, foot, height, attr_id, club_id, ya_id) VALUES (2650, 'Derecho', 1.88, 2650, 88, NULL);
+INSERT INTO player_position (player_id, position_id) VALUES (2650, 9);
+
+

@@ -1,7 +1,7 @@
 package org.chiquileague.app;
 
 import org.chiquileague.dao.*;
-import org.chiquileague.fixture.DoubleRoundRobinGenerator;
+import org.chiquileague.fixture.FixtureFactory;
 import org.chiquileague.fixture.FixtureGenerator;
 import org.chiquileague.model.*;
 
@@ -103,8 +103,8 @@ public class MVP {
         if (confirm == 2) return;
 
         initializeGame(selectedTeam);
-        FixtureGenerator fixture = new DoubleRoundRobinGenerator();
-        fixture.generate(selectedLeague.getId(), gameLoaded.getTime().toLocalDate());
+        initializeCompetitions();
+
     }
 
     private static void initializeGame(Team selectedTeam) throws IOException {
@@ -174,6 +174,14 @@ public class MVP {
             gameMenu();
         } catch (IOException | SQLException e) {
             System.out.println("Error al cargar la partida: " + e.getMessage());
+        }
+    }
+
+    private static void initializeCompetitions() {
+        List<Competition> competitions = CompetitionDAO.fetchAll();
+        for (Competition comp : competitions) {
+            FixtureGenerator fixtureGenerator = FixtureFactory.getGenerator(comp.getCompetitionFormat());
+            fixtureGenerator.generate(comp.getId(), gameLoaded.getTime().toLocalDate());
         }
     }
 
@@ -254,9 +262,11 @@ public class MVP {
         // match simulation
 
 
+        // pass 1 day
         LocalDate gameTime = gameLoaded.getTime().toLocalDate();
         gameLoaded.setTime(Date.valueOf(gameTime.plusDays(1)));
         System.out.println("NEW DAY");
+
         // new day matches
         System.out.println("Partidos de hoy " + gameLoaded.getTime());
         List<Match> matches = MatchDAO.fetchMatchesOfTheDay(gameLoaded.getTime());

@@ -45,6 +45,12 @@ WHERE (league.id = 1)
 SELECT * FROM club WHERE (id = 1);
 SELECT * FROM club WHERE (name = 'River Plate');
 
+-- todas las competiciones
+SELECT cmp.id, name, competition_format, lg.country_id AS league_country, league_rank, nc.country_id AS cup_country FROM competition cmp
+LEFT OUTER JOIN league lg ON (cmp.id = lg.id)
+LEFT OUTER JOIN national_cup nc ON (cmp.id = nc.id)
+LEFT OUTER JOIN international_cup ON (cmp.id = international_cup.id);
+
 -- estadios
 SELECT * FROM stadium WHERE (club_id = 1);
 SELECT * FROM stadium WHERE (id = 1);

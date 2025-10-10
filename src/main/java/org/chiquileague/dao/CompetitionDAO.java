@@ -13,17 +13,19 @@ import java.util.List;
 public class CompetitionDAO {
     /**
      * Fetch a league from the database searching by its id
+     * 
      * @param id ID of the league requested
      */
     public static League fetchLeague(Integer id) {
         String query = "SELECT id, name, competition_format, country_id, league_rank FROM competition " +
-                       "NATURAL JOIN league " +
-                       "WHERE (id = ?);";
+                "NATURAL JOIN league " +
+                "WHERE (id = ?);";
         return fetchLeague(query, id.toString());
     }
 
     /**
      * Fetch a league from the database searching by its name
+     * 
      * @param name Name of the league requested
      */
     public static League fetchLeague(String name) {
@@ -35,6 +37,7 @@ public class CompetitionDAO {
 
     /**
      * Fetch a National Cup from the database searching by its id
+     * 
      * @param id ID of the cup requested
      */
     public static NationalCup fetchNationalCup(Integer id) {
@@ -46,6 +49,7 @@ public class CompetitionDAO {
 
     /**
      * Fetch a National Cup from the database searching by its name
+     * 
      * @param name Name of the cup requested
      */
     public static NationalCup fetchNationalCup(String name) {
@@ -57,6 +61,7 @@ public class CompetitionDAO {
 
     /**
      * Fetch an International Cup from the database searching by its id
+     * 
      * @param id ID of the cup requested
      */
     public static InternationalCup fetchInternationalCup(Integer id) {
@@ -67,6 +72,7 @@ public class CompetitionDAO {
 
     /**
      * Fetch an International Cup from the database searching by its name
+     * 
      * @param name Name of the cup requested
      */
     public static InternationalCup fetchInternationalCup(String name) {
@@ -124,7 +130,7 @@ public class CompetitionDAO {
         return null;
     }
 
-    public static List<Team> getTeamsByLeague(League league){
+    public static List<Team> getTeamsByLeague(League league) {
         String query = "SELECT club.id, name, league_id FROM club " +
                 "JOIN league ON (club.league_id = league.id) " +
                 "WHERE (league.id = ?);";
@@ -151,17 +157,17 @@ public class CompetitionDAO {
         return null;
     }
 
-    private static League fetchLeague(String query, String x){
+    private static League fetchLeague(String query, String x) {
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
             statement.setString(1, x);
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
                 return new League(result.getInt("id"),
-                                  result.getString("name"),
-                                  result.getString("competition_format"),
-                                  result.getInt("country_id"),
-                                  result.getInt("league_rank")
+                        result.getString("name"),
+                        result.getString("competition_format"),
+                        result.getInt("country_id"),
+                        result.getInt("league_rank")
                 );
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
@@ -170,7 +176,7 @@ public class CompetitionDAO {
         return null;
     }
 
-    private static NationalCup fetchNationalCup(String query, String x){
+    private static NationalCup fetchNationalCup(String query, String x) {
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
             statement.setString(1, x);
             ResultSet result = statement.executeQuery();
@@ -188,9 +194,9 @@ public class CompetitionDAO {
         return null;
     }
 
-    private static InternationalCup fetchInternationalCup(String query1, String query2, String x){
+    private static InternationalCup fetchInternationalCup(String query1, String query2, String x) {
         try (PreparedStatement statement1 = Database.getConnection().prepareStatement(query1);
-             PreparedStatement statement2 = Database.getConnection().prepareStatement(query2)) {
+                PreparedStatement statement2 = Database.getConnection().prepareStatement(query2)) {
             statement1.setString(1, x);
             statement2.setString(1, x);
             ResultSet result1 = statement1.executeQuery();

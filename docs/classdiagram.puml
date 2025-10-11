@@ -1,0 +1,232 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package chiquileague {
+    package model {
+        Class Competition {
+            id: Integer
+            name: String
+            competitionFormat: String
+        }
+
+        Class Country {
+            id: Integer
+            String: name
+        }
+
+        Class GameInfo {
+            id: Integer
+            name: String
+            clubID: Integer
+            time: Date
+            selectedTeam: Team
+        }
+
+        Class InternationalCup extends Competition {
+            countriesIDs: List<Integer>
+        }
+
+        Class League extends Competition {
+            countryID: Integer
+            leagueRank: Integer
+        }
+
+        Class Match {
+            id: Integer
+            date: Date
+            homeGoals: Integer
+            awayGoals: Integer
+            homeClubID: Integer
+            awayClubID: Integer
+            stadiumID: Integer
+            competitionID: Integer
+            matchday: Integer
+        }
+
+        Class NationalCup extends Competition {
+            countryID: Integer
+        }
+
+        Class Player {
+            id: int
+            name: String
+            birthDate: Date
+            age: int
+            nationality: String
+
+            foot: String
+            height: float
+            passing: int
+            shooting: int
+            dribbling: int
+            tackling: int
+            pace: int
+            stamina: int
+            vision: int
+            positioning: int
+            decisionMaking: int
+            strength: int
+
+            positions: List<Position>
+
+            attrID: int
+            clubID: int
+            contractID: int
+            youthAcademyID: Integer
+        }
+
+        enum Position {
+            PO
+            DFC
+            DFI
+            DFD
+            MCD
+            MC
+            MI
+            MD
+            DC
+            MCO
+            MP
+            EI
+            ED
+        }
+
+        Class Season {
+            startDate: LocalDate
+            endDate: LocalDate
+            Season(startDate: LocalDate)
+            getFixtureByTeam(team: Team)
+            getFixtureByCompetition(league: League)
+        }
+
+        Class Stadium {
+            id: Integer
+            name: String
+            capacity: Integer
+            clubID: Integer
+        }
+
+        Class Stats {
+            competitionID: Integer
+            ClubID: Integer
+            points: Integer
+            matchesPlayed: Integer
+            wins: Integer
+            draws: Integer
+            losses: Integer
+            goalsFor: Integer
+            goalsAgainst: Integer
+            goalDifference: Integer
+        }
+
+        Class Team {
+            id: Integer
+            name: String
+            leagueID: Integer
+        }
+    }
+
+    package fixture {
+        interface FixtureGenerator {
+            generate(competitionID: int, startDate: LocalDate)
+        }
+
+        class DoubleRoundRobinGenerator implements FixtureGenerator {
+            generate(competitionID: int, startDate: LocalDate)
+        }
+
+        class DoubleRoundRobinPlayoffsGenerator implements FixtureGenerator {
+            generate(competitionID: int, startDate: LocalDate)
+        }
+
+        class GroupKnockoutGenerator implements FixtureGenerator {
+            generate(competitionID: int, startDate: LocalDate)
+        }
+
+        class KnockoutGenerator implements FixtureGenerator {
+            generate(competitionID: int, startDate: LocalDate)
+        }
+
+        class FixtureFactory {
+            getGenerator(type: String)
+        }
+
+    }
+
+    package dao {
+        class CompetitionDAO {
+            fetchLeague(id: Integer)
+            fetchLeague(name: String)
+            fetchNationalCup(id: Integer)
+            fetchNationalCup(name: String)
+            fetchInternationalCup(id: Integer)
+            fetchInternationalCup(name: String)
+            fetchAll(): List<Competition>
+            getTeamsByLeague(league: League)
+        }
+
+        class CountryDAO {
+            fetch(id: Integer)
+            fetch(name: String)
+            getLeagues(country: Country)
+        }
+
+        class GameDAO {
+            fetch(id: Integer): GameInfo
+            fetch(name: String): GameInfo
+        }
+
+        class MatchDAO {
+            fetch(date: Date, stadiumID: Integer)
+            fetch(id: Integer)
+            insert(match: Match)
+            fetchMatchesByTeam(team: Team)
+            fetchMatchesByCompetition(competition: Competition)
+            fetchMatchesOfTheDay(date: Date)
+        }
+
+        class PlayerDAO {
+            fetch(id: Integer)
+            fetch(name: String)
+        }
+
+        class StadiumDAO {
+            fetch(id: Integer)
+            fetch(name: String)
+            fetchByClubID(clubID: Integer)
+        }
+
+        class StatsDAO {
+            fetch(competitionID: Integer, clubID: Integer)
+        }
+
+        class TeamDAO {
+            fetch(id: Integer)
+            fetch(name: String)
+            getPlayers(team: Team)
+        }
+
+        class Database {
+            DB_RESOURCE_PATH: String
+            connection: Connection
+
+            connect()
+            getConnection()
+            close()
+            connectTo(dbPath: Path)
+            fetchCountries()
+            createGame(name: String, clubID: Integer)
+            saveGame(gameInfo: GameInfo)
+        }
+    }
+
+    package app {
+        class App {
+        }
+
+        class MVP {
+        }
+    }
+}
+
+@enduml

@@ -1,0 +1,225 @@
+@startchen
+
+'=======================================
+'==          PERSON ENTITIES          ==
+'=======================================
+entity Person {
+    name
+    birth_date
+    age
+    nationality
+}
+
+' A Player is a type of Person
+'extends Person
+entity Player {
+    foot
+    height
+}
+
+' A Manager is a type of Person
+'extends Person
+entity Manager {
+}
+
+'=======================================
+'==      PLAYER-SPECIFIC ENTITIES     ==
+'=======================================
+entity Attributes {
+    passing
+    shooting
+    dribbling
+    tackling
+    pace
+    stamina
+    vision
+    positioning
+    decisionMaking
+    strength
+}
+
+entity Position {
+    name
+}
+
+' --- Player-Specific Relationships ---
+' A Player has one set of Attributes
+relationship player_attributes {
+}
+Player -1- player_attributes
+player_attributes -1- Attributes
+
+' A Player can play in one or more Positions
+relationship plays {
+}
+Player -N- plays
+Position -(1,N)- plays
+
+'=======================================
+'==         CLUB & RELATED ENTITIES   ==
+'=======================================
+entity Club {
+    name
+}
+
+entity Stadium {
+    name
+    capacity
+}
+
+entity YouthAcademy {
+}
+
+entity Contract {
+    wage
+    startDate
+    endDate
+    releaseClause
+}
+
+entity Transfer {
+    amount
+    date
+}
+
+' --- Club & Related Relationships ---
+' A Manager manages one Club
+relationship manages {
+}
+Manager -1- manages
+Club -1- manages
+
+' Many Players play in one Club
+relationship plays_in {
+}
+Player -N- plays_in
+Club -1- plays_in
+
+' A Club has one home Stadium
+relationship is_home_in {
+}
+Club -1- is_home_in
+Stadium -1- is_home_in
+
+' A Club has one Youth Academy
+relationship has_a {
+}
+Club -1- has_a
+YouthAcademy -1- has_a
+
+' Many Players can be in a Youth Academy
+relationship is_in_a {
+}
+Player -N- is_in_a
+YouthAcademy -(0,1)- is_in_a
+
+' A Player has a Contract with a Club
+relationship contract_with {
+}
+Player -1- contract_with
+Contract -(0,2)- contract_with
+
+relationship contract_in {
+}
+Club -1- contract_in
+Contract -N- contract_in
+
+' A Transfer involves one Player between two Clubs
+relationship is_transferred {
+}
+Player -1-  is_transferred
+Transfer -N- is_transferred
+
+relationship between {
+}
+Club -2- between
+Transfer -N- between
+
+'=======================================
+'==       COMPETITION ENTITIES        ==
+'=======================================
+entity Country {
+    name
+}
+
+entity Competition {
+    id
+    name
+}
+
+' A League is a type of Competition
+'extends Competition
+entity League  {
+    rank
+}
+
+' A NationalCup is a type of Competition
+'extends Competition
+entity NationalCup {
+}
+
+' An InternationalCup is a type of Competition
+'extends Competition
+entity InternationalCup {
+}
+
+' --- Competition Relationships ---
+' Many Clubs participate in Competitions
+relationship participates {
+}
+Club -N- participates
+Competition -(1,N)- participates
+
+' Many Clubs play in a League
+relationship plays_a {
+}
+Club -N- plays_a
+League -1- plays_a
+
+' A League belongs to one Country
+relationship country_league {
+}
+Country -1- country_league
+League -N- country_league
+
+' A National Cup belongs to one Country
+relationship national_cup_country {
+}
+Country -1- national_cup_country
+NationalCup -N- national_cup_country
+
+' An International Cup involves two or more Countries
+relationship international_cup_country {
+}
+Country -(2,N)- international_cup_country
+InternationalCup -N- international_cup_country
+
+'=======================================
+'==         MATCH ENTITIES            ==
+'=======================================
+entity Match {
+    date
+    home
+    away
+}
+
+' --- Match Relationships ---
+' A match is played between two Clubs
+relationship play {
+}
+Club -2- play
+Match -N- play
+
+' A Match is played in one Stadium
+relationship is_played_in {
+}
+Stadium -1- is_played_in
+Match -N- is_played_in
+
+' A Match is part of one Competition
+relationship is_played_for {
+}
+Competition -1- is_played_for
+Match -N- is_played_for
+
+@endchen

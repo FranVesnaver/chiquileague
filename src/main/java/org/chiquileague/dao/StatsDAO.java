@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StatsDAO {
-    public static Stats fetchStats(Integer competitionID, Integer clubID) {
+    public static Stats fetch(Integer competitionID, Integer clubID) {
         String query = "SELECT * FROM participates WHERE (competition_id = ? AND club_id = ?);";
 
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {

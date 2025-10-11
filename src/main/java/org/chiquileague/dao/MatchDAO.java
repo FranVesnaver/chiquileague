@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatchDAO {
-    public static Match fetch(Date date, Integer stadium_id) {
+    public static Match fetch(Date date, Integer stadiumID) {
         String query = "SELECT * FROM f_match WHERE (date = ? AND stadium_id = ?)";
         try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
             statement.setString(1, date.toString());
-            statement.setString(2, stadium_id.toString());
+            statement.setString(2, stadiumID.toString());
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {

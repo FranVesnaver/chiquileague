@@ -28,7 +28,7 @@ class StatsDAOTest {
         Integer clubID = 1;
         Stats expected = new Stats(1, 1, 3, 1, 1, 0, 0, 2, 1, 1);
 
-        Stats result = StatsDAO.fetchStats(competitionID, clubID);
+        Stats result = StatsDAO.fetch(competitionID, clubID);
 
         assertEquals(expected, result);
     }
@@ -39,7 +39,7 @@ class StatsDAOTest {
         Integer clubID = 32;
         Stats expected = new Stats(5, 32, 0, 1, 0, 0, 1, 1, 2, -1);
 
-        Stats result = StatsDAO.fetchStats(competitionID, clubID);
+        Stats result = StatsDAO.fetch(competitionID, clubID);
 
         assertEquals(expected, result);
     }

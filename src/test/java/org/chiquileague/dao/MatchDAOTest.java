@@ -64,13 +64,13 @@ class MatchDAOTest {
 
     @Test
     public void updateStatsTest() {
-        Stats homeStatsBefore = StatsDAO.fetchStats(1, 2);
-        Stats awayStatsBefore = StatsDAO.fetchStats(1, 1);
+        Stats homeStatsBefore = StatsDAO.fetch(1, 2);
+        Stats awayStatsBefore = StatsDAO.fetch(1, 1);
         Match input = new Match(Date.valueOf("2025-03-9"), 1, 2, 2, 1, 2, 1, 2);
 
         MatchDAO.insert(input);
-        Stats homeStatsAfter = StatsDAO.fetchStats(1, 2);
-        Stats awayStatsAfter = StatsDAO.fetchStats(1, 1);
+        Stats homeStatsAfter = StatsDAO.fetch(1, 2);
+        Stats awayStatsAfter = StatsDAO.fetch(1, 1);
 
 
         assertEquals(homeStatsBefore.getLosses()+1, homeStatsAfter.getLosses());
@@ -86,13 +86,13 @@ class MatchDAOTest {
 
     @Test
     public void insertUnplayedMatchDoesNotUpdateStatsTest() {
-        Stats homeStatsBefore = StatsDAO.fetchStats(1, 2);
-        Stats awayStatsBefore = StatsDAO.fetchStats(1, 1);
+        Stats homeStatsBefore = StatsDAO.fetch(1, 2);
+        Stats awayStatsBefore = StatsDAO.fetch(1, 1);
         Match input = new Match(Date.valueOf("2025-03-9"), null, null, 2, 1, 2, 1, 2);
 
         MatchDAO.insert(input);
-        Stats homeStatsAfter = StatsDAO.fetchStats(1, 2);
-        Stats awayStatsAfter = StatsDAO.fetchStats(1, 1);
+        Stats homeStatsAfter = StatsDAO.fetch(1, 2);
+        Stats awayStatsAfter = StatsDAO.fetch(1, 1);
 
         assertEquals(homeStatsBefore, homeStatsAfter);
         assertEquals(awayStatsBefore, awayStatsAfter);

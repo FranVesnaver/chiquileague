@@ -2,7 +2,7 @@ package org.chiquileague.model;
 
 import java.util.Objects;
 
-public class Competition {
+public abstract class Competition {
     private Integer id;
     private String name;
     private String competitionFormat;

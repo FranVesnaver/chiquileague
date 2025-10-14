@@ -18,7 +18,7 @@ public class Season {
         this.startDate = startDate;
         this.endDate = startDate.plusMonths(6);    //preliminary
 
-        List<Country> countries = Database.fetchCountries();
+        List<Country> countries = CountryDAO.fetchAll();
         List<League> leagues = new ArrayList<>();
         for (Country country : countries) {
             leagues.addAll(Objects.requireNonNull(CountryDAO.getLeagues(country)));

@@ -49,6 +49,18 @@ class CountryDAOTest {
     }
 
     @Test
+    public void fetchAllCountriesTest() {
+        List<Country> expected = List.of(
+                new Country(1, "Argentina"),
+                new Country(2, "Brasil")
+        );
+
+        List<Country> result = CountryDAO.fetchAll();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
     public void getLeaguesTest01(){
         Country input = new Country(1, "Argentina");
         ArrayList<League> expected = new ArrayList<>();

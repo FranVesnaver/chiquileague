@@ -1,6 +1,5 @@
 package org.chiquileague.dao;
 
-import org.chiquileague.model.Country;
 import org.chiquileague.model.GameInfo;
 
 import java.io.FileNotFoundException;
@@ -10,8 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 // singleton pattern
 public class Database {
@@ -69,25 +66,6 @@ public class Database {
 
     public static void setDbResourcePath(String dbResourcePath) {
         DB_RESOURCE_PATH = dbResourcePath;
-    }
-
-
-    public static List<Country> fetchCountries() {
-        String query = "SELECT * FROM country;";
-
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery(query);
-
-            List<Country> countries = new ArrayList<>();
-            while (result.next()){
-                countries.add(new Country(result.getInt("id"), result.getString("name")));
-            }
-
-            return countries;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static GameInfo createGame(String name, Integer clubID) {

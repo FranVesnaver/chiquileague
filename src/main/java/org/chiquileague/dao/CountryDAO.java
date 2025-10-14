@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,23 @@ public class CountryDAO {
     public static Country fetch(String name){
         String query = "SELECT * FROM country WHERE (name = ?);";
         return fetch(query, name);
+    }
+
+    public static List<Country> fetchAll() {
+        String query = "SELECT * FROM country;";
+
+        try (Statement statement = Database.getConnection().createStatement();) {
+            ResultSet result = statement.executeQuery(query);
+
+            List<Country> countries = new ArrayList<>();
+            while (result.next()){
+                countries.add(new Country(result.getInt("id"), result.getString("name")));
+            }
+
+            return countries;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static List<League> getLeagues(Country country) {

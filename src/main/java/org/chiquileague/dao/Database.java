@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 // singleton pattern
 public class Database {
@@ -95,5 +97,13 @@ public class Database {
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public static List<Path> getSavedGames() throws IOException {
+        Path savesDir = Path.of("saves");
+        if (!Files.exists(savesDir) || !Files.isDirectory(savesDir)) {
+            throw new FileNotFoundException("It seems there's no saved games");
+        }
+        return Files.list(savesDir).filter(p -> p.toString().endsWith(".db")).collect(Collectors.toList());
     }
 }

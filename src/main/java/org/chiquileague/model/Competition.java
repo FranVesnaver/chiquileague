@@ -53,4 +53,9 @@ public abstract class Competition {
     public int hashCode() {
         return Objects.hash(id, name, competitionFormat);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -40,4 +40,9 @@ public class Team {
     public int hashCode() {
         return Objects.hash(id, name, leagueID);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

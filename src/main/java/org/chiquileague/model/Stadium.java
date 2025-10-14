@@ -61,4 +61,9 @@ public class Stadium {
     public int hashCode() {
         return Objects.hash(id, name, clubID);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

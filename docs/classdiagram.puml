@@ -3,35 +3,68 @@
 
 package chiquileague {
     package model {
-        Class Competition {
-            id: Integer
-            name: String
-            competitionFormat: String
+
+        class Engine implements .chiquileague.observer.Subject, .chiquileague.mvc.Model {
+            Season season
+            GameInfo gameInfo
+
+            connectDatabase()
+            newGame(String newGameName, Team selectedTeam)
+            initializeCompetitions()
+            loadGame(Path saveFile)
+            nextDay()
+            saveGameAndQuit()
+            quitGame()
+
+            registerObserver(Observer observer)
+            removeObserver(Observer observer)
+            notifyObservers()
+        }
+        Engine --> Season
+        Engine --> GameInfo
+
+        class Season {
+            startDate: LocalDate
+            endDate: LocalDate
+            Season(startDate: LocalDate)
+            getFixtureByTeam(team: Team)
+            getFixtureByCompetition(league: League)
         }
 
-        Class Country {
-            id: Integer
-            String: name
-        }
-
-        Class GameInfo {
+        class GameInfo {
             id: Integer
             name: String
             clubID: Integer
             time: Date
             selectedTeam: Team
         }
+        GameInfo::selectedTeam -> Team
 
-        Class InternationalCup extends Competition {
-            countriesIDs: List<Integer>
+        abstract Competition {
+            id: Integer
+            name: String
+            competitionFormat: String
         }
 
-        Class League extends Competition {
+        class League extends Competition {
             countryID: Integer
             leagueRank: Integer
         }
 
-        Class Match {
+        class NationalCup extends Competition {
+            countryID: Integer
+        }
+
+        class InternationalCup extends Competition {
+            countriesIDs: List<Integer>
+        }
+
+        class Country {
+            id: Integer
+            String: name
+        }
+
+        class Match {
             id: Integer
             date: Date
             homeGoals: Integer
@@ -43,11 +76,7 @@ package chiquileague {
             matchday: Integer
         }
 
-        Class NationalCup extends Competition {
-            countryID: Integer
-        }
-
-        Class Player {
+        class Player {
             id: int
             name: String
             birthDate: Date
@@ -91,22 +120,14 @@ package chiquileague {
             ED
         }
 
-        Class Season {
-            startDate: LocalDate
-            endDate: LocalDate
-            Season(startDate: LocalDate)
-            getFixtureByTeam(team: Team)
-            getFixtureByCompetition(league: League)
-        }
-
-        Class Stadium {
+        class Stadium {
             id: Integer
             name: String
             capacity: Integer
             clubID: Integer
         }
 
-        Class Stats {
+        class Stats {
             competitionID: Integer
             ClubID: Integer
             points: Integer
@@ -119,7 +140,7 @@ package chiquileague {
             goalDifference: Integer
         }
 
-        Class Team {
+        class Team {
             id: Integer
             name: String
             leagueID: Integer
@@ -217,6 +238,78 @@ package chiquileague {
             fetchCountries()
             createGame(name: String, clubID: Integer)
             saveGame(gameInfo: GameInfo)
+        }
+    }
+
+    package mvc {
+        interface Model {
+            connectDatabase()
+            newGame(String newGameName, Team selectedTeam)
+            initializeCompetitions()
+            loadGame(Path saveFile)
+            nextDay()
+            saveGameAndQuit()
+            quitGame()
+        }
+
+        interface View {
+            mainMenu()
+            gameMenu()
+            errorMessage(String msg)
+            print(String msg)
+            showList(List<?> list)
+            showMatchesOfTheDay()
+            showSquad()
+            showCalendar()
+        }
+
+        interface Controller {
+            startGameLoop()
+            newGame()
+            loadGame()
+        }
+    }
+
+    package observer {
+        interface Subject {
+            registerObserver(Observer observer)
+            removeObserver(Observer observer)
+            notifyObservers()
+        }
+
+        interface Observer {
+            update()
+        }
+    }
+
+    package Controller {
+        class MVPController implements .chiquileague.mvc.Controller {
+            Model model
+            View view
+
+            MVPController(Model model)
+            startGameLoop()
+            newGame()
+            loadGame()
+        }
+        MVPController --- Model
+        MVPController --- View
+    }
+
+    package View {
+        class ConsoleView implements .chiquileague.mvc.View, .chiquileague.observer.Observer {
+            GameInfo gameInfo
+
+            mainMenu()
+            gameMenu()
+            errorMessage(String msg)
+            print(String msg)
+            showList(List<?> list)
+            showMatchesOfTheDay()
+            showSquad()
+            showCalendar()
+
+            update()
         }
     }
 

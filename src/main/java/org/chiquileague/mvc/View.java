@@ -1,7 +1,6 @@
 package org.chiquileague.mvc;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface View {
     void mainMenu();
@@ -9,7 +8,10 @@ public interface View {
     void errorMessage(String msg);
     void print(String msg);
     void showList(List<?> list);
-    void showMatchesOfTheDay();
     void showSquad();
-    void showCalendar();
+
+    void formationMenu();
+    void calendarMenu();
+    void informationMenu();
+    void nextDayMenu();
 }

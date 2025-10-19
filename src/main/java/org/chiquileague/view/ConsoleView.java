@@ -57,15 +57,6 @@ public class ConsoleView implements View, Observer {
     }
 
     @Override
-    public void showMatchesOfTheDay() {
-        System.out.println("Partidos de hoy " + gameInfo.getTime());
-        List<Match> matches = MatchDAO.fetchMatchesOfTheDay(gameInfo.getTime());
-        for (Match match : matches) {
-            System.out.println("| " + match.getHomeClub().getName() + " v " + match.getAwayClub().getName());
-        }
-    }
-
-    @Override
     public void showSquad() {
         List<Player> squad = TeamDAO.getPlayers(TeamDAO.fetch(gameInfo.getClubID()));
         for (Player player : squad) {
@@ -79,13 +70,37 @@ public class ConsoleView implements View, Observer {
     }
 
     @Override
-    public void showCalendar() {
+    public void formationMenu() {
+        System.out.println();
+        System.out.println("Formation");
+        System.out.println("-----------------------------\n");
+    }
+
+    @Override
+    public void calendarMenu() {
         System.out.println();
         System.out.println("CALENDARIO");
         List<Match> matches = Season.getFixtureByTeam(gameInfo.getSelectedTeam());
         for (Match match : matches)
             System.out.println(match.getDate() + " -- " + TeamDAO.fetch(match.getHomeClubID()).getName() + " v " + TeamDAO.fetch(match.getAwayClubID()).getName());
         System.out.println("-----------------------------\n");
+    }
+
+    @Override
+    public void informationMenu() {
+        System.out.println();
+        System.out.println("Information");
+        System.out.println("-----------------------------\n");
+    }
+
+    @Override
+    public void nextDayMenu() {
+        System.out.println("NEW DAY");
+        System.out.println("Partidos de hoy " + gameInfo.getTime());
+        List<Match> matches = MatchDAO.fetchMatchesOfTheDay(gameInfo.getTime());
+        for (Match match : matches) {
+            System.out.println("| " + match.getHomeClub().getName() + " v " + match.getAwayClub().getName());
+        }
     }
 
     @Override

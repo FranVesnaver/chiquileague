@@ -43,7 +43,6 @@ public class MVPController implements Controller {
         }
     }
 
-    @Override
     public void newGame() throws SQLException, IOException {
         int back;
 
@@ -95,7 +94,6 @@ public class MVPController implements Controller {
         }
     }
 
-    @Override
     public void loadGame() throws IOException, SQLException {
         List<Path> saveFiles = Database.getSavedGames();
 
@@ -155,26 +153,21 @@ public class MVPController implements Controller {
 
     private void formation(){
         // TODO
-        view.print("");
-        view.print("Formation");
-        view.print("-----------------------------\n");
+        view.formationMenu();
     }
 
     private void calendar(){
-        view.showCalendar();
+        view.calendarMenu();
     }
 
     private void information() {
         // TODO
-        view.print("");
-        view.print("Information");
-        view.print("-----------------------------\n");
+        view.informationMenu();
     }
 
     private void nextDay(){
         model.nextDay();
-        view.print("NEW DAY");
-        view.showMatchesOfTheDay();
+        view.nextDayMenu();
     }
 
     /**
@@ -184,13 +177,13 @@ public class MVPController implements Controller {
      * @param back the value of the back (or return) option
      * @return the value of the option selected by the user
      */
-    private static int validateOption(int back){
+    private int validateOption(int back){
         int option = 0;
         while (option == 0) {
             option = scanner.nextInt();
             if (option <= 0 || option > back) {
                 option = 0;
-                System.out.println("Ingrese una opción válida");
+                view.errorMessage("Ingrese una opción válida");
             }
         }
         return option;

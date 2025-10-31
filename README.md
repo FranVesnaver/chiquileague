@@ -1,18 +1,40 @@
 # ChiquiLeague
-Executing the MVP (on the pom.xml path): 
-```bash
-mvn exec:java -Dexec.mainClass="org.chiquileague.app.MVP"
-```
 
-
-# ChiquiLeague
-
-ChiquiLeague is a football management simulator inspired by titles like Football Manager, focused on the Argentine league system (but easily adaptable to other national and international competitions).
-Its main goal is to offer a complete model of the football ecosystem — leagues, cups, teams, players, and stats — built with a modular, extensible, and testable Java architecture.
+ChiquiLeague is a football management simulator inspired by classic titles like Football Manager and PC Fútbol.
+You take on the role of a club manager — build your team, compete in national and international tournaments, and lead your club to glory season after season.
 
 ## Main Features
+- Multiple competition types:
 
+  - National leagues with promotion and relegation.
 
+  - Domestic cups with knockout rounds.
+
+  - Continental tournaments like the Copa Libertadores.
+
+- Dynamic season system:
+  - Each game starts on a chosen date and simulates entire football seasons.
+
+- Squad management:
+  - Inspect your players, check their stats (passing, shooting, pace, etc.), and see which positions they can play.
+
+- Match results and stats: 
+  - Matches record scores, goals for and against, all kinds of statistics get recorded after each season
+
+- International realism: 
+  - Countries, leagues, and cups are modeled with real-world structure.
+
+## Game Overview
+
+In ChiquiLeague, you control every key aspect of a football club:
+
+- Compete in domestic leagues, national cups, and international tournaments.
+- Manage your squad: view players, their stats, and preferred positions.
+- Follow your team’s fixtures and results through a realistic season calendar.
+- Progress day by day, with new matches and competitions as the season unfolds.
+- Save your game anytime and continue later exactly where you left off.
+
+The game currently runs in the console, offering a clear text-based interface that guides you through all menus and actions.
 
 ## Project Architecture
 

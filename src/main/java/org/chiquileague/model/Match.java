@@ -6,7 +6,7 @@ import org.chiquileague.dao.TeamDAO;
 import java.sql.Date;
 import java.util.Objects;
 
-public class Match {
+public class Match implements Entity {
     private Integer id;
     private Date date;
     private Integer homeGoals;

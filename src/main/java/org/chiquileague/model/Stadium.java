@@ -2,7 +2,7 @@ package org.chiquileague.model;
 
 import java.util.Objects;
 
-public class Stadium {
+public class Stadium implements Entity {
     private Integer id;
     private String name;
     private Integer capacity;

@@ -1,5 +1,6 @@
 package org.chiquileague.mvc;
 
+import org.chiquileague.model.Entity;
 import org.chiquileague.model.Team;
 
 import java.io.IOException;
@@ -14,4 +15,6 @@ public interface Model {
     void nextDay();
     void saveGameAndQuit();
     void quitGame();
+
+    Entity getEntityByID(String type, int id);
 }

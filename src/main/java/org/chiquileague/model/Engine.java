@@ -1,8 +1,6 @@
 package org.chiquileague.model;
 
-import org.chiquileague.dao.CompetitionDAO;
-import org.chiquileague.dao.Database;
-import org.chiquileague.dao.GameDAO;
+import org.chiquileague.dao.*;
 import org.chiquileague.fixture.FixtureFactory;
 import org.chiquileague.fixture.FixtureGenerator;
 import org.chiquileague.mvc.Model;
@@ -95,6 +93,22 @@ public class Engine implements Model, Subject {
     public void quitGame() {
         gameLoaded = null;
         notifyObservers();
+    }
+
+    @Override
+    public Entity getEntityByID(String type, int id) {
+        switch (type) {
+            case "stadium": return StadiumDAO.fetch(id);
+            case "country": return CountryDAO.fetch(id);
+            case "league": return CompetitionDAO.fetchLeague(id);
+            case "nationalCup": return CompetitionDAO.fetchNationalCup(id);
+            case "internationalCup": return CompetitionDAO.fetchInternationalCup(id);
+            case "gameInfo": return GameDAO.fetch(id);
+            case "match": return MatchDAO.fetch(id);
+            case "player": return PlayerDAO.fetch(id);
+            case "team": return TeamDAO.fetch(id);
+            default: throw new IllegalArgumentException("Invalid entity type");
+        }
     }
 
     @Override

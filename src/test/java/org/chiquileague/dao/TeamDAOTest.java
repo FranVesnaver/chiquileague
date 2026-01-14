@@ -50,10 +50,10 @@ class TeamDAOTest {
     public void getPlayersByTeamTest() {
         Team input = new Team(32, "CA Gimnasia y Esgrima (Mendoza)", 2);
         List<Player> expected = List.of(
-                new Player(909, "Lautaro Petruchi", Date.valueOf("1998-09-01"), 26, "Argentina", "Derecho", Float.parseFloat("1.84"), 909, null, List.of(Position.PO)),
-                new Player(912, "Imanol González", Date.valueOf("1998-01-06"), 27, "Argentina", "Izquierdo", Float.parseFloat("1.84"), 912, null, List.of(Position.DFC)),
-                new Player(923, "Fermín Antonini", Date.valueOf("1997-07-02"), 28, "Argentina", "Derecho", Float.parseFloat("1.74"), 923, null, List.of(Position.MCD)),
-                new Player(930, "Facundo Lencioni", Date.valueOf("2001-02-14"), 24, "Argentina", "Izquierdo", Float.parseFloat("1.8"), 930, null, List.of(Position.EI))
+                new Player(909, "Lautaro Petruchi", Date.valueOf("1998-09-01"), 26, "Argentina", "Derecho", Float.parseFloat("1.84"), null, List.of(Position.PO)),
+                new Player(912, "Imanol González", Date.valueOf("1998-01-06"), 27, "Argentina", "Izquierdo", Float.parseFloat("1.84"), null, List.of(Position.DFC)),
+                new Player(923, "Fermín Antonini", Date.valueOf("1997-07-02"), 28, "Argentina", "Derecho", Float.parseFloat("1.74"), null, List.of(Position.MCD)),
+                new Player(930, "Facundo Lencioni", Date.valueOf("2001-02-14"), 24, "Argentina", "Izquierdo", Float.parseFloat("1.8"), null, List.of(Position.EI))
         );
 
         List<Player> result = TeamDAO.getPlayers(input);

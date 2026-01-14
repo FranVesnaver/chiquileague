@@ -29,7 +29,7 @@ class PlayerDAOTest {
     public void fetchByIDTest() {
         Integer input = 2;
         List<Position> positions = List.of(Position.PO);
-        Player expected = new Player(2, "Franco Armani", Date.valueOf("1986-10-16"), 38, "Argentina", "Derecho", Float.parseFloat("1.89"), 2, null, positions);
+        Player expected = new Player(2, "Franco Armani", Date.valueOf("1986-10-16"), 38, "Argentina", "Derecho", Float.parseFloat("1.89"), null, positions);
 
         Player result = PlayerDAO.fetch(input);
 
@@ -40,7 +40,7 @@ class PlayerDAOTest {
     public void fetchByNameTest() {
         String input = "Facundo Colidio";
         List<Position> positions = List.of(Position.DC, Position.EI, Position.MCO);
-        Player expected = new Player(29, "Facundo Colidio", Date.valueOf("2000-01-04"), 25, "Argentina", "Derecho", Float.parseFloat("1.8"), 29, null, positions);
+        Player expected = new Player(29, "Facundo Colidio", Date.valueOf("2000-01-04"), 25, "Argentina", "Derecho", Float.parseFloat("1.8"), null, positions);
 
         Player result = PlayerDAO.fetch(input);
 

@@ -59,7 +59,6 @@ public class PlayerDAO {
 
                                     result1.getString("foot"),
                                     result1.getFloat("height"),
-                                    result1.getInt("attr_id"),
                                     result1.getInt("ya_id"),
                                     positions
                 );

@@ -1,7 +1,7 @@
 package org.chiquileague.app;
 
 import org.chiquileague.controller.MVPController;
-import org.chiquileague.model.*;
+import org.chiquileague.engine.Engine;
 import org.chiquileague.mvc.Controller;
 import org.chiquileague.mvc.Model;
 

@@ -1,8 +1,9 @@
-package org.chiquileague.model;
+package org.chiquileague.engine;
 
 import org.chiquileague.dao.*;
 import org.chiquileague.fixture.FixtureFactory;
 import org.chiquileague.fixture.FixtureGenerator;
+import org.chiquileague.model.*;
 import org.chiquileague.mvc.Model;
 import org.chiquileague.observer.Observer;
 import org.chiquileague.observer.Subject;

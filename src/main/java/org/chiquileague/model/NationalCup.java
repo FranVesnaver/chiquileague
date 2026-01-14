@@ -5,27 +5,19 @@ import org.chiquileague.dao.CountryDAO;
 import java.util.Objects;
 
 public class NationalCup extends Competition {
-    private Integer countryID;
+    private Country country;
 
     public NationalCup(Integer id, String name, String competitionFormat, Integer countryID) {
         super(id, name, competitionFormat);
-        this.countryID = countryID;
-    }
-
-    public Integer getCountryID() {
-        return countryID;
-    }
-
-    public void setCountryID(Integer countryID) {
-        this.countryID = countryID;
+        this.country = CountryDAO.fetch(countryID);
     }
 
     public Country getCountry() {
-        return CountryDAO.fetch(countryID);
+        return country;
     }
 
     public void setCountry(Country country) {
-        this.countryID = country.getId();
+        this.country = country;
     }
 
     @Override
@@ -34,11 +26,11 @@ public class NationalCup extends Competition {
         if (!(obj instanceof NationalCup)) return false;
 
         NationalCup that = (NationalCup) obj;
-        return Objects.equals(this.countryID, that.countryID);
+        return Objects.equals(this.country, that.country);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(super.hashCode(), countryID);
+        return Objects.hash(super.hashCode(), country);
     }
 }

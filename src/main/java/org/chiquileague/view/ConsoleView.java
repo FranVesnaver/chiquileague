@@ -50,7 +50,7 @@ public class ConsoleView implements EngineObserver {
     }
 
     public void showSquad() {
-        List<Player> squad = TeamDAO.getPlayers(TeamDAO.fetch(gameInfo.getClubID()));
+        List<Player> squad = TeamDAO.getPlayers(gameInfo.getSelectedTeam());
         for (Player player : squad) {
             System.out.print(player.getName() + " | ");
             for (Position position : player.getPositions()){

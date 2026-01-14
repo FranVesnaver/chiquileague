@@ -1,16 +1,18 @@
 package org.chiquileague.model;
 
+import org.chiquileague.dao.CompetitionDAO;
+
 import java.util.Objects;
 
 public class Team implements Entity {
-    private Integer id;
-    private String name;
-    private Integer leagueID;
+    private final Integer id;
+    private final String name;
+    private final League league;
 
     public Team(Integer id, String name, Integer leagueID) {
         this.id = id;
         this.name = name;
-        this.leagueID = leagueID;
+        this.league = CompetitionDAO.fetchLeague(leagueID);
     }
 
     public Integer getId() {
@@ -21,8 +23,8 @@ public class Team implements Entity {
         return name;
     }
 
-    public Integer getLeagueID() {
-        return leagueID;
+    public League getLeague() {
+        return league;
     }
 
     @Override
@@ -33,12 +35,12 @@ public class Team implements Entity {
         Team that = (Team) obj;
         return  Objects.equals(this.id, that.id) &&
                 Objects.equals(this.name, that.name) &&
-                Objects.equals(this.leagueID, that.leagueID);
+                Objects.equals(this.league, that.league);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, leagueID);
+        return Objects.hash(id, name, league);
     }
 
     @Override

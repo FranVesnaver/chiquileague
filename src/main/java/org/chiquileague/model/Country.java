@@ -3,8 +3,8 @@ package org.chiquileague.model;
 import java.util.Objects;
 
 public class Country implements Entity {
-    Integer id;
-    String name;
+    private final Integer id;
+    private final String name;
 
     public Country(Integer id, String name) {
         this.id = id;
@@ -15,16 +15,8 @@ public class Country implements Entity {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

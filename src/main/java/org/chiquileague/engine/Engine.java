@@ -4,9 +4,7 @@ import org.chiquileague.dao.*;
 import org.chiquileague.fixture.FixtureFactory;
 import org.chiquileague.fixture.FixtureGenerator;
 import org.chiquileague.model.*;
-import org.chiquileague.mvc.Model;
-import org.chiquileague.observer.Observer;
-import org.chiquileague.observer.Subject;
+import org.chiquileague.view.EngineObserver;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,8 +18,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Engine implements Model, Subject {
-    private List<Observer> observers;
+public class Engine {
+    private final List<EngineObserver> observers;
     private GameInfo gameLoaded;
     private Season season;
 
@@ -29,15 +27,13 @@ public class Engine implements Model, Subject {
         this.observers = new ArrayList<>();
     }
 
-    @Override
     public void connectDatabase() throws SQLException, IOException {
         Database.connect();
     }
 
-    @Override
     public void newGame(String newGameName, Team selectedTeam) throws IOException {
         Path savesDir = Path.of("saves");
-        Files.createDirectories(savesDir);  //creates the saves directory in case it don't exist
+        Files.createDirectories(savesDir);  //creates the saves directory in case it doesn't exist
 
         Path newGamePath = savesDir.resolve(newGameName + ".db");
 
@@ -54,7 +50,6 @@ public class Engine implements Model, Subject {
         notifyObservers();
     }
 
-    @Override
     public void initializeCompetitions() {
         List<Competition> competitions = CompetitionDAO.fetchAll();
         for (Competition comp : competitions) {
@@ -64,7 +59,6 @@ public class Engine implements Model, Subject {
         notifyObservers();
     }
 
-    @Override
     public void loadGame(Path saveFile) throws SQLException {
         String saveFileName = saveFile.getFileName().toString().replace(".db","");
         Database.connectTo(saveFile);
@@ -73,7 +67,6 @@ public class Engine implements Model, Subject {
         notifyObservers();
     }
 
-    @Override
     public void nextDay() {
         // TODO match simulation
 
@@ -83,20 +76,17 @@ public class Engine implements Model, Subject {
         notifyObservers();
     }
 
-    @Override
     public void saveGameAndQuit() {
         Database.saveGame(gameLoaded);
         quitGame();
         notifyObservers();
     }
 
-    @Override
     public void quitGame() {
         gameLoaded = null;
         notifyObservers();
     }
 
-    @Override
     public Entity getEntityByID(String type, int id) {
         switch (type) {
             case "stadium": return StadiumDAO.fetch(id);
@@ -112,20 +102,17 @@ public class Engine implements Model, Subject {
         }
     }
 
-    @Override
-    public void registerObserver(Observer observer) {
+    public void registerObserver(EngineObserver observer) {
         observers.add(observer);
     }
 
-    @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(EngineObserver observer) {
         observers.remove(observer);
 
     }
 
-    @Override
     public void notifyObservers() {
-        for (Observer observer : observers) {
+        for (EngineObserver observer : observers) {
             observer.update(gameLoaded);
         }
     }

@@ -1,4 +1,4 @@
-package org.chiquileague.mvc;
+package org.chiquileague.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;

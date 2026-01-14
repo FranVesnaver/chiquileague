@@ -2,21 +2,18 @@ package org.chiquileague.view;
 
 import org.chiquileague.dao.MatchDAO;
 import org.chiquileague.dao.TeamDAO;
+import org.chiquileague.engine.Engine;
 import org.chiquileague.model.*;
-import org.chiquileague.mvc.View;
-import org.chiquileague.observer.Observer;
-import org.chiquileague.observer.Subject;
 
 import java.util.List;
 
-public class ConsoleView implements View, Observer {
+public class ConsoleView implements EngineObserver {
     private GameInfo gameInfo;
 
-    public ConsoleView(Subject subject) {
-        subject.registerObserver(this);
+    public ConsoleView(Engine engine) {
+        engine.registerObserver(this);
     }
 
-    @Override
     public void mainMenu() {
         System.out.println("CHIQUI LEAGUE");
         System.out.println("1 - Nueva partida");
@@ -24,7 +21,6 @@ public class ConsoleView implements View, Observer {
         System.out.println("3 - Salir");
     }
 
-    @Override
     public void gameMenu() {
         System.out.println("EQUIPO: " + gameInfo.getSelectedTeam().getName());
         System.out.println("FECHA: " + gameInfo.getTime());
@@ -37,17 +33,14 @@ public class ConsoleView implements View, Observer {
         System.out.println("6) Salir de la partida");
     }
 
-    @Override
     public void errorMessage(String msg) {
         System.out.println("ERROR" + msg);
     }
 
-    @Override
     public void print(String msg) {
         System.out.println(msg);
     }
 
-    @Override
     public void showList(List<?> list) {
         int i;
         for (i = 0; i < list.size(); i++) {
@@ -56,7 +49,6 @@ public class ConsoleView implements View, Observer {
         System.out.println(i+1 + ") Atras");
     }
 
-    @Override
     public void showSquad() {
         List<Player> squad = TeamDAO.getPlayers(TeamDAO.fetch(gameInfo.getClubID()));
         for (Player player : squad) {
@@ -69,14 +61,12 @@ public class ConsoleView implements View, Observer {
         System.out.println("-----------------------------\n");
     }
 
-    @Override
     public void formationMenu() {
         System.out.println();
         System.out.println("Formation");
         System.out.println("-----------------------------\n");
     }
 
-    @Override
     public void calendarMenu() {
         System.out.println();
         System.out.println("CALENDARIO");
@@ -86,14 +76,12 @@ public class ConsoleView implements View, Observer {
         System.out.println("-----------------------------\n");
     }
 
-    @Override
     public void informationMenu() {
         System.out.println();
         System.out.println("Information");
         System.out.println("-----------------------------\n");
     }
 
-    @Override
     public void nextDayMenu() {
         System.out.println("NEW DAY");
         System.out.println("Partidos de hoy " + gameInfo.getTime());

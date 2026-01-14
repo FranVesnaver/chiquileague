@@ -1,7 +1,7 @@
-package org.chiquileague.observer;
+package org.chiquileague.view;
 
 import org.chiquileague.model.GameInfo;
 
-public interface Observer {
+public interface EngineObserver {
     void update(GameInfo info);
 }

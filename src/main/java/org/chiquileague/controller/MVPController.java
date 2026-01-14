@@ -1,11 +1,8 @@
 package org.chiquileague.controller;
 
 import org.chiquileague.dao.*;
+import org.chiquileague.engine.Engine;
 import org.chiquileague.model.*;
-import org.chiquileague.mvc.Controller;
-import org.chiquileague.mvc.Model;
-import org.chiquileague.mvc.View;
-import org.chiquileague.observer.Subject;
 import org.chiquileague.view.ConsoleView;
 
 import java.io.IOException;
@@ -16,14 +13,14 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class MVPController implements Controller {
-    private Model model;
-    private View view;
+    private final Engine engine;
+    private final ConsoleView view;
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public MVPController(Model model) {
-        this.model = model;
-        this.view = new ConsoleView((Subject) model);
+    public MVPController(Engine engine) {
+        this.engine = engine;
+        this.view = new ConsoleView(engine);
     }
 
     @Override
@@ -46,7 +43,7 @@ public class MVPController implements Controller {
     public void newGame() throws SQLException, IOException {
         int back;
 
-        model.connectDatabase();
+        engine.connectDatabase();
         view.print("NUEVA PARTIDA");
 
         // SELECTING A COUNTRY
@@ -87,8 +84,8 @@ public class MVPController implements Controller {
         String newGameName = scanner.next();
 
         try {
-            model.newGame(newGameName, selectedTeam);
-            model.initializeCompetitions();
+            engine.newGame(newGameName, selectedTeam);
+            engine.initializeCompetitions();
         } catch (Exception e) {
             view.print(e.getMessage());
         }
@@ -110,7 +107,7 @@ public class MVPController implements Controller {
         int gameOption = validateOption(back);
         if (gameOption == back) return;
 
-        model.loadGame(saveFiles.get(gameOption-1));
+        engine.loadGame(saveFiles.get(gameOption-1));
 
         view.print("Cargando partida... " + saveFiles.get(gameOption-1).getFileName().toString().replace(".db",""));
         gameMenu();
@@ -140,9 +137,9 @@ public class MVPController implements Controller {
         view.print("2) No");
         int save = validateOption(2);
         if (save == 1)
-            model.saveGameAndQuit();
+            engine.saveGameAndQuit();
         else
-            model.quitGame();
+            engine.quitGame();
     }
 
     private void squad(){
@@ -166,7 +163,7 @@ public class MVPController implements Controller {
     }
 
     private void nextDay(){
-        model.nextDay();
+        engine.nextDay();
         view.nextDayMenu();
     }
 

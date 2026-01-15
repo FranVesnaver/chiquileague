@@ -12,6 +12,7 @@ CREATE TABLE competition (
     id INTEGER NOT NULL,
     name VARCHAR(255) NOT NULL UNIQUE,
     competition_format VARCHAR(50) NOT NULL,
+    type VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
 );
 

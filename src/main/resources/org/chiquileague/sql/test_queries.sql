@@ -51,6 +51,8 @@ LEFT OUTER JOIN league lg ON (cmp.id = lg.id)
 LEFT OUTER JOIN national_cup nc ON (cmp.id = nc.id)
 LEFT OUTER JOIN international_cup ON (cmp.id = international_cup.id);
 
+SELECT type FROM competition WHERE (id = 1);
+
 -- estadios
 SELECT * FROM stadium WHERE (club_id = 1);
 SELECT * FROM stadium WHERE (id = 1);

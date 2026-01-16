@@ -102,7 +102,7 @@ public class CompetitionDAO {
                             result.getInt("id"),
                             result.getString("name"),
                             result.getString("competition_format"),
-                            result.getInt("league_country"),
+                            CountryDAO.fetch(result.getInt("league_country")),
                             result.getInt("league_rank")
                     );
                 } else {
@@ -113,7 +113,7 @@ public class CompetitionDAO {
                                 result.getInt("id"),
                                 result.getString("name"),
                                 result.getString("competition_format"),
-                                result.getInt("cup_country")
+                                CountryDAO.fetch(result.getInt("cup_country"))
                         );
                     } else {
                         // add int cup
@@ -124,6 +124,26 @@ public class CompetitionDAO {
             }
 
             return competitions;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static Competition fetch(Integer id) {
+        String query = "SELECT type FROM competition WHERE (id = ?);";
+        try (PreparedStatement statement = Database.getConnection().prepareStatement(query)) {
+            statement.setString(1, id.toString());
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                String type = result.getString("type");
+                switch (type) {
+                    case "LEAGUE": return fetchLeague(id);
+                    case "NATIONAL_CUP": return fetchNationalCup(id);
+                    case "INTERNATIONAL_CUP": return fetchInternationalCup(id);
+                }
+            }
         } catch (SQLException | IOException | ClassNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -144,7 +164,7 @@ public class CompetitionDAO {
             while (result.next()) {
                 teams.add(new Team(result.getInt("id"),
                                 result.getString("name"),
-                                result.getInt("league_id")
+                                league
                         )
                 );
             }
@@ -166,7 +186,7 @@ public class CompetitionDAO {
                 return new League(result.getInt("id"),
                         result.getString("name"),
                         result.getString("competition_format"),
-                        result.getInt("country_id"),
+                        CountryDAO.fetch(result.getInt("country_id")),
                         result.getInt("league_rank")
                 );
             }
@@ -185,7 +205,7 @@ public class CompetitionDAO {
                 return new NationalCup(result.getInt("id"),
                         result.getString("name"),
                         result.getString("competition_format"),
-                        result.getInt("country_id")
+                        CountryDAO.fetch(result.getInt("country_id"))
                 );
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {
@@ -203,9 +223,10 @@ public class CompetitionDAO {
             ResultSet result2 = statement2.executeQuery();
 
             if (result1.next()) {
-                List<Integer> countries = new ArrayList<>();
-                while (result2.next())
-                    countries.add(result2.getInt("country_id"));
+                List<Country> countries = new ArrayList<>();
+                while (result2.next()) {
+                    countries.add(CountryDAO.fetch(result2.getInt("country_id")));
+                }
 
                 return new InternationalCup(result1.getInt("id"),
                         result1.getString("name"),

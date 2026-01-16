@@ -1,10 +1,12 @@
 package org.chiquileague.model;
 
+import org.chiquileague.dao.TeamDAO;
+
 import java.util.Objects;
 
 public class Stats {
-    private Integer competitionID;
-    private Integer clubID;
+    private final Integer competition;
+    private final Team club;
     private Integer points;
     private Integer matchesPlayed;
     private Integer wins;
@@ -15,8 +17,8 @@ public class Stats {
     private Integer goalDifference;
 
     public Stats(Integer competitionID, Integer clubID, Integer points, Integer matchesPlayed, Integer wins, Integer draws, Integer losses, Integer goalsFor, Integer goalsAgainst, Integer goalDifference) {
-        this.competitionID = competitionID;
-        this.clubID = clubID;
+        this.competition = competitionID;
+        this.club = TeamDAO.fetch(clubID);
         this.points = points;
         this.matchesPlayed = matchesPlayed;
         this.wins = wins;
@@ -25,86 +27,26 @@ public class Stats {
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
         this.goalDifference = goalDifference;
-    }
-
-    public Integer getCompetitionID() {
-        return competitionID;
-    }
-
-    public void setCompetitionID(Integer competitionID) {
-        this.competitionID = competitionID;
-    }
-
-    public Integer getClubID() {
-        return clubID;
-    }
-
-    public void setClubID(Integer clubID) {
-        this.clubID = clubID;
     }
 
     public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
-
-    public Integer getMatchesPlayed() {
-        return matchesPlayed;
-    }
-
-    public void setMatchesPlayed(Integer matchesPlayed) {
-        this.matchesPlayed = matchesPlayed;
-    }
-
     public Integer getWins() {
         return wins;
-    }
-
-    public void setWins(Integer wins) {
-        this.wins = wins;
-    }
-
-    public Integer getDraws() {
-        return draws;
-    }
-
-    public void setDraws(Integer draws) {
-        this.draws = draws;
     }
 
     public Integer getLosses() {
         return losses;
     }
 
-    public void setLosses(Integer losses) {
-        this.losses = losses;
-    }
-
     public Integer getGoalsFor() {
         return goalsFor;
     }
 
-    public void setGoalsFor(Integer goalsFor) {
-        this.goalsFor = goalsFor;
-    }
-
     public Integer getGoalsAgainst() {
         return goalsAgainst;
-    }
-
-    public void setGoalsAgainst(Integer goalsAgainst) {
-        this.goalsAgainst = goalsAgainst;
-    }
-
-    public Integer getGoalDifference() {
-        return goalDifference;
-    }
-
-    public void setGoalDifference(Integer goalDifference) {
-        this.goalDifference = goalDifference;
     }
 
     @Override
@@ -113,8 +55,8 @@ public class Stats {
         if (!(obj instanceof Stats)) return false;
 
         Stats that = (Stats) obj;
-        return  Objects.equals(competitionID, that.competitionID) &&
-                Objects.equals(clubID, that.clubID) &&
+        return  Objects.equals(competition, that.competition) &&
+                Objects.equals(club, that.club) &&
                 Objects.equals(points, that.points) &&
                 Objects.equals(matchesPlayed, that.matchesPlayed) &&
                 Objects.equals(wins, that.wins) &&
@@ -127,6 +69,6 @@ public class Stats {
 
     @Override
     public int hashCode() {
-        return Objects.hash(competitionID, clubID, points, matchesPlayed, wins, draws, losses, goalsFor, goalsAgainst, goalDifference);
+        return Objects.hash(competition, club, points, matchesPlayed, wins, draws, losses, goalsFor, goalsAgainst, goalDifference);
     }
 }

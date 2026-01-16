@@ -32,7 +32,8 @@ public class StadiumDAO {
                 return new Stadium(result.getInt("id"),
                                    result.getString("name"),
                                    result.getInt("capacity"),
-                                   result.getInt("club_id"));
+                                   TeamDAO.fetch(result.getInt("club_id"))
+                );
             }
         } catch (SQLException | IOException | ClassNotFoundException e ) {
             System.out.println("Error: " + e.getMessage());

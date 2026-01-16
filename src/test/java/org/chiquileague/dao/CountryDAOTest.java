@@ -64,8 +64,8 @@ class CountryDAOTest {
     public void getLeaguesTest01(){
         Country input = new Country(1, "Argentina");
         ArrayList<League> expected = new ArrayList<>();
-        expected.add(new League(1, "Primera División (Argentina)", "DOUBLE_ROUND_ROBIN", 1, 1));
-        expected.add(new League(2, "Primera Nacional (Argentina)", "DOUBLE_ROUND_ROBIN", 1, 2));
+        expected.add(new League(1, "Primera División (Argentina)", "DOUBLE_ROUND_ROBIN", new Country(1, "Argentina"), 1));
+        expected.add(new League(2, "Primera Nacional (Argentina)", "DOUBLE_ROUND_ROBIN", new Country(1, "Argentina"), 2));
 
         List<League> result = CountryDAO.getLeagues(input);
 
@@ -76,8 +76,8 @@ class CountryDAOTest {
     public void getLeaguesTest02(){
         Country input = new Country(2, "Brasil");
         ArrayList<League> expected = new ArrayList<>();
-        expected.add(new League(3, "Campeonato Brasileiro Serie A", "DOUBLE_ROUND_ROBIN", 2, 1));
-        expected.add(new League(4, "Campeonato Brasileiro Serie B", "DOUBLE_ROUND_ROBIN", 2, 2));
+        expected.add(new League(3, "Campeonato Brasileiro Serie A", "DOUBLE_ROUND_ROBIN", new Country(2, "Brasil"), 1));
+        expected.add(new League(4, "Campeonato Brasileiro Serie B", "DOUBLE_ROUND_ROBIN", new Country(2, "Brasil"), 2));
 
         List<League> result = CountryDAO.getLeagues(input);
 

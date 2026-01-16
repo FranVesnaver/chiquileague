@@ -1,16 +1,14 @@
 package org.chiquileague.model;
 
-import org.chiquileague.dao.CountryDAO;
-
 import java.util.Objects;
 
-public class League extends Competition{
+public class League extends Competition {
     private final Country country;
     private final Integer leagueRank;
 
-    public League(Integer id, String name, String competitionFormat, Integer countryID, Integer leagueRank) {
+    public League(Integer id, String name, String competitionFormat, Country country, Integer leagueRank) {
         super(id, name, competitionFormat);
-        this.country = CountryDAO.fetch(countryID);
+        this.country = country;
         this.leagueRank = leagueRank;
     }
 

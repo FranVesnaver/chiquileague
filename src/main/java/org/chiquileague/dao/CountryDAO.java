@@ -33,7 +33,7 @@ public class CountryDAO {
     public static List<Country> fetchAll() {
         String query = "SELECT * FROM country;";
 
-        try (Statement statement = Database.getConnection().createStatement();) {
+        try (Statement statement = Database.getConnection().createStatement()) {
             ResultSet result = statement.executeQuery(query);
 
             List<Country> countries = new ArrayList<>();
@@ -62,7 +62,7 @@ public class CountryDAO {
                 leagues.add(new League(result.getInt("id"),
                                        result.getString("name"),
                                        result.getString("competition_format"),
-                                       result.getInt("country_id"),
+                                       CountryDAO.fetch(result.getInt("country_id")),
                                        result.getInt("league_rank")
                             )
                 );

@@ -71,8 +71,9 @@ public class ConsoleView implements EngineObserver {
         System.out.println();
         System.out.println("CALENDARIO");
         List<Match> matches = Season.getFixtureByTeam(gameInfo.getSelectedTeam());
-        for (Match match : matches)
-            System.out.println(match.getDate() + " -- " + TeamDAO.fetch(match.getHomeClubID()).getName() + " v " + TeamDAO.fetch(match.getAwayClubID()).getName());
+        for (Match match : matches){
+            System.out.println(match.getDate() + " -- " + match.getHomeClub().getName() + " v " + match.getAwayClub().getName());
+        }
         System.out.println("-----------------------------\n");
     }
 

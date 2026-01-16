@@ -30,10 +30,10 @@ public class MatchDAO {
                         Date.valueOf(result.getString("date")),
                         homeGoalsResult,
                         awayGoalsResult,
-                        result.getInt("home_club_id"),
-                        result.getInt("away_club_id"),
-                        result.getInt("stadium_id"),
-                        result.getInt("competition_id"),
+                        TeamDAO.fetch(result.getInt("home_club_id")),
+                        TeamDAO.fetch(result.getInt("away_club_id")),
+                        StadiumDAO.fetch(result.getInt("stadium_id")),
+                        CompetitionDAO.fetch(result.getInt("competition_id")),
                         matchdayResult);
             }
 
@@ -62,10 +62,10 @@ public class MatchDAO {
                         Date.valueOf(result.getString("date")),
                         homeGoalsResult,
                         awayGoalsResult,
-                        result.getInt("home_club_id"),
-                        result.getInt("away_club_id"),
-                        result.getInt("stadium_id"),
-                        result.getInt("competition_id"),
+                        TeamDAO.fetch(result.getInt("home_club_id")),
+                        TeamDAO.fetch(result.getInt("away_club_id")),
+                        StadiumDAO.fetch(result.getInt("stadium_id")),
+                        CompetitionDAO.fetch(result.getInt("competition_id")),
                         matchdayResult);
             }
 
@@ -90,10 +90,10 @@ public class MatchDAO {
              else
                  statement.setNull(3, Types.INTEGER);
 
-             statement.setInt(4, match.getHomeClubID());
-             statement.setInt(5, match.getAwayClubID());
-             statement.setInt(6, match.getStadiumID());
-             statement.setInt(7, match.getCompetitionID());
+             statement.setInt(4, match.getHomeClub().getId());
+             statement.setInt(5, match.getAwayClub().getId());
+             statement.setInt(6, match.getStadium().getId());
+             statement.setInt(7, match.getCompetition().getId());
 
              if (match.getMatchday() != null)
                  statement.setInt(8, match.getMatchday());
@@ -132,10 +132,10 @@ public class MatchDAO {
                         Date.valueOf(result.getString("date")),
                         homeGoalsResult,
                         awayGoalsResult,
-                        result.getInt("home_club_id"),
-                        result.getInt("away_club_id"),
-                        result.getInt("stadium_id"),
-                        result.getInt("competition_id"),
+                        TeamDAO.fetch(result.getInt("home_club_id")),
+                        TeamDAO.fetch(result.getInt("away_club_id")),
+                        StadiumDAO.fetch(result.getInt("stadium_id")),
+                        CompetitionDAO.fetch(result.getInt("competition_id")),
                         matchdayResult));
             }
 
@@ -168,10 +168,10 @@ public class MatchDAO {
                         Date.valueOf(result.getString("date")),
                         homeGoalsResult,
                         awayGoalsResult,
-                        result.getInt("home_club_id"),
-                        result.getInt("away_club_id"),
-                        result.getInt("stadium_id"),
-                        result.getInt("competition_id"),
+                        TeamDAO.fetch(result.getInt("home_club_id")),
+                        TeamDAO.fetch(result.getInt("away_club_id")),
+                        StadiumDAO.fetch(result.getInt("stadium_id")),
+                        CompetitionDAO.fetch(result.getInt("competition_id")),
                         matchdayResult));
             }
 
@@ -206,10 +206,10 @@ public class MatchDAO {
                         Date.valueOf(result.getString("date")),
                         homeGoalsResult,
                         awayGoalsResult,
-                        result.getInt("home_club_id"),
-                        result.getInt("away_club_id"),
-                        result.getInt("stadium_id"),
-                        result.getInt("competition_id"),
+                        TeamDAO.fetch(result.getInt("home_club_id")),
+                        TeamDAO.fetch(result.getInt("away_club_id")),
+                        StadiumDAO.fetch(result.getInt("stadium_id")),
+                        CompetitionDAO.fetch(result.getInt("competition_id")),
                         matchdayResult
                 ));
             }
@@ -264,8 +264,8 @@ public class MatchDAO {
             homeStatement.setString(4, Integer.toString(homeLosses));
             homeStatement.setString(5, match.getHomeGoals().toString());
             homeStatement.setString(6, match.getAwayGoals().toString());
-            homeStatement.setString(7, match.getCompetitionID().toString());
-            homeStatement.setString(8, match.getHomeClubID().toString());
+            homeStatement.setString(7, match.getCompetition().getId().toString());
+            homeStatement.setString(8, match.getHomeClub().getId().toString());
 
             awayStatement.setString(1, Integer.toString(awayPoints));
             awayStatement.setString(2, Integer.toString(awayWins));
@@ -273,8 +273,8 @@ public class MatchDAO {
             awayStatement.setString(4, Integer.toString(awayLosses));
             awayStatement.setString(5, match.getAwayGoals().toString());
             awayStatement.setString(6, match.getHomeGoals().toString());
-            awayStatement.setString(7, match.getCompetitionID().toString());
-            awayStatement.setString(8, match.getAwayClubID().toString());
+            awayStatement.setString(7, match.getCompetition().getId().toString());
+            awayStatement.setString(8, match.getAwayClub().getId().toString());
 
             homeStatement.executeUpdate();
             awayStatement.executeUpdate();

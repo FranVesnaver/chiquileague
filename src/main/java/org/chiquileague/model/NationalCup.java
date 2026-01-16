@@ -1,15 +1,13 @@
 package org.chiquileague.model;
 
-import org.chiquileague.dao.CountryDAO;
-
 import java.util.Objects;
 
 public class NationalCup extends Competition {
     private Country country;
 
-    public NationalCup(Integer id, String name, String competitionFormat, Integer countryID) {
+    public NationalCup(Integer id, String name, String competitionFormat, Country country) {
         super(id, name, competitionFormat);
-        this.country = CountryDAO.fetch(countryID);
+        this.country = country;
     }
 
     public Country getCountry() {

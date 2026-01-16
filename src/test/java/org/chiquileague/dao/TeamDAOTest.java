@@ -1,8 +1,6 @@
 package org.chiquileague.dao;
 
-import org.chiquileague.model.Player;
-import org.chiquileague.model.Position;
-import org.chiquileague.model.Team;
+import org.chiquileague.model.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +27,7 @@ class TeamDAOTest {
     @Test
     public void fetchByIDTest() {
         Integer input = 1;
-        Team expected = new Team(1, "CA River Plate", 1);
+        Team expected = new Team(1, "CA River Plate", new League(1, "Primera División (Argentina)", "DOUBLE_ROUND_ROBIN", new Country(1, "Argentina"), 1));
 
         Team result = TeamDAO.fetch(input);
 
@@ -39,7 +37,7 @@ class TeamDAOTest {
     @Test
     public void fetchByNameTest() {
         String input = "CA Boca Juniors";
-        Team expected = new Team(2, "CA Boca Juniors", 1);
+        Team expected = new Team(2, "CA Boca Juniors", new League(1, "Primera División (Argentina)", "DOUBLE_ROUND_ROBIN", new Country(1, "Argentina"), 1));
 
         Team result = TeamDAO.fetch(input);
 
@@ -48,7 +46,7 @@ class TeamDAOTest {
 
     @Test
     public void getPlayersByTeamTest() {
-        Team input = new Team(32, "CA Gimnasia y Esgrima (Mendoza)", 2);
+        Team input = new Team(32, "CA Gimnasia y Esgrima (Mendoza)", new League(2, "Primera Nacional (Argentina)", "DOUBLE_ROUND_ROBIN", new Country(1, "Argentina"), 2));
         List<Player> expected = List.of(
                 new Player(909, "Lautaro Petruchi", Date.valueOf("1998-09-01"), 26, "Argentina", "Derecho", Float.parseFloat("1.84"), null, List.of(Position.PO)),
                 new Player(912, "Imanol González", Date.valueOf("1998-01-06"), 27, "Argentina", "Izquierdo", Float.parseFloat("1.84"), null, List.of(Position.DFC)),

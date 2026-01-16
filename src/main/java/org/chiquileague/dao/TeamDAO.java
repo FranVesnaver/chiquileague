@@ -56,7 +56,7 @@ public class TeamDAO {
             if (result.next()) {
                 return new Team(result.getInt("id"),
                                 result.getString("name"),
-                                result.getInt("league_id")
+                                CompetitionDAO.fetchLeague(result.getInt("league_id"))
                 );
             }
         } catch (SQLException | IOException | ClassNotFoundException e) {

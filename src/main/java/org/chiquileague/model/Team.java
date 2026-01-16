@@ -1,7 +1,5 @@
 package org.chiquileague.model;
 
-import org.chiquileague.dao.CompetitionDAO;
-
 import java.util.Objects;
 
 public class Team implements Entity {
@@ -9,10 +7,10 @@ public class Team implements Entity {
     private final String name;
     private final League league;
 
-    public Team(Integer id, String name, Integer leagueID) {
+    public Team(Integer id, String name, League league) {
         this.id = id;
         this.name = name;
-        this.league = CompetitionDAO.fetchLeague(leagueID);
+        this.league = league;
     }
 
     public Integer getId() {

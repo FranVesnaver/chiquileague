@@ -1,19 +1,14 @@
 package org.chiquileague.model;
 
-import org.chiquileague.dao.CountryDAO;
 
 import java.util.*;
 
 public class InternationalCup extends Competition {
-    private final List<Country> countries = new ArrayList<>();
+    private final List<Country> countries;
 
-    public InternationalCup(Integer id, String name, String competitionFormat, List<Integer> countriesIDs) {
+    public InternationalCup(Integer id, String name, String competitionFormat, List<Country> countries) {
         super(id, name, competitionFormat);
-
-        for (Integer countryID : countriesIDs) {
-            Country country = CountryDAO.fetch(countryID);
-            countries.add(country);
-        }
+        this.countries = countries;
     }
 
     public List<Country> getCountries() {

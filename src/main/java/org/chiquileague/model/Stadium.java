@@ -1,7 +1,5 @@
 package org.chiquileague.model;
 
-import org.chiquileague.dao.TeamDAO;
-
 import java.util.Objects;
 
 public class Stadium implements Entity {
@@ -10,11 +8,11 @@ public class Stadium implements Entity {
     private final String name;
     private Integer capacity;
 
-    public Stadium(Integer id, String name, Integer capacity, Integer clubID) {
+    public Stadium(Integer id, String name, Integer capacity, Team club) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
-        this.club = TeamDAO.fetch(clubID);
+        this.club = club;
     }
 
     public Integer getId() {

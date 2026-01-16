@@ -34,9 +34,9 @@ public class DoubleRoundRobinGenerator implements FixtureGenerator{
 
                 if (home != null && away != null) {
                     if (round < rounds)
-                        MatchDAO.insert(new Match(Date.valueOf(currentDate.plusDays(bias)), null, null, home.getId(), away.getId(), StadiumDAO.fetchByClubID(home.getId()).getId(), competitionID, round+1));
+                        MatchDAO.insert(new Match(Date.valueOf(currentDate.plusDays(bias)), null, null, home, away, StadiumDAO.fetchByClubID(home.getId()), CompetitionDAO.fetch(competitionID), round+1));
                     else
-                        MatchDAO.insert(new Match(Date.valueOf(currentDate.plusDays(bias)), null, null, away.getId(), home.getId(), StadiumDAO.fetchByClubID(away.getId()).getId(), competitionID, round+1));
+                        MatchDAO.insert(new Match(Date.valueOf(currentDate.plusDays(bias)), null, null, away, home, StadiumDAO.fetchByClubID(away.getId()), CompetitionDAO.fetch(competitionID), round+1));
                 }
             }
             currentDate = currentDate.plusDays(7);

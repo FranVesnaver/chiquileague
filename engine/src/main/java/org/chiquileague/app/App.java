@@ -1,42 +1,16 @@
 package org.chiquileague.app;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.chiquileague.controller.MVPController;
+import org.chiquileague.engine.Engine;
+import org.chiquileague.controller.Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-/**
- * JavaFX App
- */
-public class App extends Application {
-
-    private static Scene scene;
-
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+public class App {
+    public static void main (String[] args) throws SQLException, IOException {
+        Engine engine = new Engine();
+        Controller controller = new MVPController(engine);
+        controller.startGameLoop();
     }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    static void changeScene(String scene, String title) throws IOException {
-        setRoot(scene);
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 }

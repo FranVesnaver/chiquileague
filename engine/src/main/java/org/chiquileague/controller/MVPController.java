@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class MVPController implements Controller {
+public class MVPController {
     private final Engine engine;
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -20,7 +20,6 @@ public class MVPController implements Controller {
         this.engine = engine;
     }
 
-    @Override
     public void startGameLoop() throws SQLException, IOException {
         int option = 0;
         int exitOption = 3;

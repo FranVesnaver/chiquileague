@@ -81,7 +81,7 @@ public class MVPController {
 
         try {
             engine.newGame(newGameName, selectedTeam);
-            engine.initializeCompetitions();
+//            engine.initializeCompetitions();
         } catch (Exception e) {
 //            view.print(e.getMessage());
         }

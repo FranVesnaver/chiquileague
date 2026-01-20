@@ -42,14 +42,14 @@ public class Engine {
             throw new RuntimeException("Error al crear la partida: " + e);
         }
     }
-
-    public void initializeCompetitions() {
-        List<Competition> competitions = CompetitionDAO.fetchAll();
-        for (Competition comp : competitions) {
-            FixtureGenerator fixtureGenerator = FixtureFactory.getGenerator(comp.getCompetitionFormat());
-            fixtureGenerator.generate(comp.getId(), gameLoaded.getTime().toLocalDate());
-        }
-    }
+//
+//    public void initializeCompetitions() {
+//        List<Competition> competitions = CompetitionDAO.fetchAll();
+//        for (Competition comp : competitions) {
+//            FixtureGenerator fixtureGenerator = FixtureFactory.getGenerator(comp.getCompetitionFormat());
+//            fixtureGenerator.generate(comp.getId(), gameLoaded.getTime().toLocalDate());
+//        }
+//    }
 
     public void loadGame(Path saveFile) throws SQLException {
         String saveFileName = saveFile.getFileName().toString().replace(".db","");

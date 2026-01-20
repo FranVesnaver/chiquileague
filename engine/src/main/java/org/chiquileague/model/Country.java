@@ -2,7 +2,7 @@ package org.chiquileague.model;
 
 import java.util.Objects;
 
-public class Country implements Entity {
+public class Country {
     private final Integer id;
     private final String name;
 

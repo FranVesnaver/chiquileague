@@ -3,7 +3,7 @@ package org.chiquileague.model;
 import java.sql.Date;
 import java.util.Objects;
 
-public class Match implements Entity {
+public class Match {
     private Integer id;
     private final Date date;
     private final Team homeClub;

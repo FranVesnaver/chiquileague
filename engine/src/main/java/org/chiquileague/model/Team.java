@@ -2,7 +2,7 @@ package org.chiquileague.model;
 
 import java.util.Objects;
 
-public class Team implements Entity {
+public class Team {
     private final Integer id;
     private final String name;
     private final League league;

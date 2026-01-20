@@ -87,21 +87,6 @@ public class Engine {
         notifyObservers();
     }
 
-    public Entity getEntityByID(String type, int id) {
-        switch (type) {
-            case "stadium": return StadiumDAO.fetch(id);
-            case "country": return CountryDAO.fetch(id);
-            case "league": return CompetitionDAO.fetchLeague(id);
-            case "nationalCup": return CompetitionDAO.fetchNationalCup(id);
-            case "internationalCup": return CompetitionDAO.fetchInternationalCup(id);
-            case "gameInfo": return GameDAO.fetch(id);
-            case "match": return MatchDAO.fetch(id);
-            case "player": return PlayerDAO.fetch(id);
-            case "team": return TeamDAO.fetch(id);
-            default: throw new IllegalArgumentException("Invalid entity type");
-        }
-    }
-
     public void registerObserver(EngineObserver observer) {
         observers.add(observer);
     }

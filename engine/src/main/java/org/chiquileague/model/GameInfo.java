@@ -5,7 +5,7 @@ import org.chiquileague.dao.TeamDAO;
 import java.sql.Date;
 import java.util.Objects;
 
-public class GameInfo implements Entity {
+public class GameInfo {
     private final Integer id;
     private final String name;
     private final Team selectedTeam;

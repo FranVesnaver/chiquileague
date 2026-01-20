@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class Player implements Entity {
+public class Player {
     private final int id;
     private final String name;
     private Date birthDate;

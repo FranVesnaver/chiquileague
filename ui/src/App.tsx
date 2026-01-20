@@ -2,9 +2,15 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { invoke } from '@tauri-apps/api/core'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  async function ping() {
+    const response = await invoke<string>("ping_engine");
+    console.log(response);
+  }
 
   return (
     <>
@@ -18,7 +24,10 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => {
+          setCount((count) => count + 1);
+          ping();
+        }}>
           count is {count}
         </button>
         <p>

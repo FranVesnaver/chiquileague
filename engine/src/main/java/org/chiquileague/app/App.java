@@ -1,16 +1,38 @@
 package org.chiquileague.app;
 
-import org.chiquileague.controller.MVPController;
-import org.chiquileague.engine.Engine;
-import org.chiquileague.controller.Controller;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Map;
 
 public class App {
-    public static void main (String[] args) throws SQLException, IOException {
-        Engine engine = new Engine();
-        Controller controller = new MVPController(engine);
-        controller.startGameLoop();
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    public static void main (String[] args) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out = new PrintWriter(System.out, true);
+
+        String line;
+        while ((line = in.readLine()) != null) {
+            Map<String, Object> request = mapper.readValue(line, Map.class);
+
+            String type = (String) request.get("type");
+
+            if ("ping".equals(type)) {
+                out.println("""
+                        {"type": "pong"}
+                        """
+                );
+            } else {
+                out.println("""
+                        {"type": "error", "message": "Unknown command"}
+                        """
+                );
+            }
+        }
     }
 }

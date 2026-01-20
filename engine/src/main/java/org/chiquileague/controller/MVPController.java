@@ -3,7 +3,6 @@ package org.chiquileague.controller;
 import org.chiquileague.dao.*;
 import org.chiquileague.engine.Engine;
 import org.chiquileague.model.*;
-import org.chiquileague.view.ConsoleView;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -14,13 +13,11 @@ import java.util.stream.Collectors;
 
 public class MVPController implements Controller {
     private final Engine engine;
-    private final ConsoleView view;
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public MVPController(Engine engine) {
         this.engine = engine;
-        this.view = new ConsoleView(engine);
     }
 
     @Override
@@ -29,13 +26,13 @@ public class MVPController implements Controller {
         int exitOption = 3;
 
         while (option != exitOption) {
-            view.mainMenu();
+//            view.mainMenu();
             option = scanner.nextInt();
             switch (option) {
                 case 1: newGame(); break;
                 case 2: loadGame(); break;
                 case 3: break;
-                default: view.errorMessage("Ingrese una opción válida"); break;
+//                default: view.errorMessage("Ingrese una opción válida"); break;
             }
         }
     }
@@ -44,50 +41,50 @@ public class MVPController implements Controller {
         int back;
 
         engine.connectDatabase();
-        view.print("NUEVA PARTIDA");
+//        view.print("NUEVA PARTIDA");
 
         // SELECTING A COUNTRY
         List<Country> countries = CountryDAO.fetchAll();
         back = countries.size()+1;
-        view.print("Seleccioná un país: ");
-        view.showList(countries);
+//        view.print("Seleccioná un país: ");
+//        view.showList(countries);
         int countryOption = validateOption(back);
         if (countryOption == back) return;
         Country selectedCountry = countries.get(countryOption-1);
 
         // SELECTING A LEAGUE FROM THE SELECTED COUNTRY
-        view.print("Seleccioná una liga: ");
+//        view.print("Seleccioná una liga: ");
         List<League> leagues = CountryDAO.getLeagues(selectedCountry);
         back = leagues.size()+1;
-        view.showList(leagues);
+//        view.showList(leagues);
         int leagueOption = validateOption(back);
         if (leagueOption == back) return;
         League selectedLeague = leagues.get(leagueOption-1);
 
         // SELECTING A TEAM FROM THE SELECTED LEAGUE
-        view.print("Seleccioná un equipo: ");
+//        view.print("Seleccioná un equipo: ");
         List<Team> teams = CompetitionDAO.getTeamsByLeague(selectedLeague);
         back = teams.size()+1;
-        view.showList(teams);
+//        view.showList(teams);
         int teamOption = validateOption(back);
         if (teamOption == back) return;
         Team selectedTeam = teams.get(teamOption-1);
 
-        view.print("EQUIPO ELEGIDO: " + selectedTeam.getName() + " (" + selectedTeam.getId() + ") de " + selectedLeague.getName());
-        view.print("Confirmar?");
-        view.print("1 - Si");
-        view.print("2 - No");
+//        view.print("EQUIPO ELEGIDO: " + selectedTeam.getName() + " (" + selectedTeam.getId() + ") de " + selectedLeague.getName());
+//        view.print("Confirmar?");
+//        view.print("1 - Si");
+//        view.print("2 - No");
         int confirm = validateOption(2);
         if (confirm == 2) return;
 
-        view.print("Nombre para la nueva partida (si ya hay una con ese nombre se sobreescibirá): ");
+//        view.print("Nombre para la nueva partida (si ya hay una con ese nombre se sobreescibirá): ");
         String newGameName = scanner.next();
 
         try {
             engine.newGame(newGameName, selectedTeam);
             engine.initializeCompetitions();
         } catch (Exception e) {
-            view.print(e.getMessage());
+//            view.print(e.getMessage());
         }
     }
 
@@ -95,21 +92,21 @@ public class MVPController implements Controller {
         List<Path> saveFiles = Database.getSavedGames();
 
         if (saveFiles.isEmpty()) {
-            view.print("No hay partidas guardadas");
+//            view.print("No hay partidas guardadas");
             return;
         }
 
         // TEST THIS
         int back = saveFiles.size()+1;
         List<String> saveFilesNames = saveFiles.stream().map((p) -> p.getFileName().toString().replace(".db","")).collect(Collectors.toList());
-        view.showList(saveFilesNames);
+//        view.showList(saveFilesNames);
 
         int gameOption = validateOption(back);
         if (gameOption == back) return;
 
         engine.loadGame(saveFiles.get(gameOption-1));
 
-        view.print("Cargando partida... " + saveFiles.get(gameOption-1).getFileName().toString().replace(".db",""));
+//        view.print("Cargando partida... " + saveFiles.get(gameOption-1).getFileName().toString().replace(".db",""));
         gameMenu();
     }
 
@@ -118,7 +115,7 @@ public class MVPController implements Controller {
         int exitGame = 6;
 
         while (gameOption != exitGame) {
-            view.gameMenu();
+//            view.gameMenu();
 
             gameOption = scanner.nextInt();
             switch (gameOption) {
@@ -128,13 +125,13 @@ public class MVPController implements Controller {
                 case 4: information(); break;
                 case 5: nextDay(); break;
                 case 6: break;
-                default: view.errorMessage("Ingrese una opción válida"); break;
+//                default: view.errorMessage("Ingrese una opción válida"); break;
             }
         }
 
-        view.print("¿Querés guardar el progreso?");
-        view.print("1) Si");
-        view.print("2) No");
+//        view.print("¿Querés guardar el progreso?");
+//        view.print("1) Si");
+//        view.print("2) No");
         int save = validateOption(2);
         if (save == 1)
             engine.saveGameAndQuit();
@@ -143,28 +140,28 @@ public class MVPController implements Controller {
     }
 
     private void squad(){
-        view.print("");
-        view.print("PLANTEL");
-        view.showSquad();
+//        view.print("");
+//        view.print("PLANTEL");
+//        view.showSquad();
     }
 
     private void formation(){
         // TODO
-        view.formationMenu();
+//        view.formationMenu();
     }
 
     private void calendar(){
-        view.calendarMenu();
+//        view.calendarMenu();
     }
 
     private void information() {
         // TODO
-        view.informationMenu();
+//        view.informationMenu();
     }
 
     private void nextDay(){
         engine.nextDay();
-        view.nextDayMenu();
+//        view.nextDayMenu();
     }
 
     /**
@@ -180,7 +177,7 @@ public class MVPController implements Controller {
             option = scanner.nextInt();
             if (option <= 0 || option > back) {
                 option = 0;
-                view.errorMessage("Ingrese una opción válida");
+//                view.errorMessage("Ingrese una opción válida");
             }
         }
         return option;

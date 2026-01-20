@@ -4,7 +4,6 @@ import org.chiquileague.dao.*;
 import org.chiquileague.fixture.FixtureFactory;
 import org.chiquileague.fixture.FixtureGenerator;
 import org.chiquileague.model.*;
-import org.chiquileague.view.EngineObserver;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,17 +14,12 @@ import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Engine {
-    private final List<EngineObserver> observers;
+
     private GameInfo gameLoaded;
     private Season season;
-
-    public Engine() {
-        this.observers = new ArrayList<>();
-    }
 
     public void connectDatabase() throws SQLException, IOException {
         Database.connect();
@@ -47,7 +41,6 @@ public class Engine {
             Files.delete(newGamePath);
             throw new RuntimeException("Error al crear la partida: " + e);
         }
-        notifyObservers();
     }
 
     public void initializeCompetitions() {
@@ -56,7 +49,6 @@ public class Engine {
             FixtureGenerator fixtureGenerator = FixtureFactory.getGenerator(comp.getCompetitionFormat());
             fixtureGenerator.generate(comp.getId(), gameLoaded.getTime().toLocalDate());
         }
-        notifyObservers();
     }
 
     public void loadGame(Path saveFile) throws SQLException {
@@ -64,7 +56,6 @@ public class Engine {
         Database.connectTo(saveFile);
 
         gameLoaded = GameDAO.fetch(saveFileName);
-        notifyObservers();
     }
 
     public void nextDay() {
@@ -73,32 +64,14 @@ public class Engine {
         // pass 1 day
         LocalDate gameTime = gameLoaded.getTime().toLocalDate();
         gameLoaded.setTime(Date.valueOf(gameTime.plusDays(1)));
-        notifyObservers();
     }
 
     public void saveGameAndQuit() {
         Database.saveGame(gameLoaded);
         quitGame();
-        notifyObservers();
     }
 
     public void quitGame() {
         gameLoaded = null;
-        notifyObservers();
-    }
-
-    public void registerObserver(EngineObserver observer) {
-        observers.add(observer);
-    }
-
-    public void removeObserver(EngineObserver observer) {
-        observers.remove(observer);
-
-    }
-
-    public void notifyObservers() {
-        for (EngineObserver observer : observers) {
-            observer.update(gameLoaded);
-        }
     }
 }
